@@ -30,7 +30,7 @@ jobs:
 
       - name: Fetch (validate hard; refuses bad data)
         env:
-          API_FOOTBALL_KEY: ${{ secrets.API_FOOTBALL_KEY }}
+          FOOTBALL_DATA_TOKEN: ${{ secrets.FOOTBALL_DATA_TOKEN }}
         run: python scripts/fetch_results.py --season 2026
 
       - name: Validate the committed data
@@ -47,3 +47,4 @@ jobs:
             git commit -m "data: scheduled fetch $(date -u +%Y-%m-%dT%H:%MZ)"
             git push
           fi
+
