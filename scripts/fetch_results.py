@@ -1,25 +1,31 @@
 #!/usr/bin/env python3
 """
-fetch_results.py — Matchday EPL predictor data fetcher.
+fetch_results.py — Matchday EPL fetcher (football-data.org edition).
 
-Pulls fixtures + standings for the English pyramid from API-Football and
-writes them into data/ as JSON. Everything is keyed by the feed's STABLE
-numeric team id, never by club name — this is what makes scoring immune to
-spelling/abbreviation drift ("Wolves" vs "Wolverhampton Wanderers").
+Pulls Premier League + Championship fixtures, results and standings from
+football-data.org (free tier) and writes them into data/ as JSON.
 
-Design principles (from the Hit Paydirt hand-off):
-  * Validate HARD. A response that fails a sanity check is REFUSED, not saved.
-    The league keeps running on the last good data. A bad fetch does nothing.
-  * Fail LOUD. On any refusal we exit non-zero so GitHub Actions emails you.
-  * Never trust names. Match on team id.
+WHY football-data.org: its free tier is designed around CURRENT-season
+coverage for 12 competitions incl. the Premier League (code "PL") and the
+Championship (code "ELC"). That is the opposite of API-Football's free tier,
+which locks the current season behind a paid plan.
 
-Auth: reads the key from the API_FOOTBALL_KEY environment variable.
-      (In GitHub Actions this comes from a repository secret — never commit it.)
+FAIL-SAFE BY DESIGN. The app does NOT depend on this script. If the feed is
+unavailable, rate-limited, or (worst case) the current season isn't on the
+free tier, this script exits WITHOUT overwriting good data. The app keeps
+running on whatever is already committed, and the scorer can enter results by
+hand / paste them in-app. The feed is an ACCELERATOR, never a dependency.
+
+Lower divisions (League One, League Two, National League) are NOT fetched here
+-- they're entered in-app by pasting a final league table (scorer tool). This
+feed only does the two divisions the free tier covers.
+
+Auth: reads the token from the FOOTBALL_DATA_TOKEN environment variable
+      (a GitHub Actions secret; never commit it).
 
 Usage:
-    API_FOOTBALL_KEY=xxxx python scripts/fetch_results.py            # normal run
-    API_FOOTBALL_KEY=xxxx python scripts/fetch_results.py --map-only # rebuild divisions.json id map
-    API_FOOTBALL_KEY=xxxx python scripts/fetch_results.py --season 2026
+    FOOTBALL_DATA_TOKEN=xxxx python scripts/fetch_results.py
+    FOOTBALL_DATA_TOKEN=xxxx python scripts/fetch_results.py --season 2026
 """
 
 import argparse
@@ -32,224 +38,138 @@ from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
-API_BASE = "https://v3.football.api-sports.io"
+API_BASE = "https://api.football-data.org/v4"
 DATA = Path(__file__).resolve().parent.parent / "data"
 
-# The divisions we care about, top of the pyramid down to the National League.
-# league_id is resolved automatically from the /leagues endpoint on first run
-# (we do NOT hardcode ids from memory — only the Premier League's is well-known
-# as 39, used as a sanity anchor). Keys are our internal slugs.
-DIVISIONS = [
-    {"slug": "premier_league", "name": "Premier League", "country": "England", "anchor_id": 39},
-    {"slug": "championship",   "name": "Championship",    "country": "England", "anchor_id": None},
-    {"slug": "league_one",     "name": "League One",      "country": "England", "anchor_id": None},
-    {"slug": "league_two",     "name": "League Two",      "country": "England", "anchor_id": None},
-    {"slug": "national_league", "name": "National League", "country": "England", "anchor_id": None},
-]
+# football-data.org competition codes (free tier)
+COMPETITIONS = {
+    "premier_league": "PL",    # Premier League
+    "championship":   "ELC",   # EFL Championship
+}
 
-# ---------------------------------------------------------------------------
-# Low-level API helper
-# ---------------------------------------------------------------------------
-def _key():
-    k = os.environ.get("API_FOOTBALL_KEY", "").strip()
-    if not k:
-        die("API_FOOTBALL_KEY is not set. Get a free key at api-football.com and "
-            "export it (or set it as a GitHub Actions secret).")
-    return k
+def die(msg, soft=False):
+    """Fail loud. soft=True means 'nothing was written, app unaffected'."""
+    prefix = "FETCH SKIPPED (app unaffected)" if soft else "FETCH REFUSED"
+    print(f"{prefix}: {msg}", file=sys.stderr)
+    sys.exit(1)
 
-def api_get(endpoint, params):
-    """GET one endpoint. Respects the 10-req/min free limit with a small sleep."""
-    # urlencode escapes spaces and other special characters (e.g. "Premier League"
-    # -> "Premier%20League"). Building the query by hand would put raw spaces in
-    # the URL, which is illegal and raises InvalidURL.
-    qs = urlencode(params)
-    url = f"{API_BASE}/{endpoint}?{qs}"
-    req = Request(url, headers={"x-apisports-key": _key()})
+def token():
+    t = os.environ.get("FOOTBALL_DATA_TOKEN", "").strip()
+    if not t:
+        die("FOOTBALL_DATA_TOKEN is not set. Get a free token at football-data.org "
+            "and set it as a GitHub Actions secret.")
+    return t
+
+def api_get(path, params=None):
+    url = f"{API_BASE}/{path}"
+    if params:
+        url += "?" + urlencode(params)
+    req = Request(url, headers={"X-Auth-Token": token()})
     try:
         with urlopen(req, timeout=30) as r:
             payload = json.loads(r.read().decode("utf-8"))
     except HTTPError as e:
-        die(f"HTTP {e.code} calling {endpoint} ({qs}). Feed may be down or rate-limited.")
+        if e.code == 403:
+            die(f"HTTP 403 for {path} -- the free tier may not cover this season/resource. "
+                f"The app keeps running on existing data; enter results in-app instead.", soft=True)
+        if e.code == 429:
+            die(f"HTTP 429 rate-limited on {path}. Nothing written; will retry next run.", soft=True)
+        die(f"HTTP {e.code} for {path}.", soft=True)
     except URLError as e:
-        die(f"Network error calling {endpoint}: {e.reason}")
-    # API-Football returns errors in-band as a dict/list under "errors".
-    errs = payload.get("errors")
-    if errs:
-        die(f"API returned errors for {endpoint} ({qs}): {errs}")
-    time.sleep(6.5)  # stay comfortably under 10 requests/minute
+        die(f"Network error for {path}: {e.reason}. Nothing written.", soft=True)
+    time.sleep(6.5)  # free tier: 10 requests/minute
     return payload
 
-def die(msg):
-    """Fail loud: print to stderr and exit non-zero so CI emails the alarm."""
-    print(f"FETCH REFUSED: {msg}", file=sys.stderr)
-    sys.exit(1)
-
-# ---------------------------------------------------------------------------
-# League id resolution (name -> id, verified against country)
-# ---------------------------------------------------------------------------
-def resolve_league_ids(season):
-    """Look up each division's league id from the /leagues endpoint."""
-    resolved = {}
-    for d in DIVISIONS:
-        # API-Football forbids using `search` and `country` together in one
-        # /leagues call, so we search by name only and filter by country below.
-        payload = api_get("leagues", {"search": d["name"]})
-        matches = [x for x in payload.get("response", [])
-                   if x["league"]["name"].lower() == d["name"].lower()
-                   and x["country"]["name"].lower() == d["country"].lower()]
-        if not matches:
-            die(f"Could not resolve league id for {d['name']} ({d['country']}).")
-        lid = matches[0]["league"]["id"]
-        # Sanity anchor: the Premier League MUST be id 39. If not, the feed
-        # changed something fundamental — refuse rather than guess.
-        if d["anchor_id"] and lid != d["anchor_id"]:
-            die(f"{d['name']} resolved to id {lid}, expected {d['anchor_id']}. Refusing.")
-        # Verify this league/season actually covers standings before we rely on it.
-        seasons = matches[0].get("seasons", [])
-        cov = next((s for s in seasons if s.get("year") == season), None)
-        if cov and not cov.get("coverage", {}).get("standings", False):
-            print(f"  ! {d['name']} {season} has no standings coverage — "
-                  f"promotion/relegation for this tier will need hand-entry.", file=sys.stderr)
-        resolved[d["slug"]] = lid
-        print(f"  {d['name']:16} -> league id {lid}")
-    return resolved
-
-# ---------------------------------------------------------------------------
-# Teams (build the name <-> id map)
-# ---------------------------------------------------------------------------
-def fetch_teams(league_id, season):
-    payload = api_get("teams", {"league": league_id, "season": season})
-    teams = []
-    for row in payload.get("response", []):
-        t = row["team"]
-        teams.append({"id": t["id"], "name": t["name"]})
-    return teams
-
-def build_divisions_map(season):
-    """Write data/divisions.json: every division's clubs WITH their team ids."""
-    print(f"Resolving league ids for season {season}...")
-    ids = resolve_league_ids(season)
-    out = {"season": season, "divisions": {}}
-    for d in DIVISIONS:
-        lid = ids[d["slug"]]
-        teams = fetch_teams(lid, season)
-        # Championship-and-above should be 24 (or 20 for the PL); warn if not,
-        # but don't die — early pre-season the feed can be incomplete.
-        expected = 20 if d["slug"] == "premier_league" else 24
-        if teams and len(teams) != expected:
-            print(f"  ! {d['name']}: got {len(teams)} teams (expected {expected}).",
-                  file=sys.stderr)
-        out["divisions"][d["slug"]] = {
-            "name": d["name"], "league_id": lid,
-            "teams": sorted(teams, key=lambda x: x["name"]),
-        }
-        print(f"  {d['name']:16} -> {len(teams)} teams")
-    _write(DATA / "divisions.json", out)
-    print("Wrote data/divisions.json")
-
-# ---------------------------------------------------------------------------
-# Fixtures  (one file per gameweek: data/2026/week-NN.json)
-# ---------------------------------------------------------------------------
-def fetch_fixtures(league_id, season):
-    payload = api_get("fixtures", {"league": league_id, "season": season})
-    return payload.get("response", [])
-
-def write_weeks(season):
-    """Fetch PL fixtures and split them into per-gameweek files, keyed by team id."""
-    ids = resolve_league_ids(season)
-    pl = ids["premier_league"]
-    fixtures = fetch_fixtures(pl, season)
-    if not fixtures:
-        die("Premier League fixtures came back empty. Refusing to overwrite.")
-
-    weeks = {}
-    for fx in fixtures:
-        rnd = fx["league"]["round"]                       # e.g. "Regular Season - 5"
-        try:
-            gw = int(rnd.rsplit("-", 1)[1].strip())
-        except (IndexError, ValueError):
-            continue                                       # skip non-league rounds
-        home, away = fx["teams"]["home"], fx["teams"]["away"]
-        goals = fx["goals"]
-        status = fx["fixture"]["status"]["short"]          # NS, FT, etc.
-        weeks.setdefault(gw, []).append({
-            "fixtureId": fx["fixture"]["id"],
-            "kickoffUtc": fx["fixture"]["date"],           # ISO 8601 w/ offset
-            "status": status,
-            "home": {"id": home["id"], "name": home["name"]},
-            "away": {"id": away["id"], "name": away["name"]},
-            # scores are null until played; validator guards these
-            "score": {"h": goals["home"], "a": goals["away"]},
-        })
-
-    validate_weeks(weeks)
-    for gw, matches in sorted(weeks.items()):
-        matches.sort(key=lambda m: m["kickoffUtc"])
-        _write(DATA / "2026" / f"week-{gw:02d}.json",
-               {"season": season, "gameweek": gw, "fixtures": matches})
-    print(f"Wrote {len(weeks)} gameweek files to data/2026/")
-
-# ---------------------------------------------------------------------------
-# Standings (data/standings.json — powers provisional scoring + settlement)
-# ---------------------------------------------------------------------------
-def fetch_standings(league_id, season):
-    payload = api_get("standings", {"league": league_id, "season": season})
-    resp = payload.get("response", [])
-    if not resp:
+def fetch_standings(code, season):
+    payload = api_get(f"competitions/{code}/standings", {"season": season})
+    tables = payload.get("standings", [])
+    total = next((t for t in tables if t.get("type") == "TOTAL"), None)
+    if not total:
         return []
-    table = resp[0]["league"]["standings"][0]
-    return [{"rank": r["rank"], "id": r["team"]["id"], "name": r["team"]["name"],
-             "played": r["all"]["played"], "points": r["points"]} for r in table]
+    out = []
+    for r in total.get("table", []):
+        team = r.get("team", {})
+        out.append({
+            "rank": r.get("position"),
+            "id": team.get("id"),
+            "name": team.get("name"),
+            "played": r.get("playedGames"),
+            "points": r.get("points"),
+        })
+    return out
 
 def write_standings(season):
-    ids = resolve_league_ids(season)
-    out = {"season": season, "divisions": {}}
-    for d in DIVISIONS:
-        table = fetch_standings(ids[d["slug"]], season)
-        out["divisions"][d["slug"]] = {"name": d["name"], "table": table}
-        print(f"  {d['name']:16} -> {len(table)} rows")
+    out = {"season": season, "source": "football-data.org", "divisions": {}}
+    for slug, code in COMPETITIONS.items():
+        table = fetch_standings(code, season)
+        out["divisions"][slug] = {"name": slug, "table": table}
+        print(f"  {slug:16} -> {len(table)} rows")
+    if all(len(d["table"]) == 0 for d in out["divisions"].values()):
+        die("All standings came back empty. Refusing to overwrite good data.", soft=True)
     _write(DATA / "standings.json", out)
     print("Wrote data/standings.json")
 
-# ---------------------------------------------------------------------------
-# Hard validation
-# ---------------------------------------------------------------------------
+def fetch_matches(code, season):
+    payload = api_get(f"competitions/{code}/matches", {"season": season})
+    return payload.get("matches", [])
+
+def write_weeks(season):
+    matches = fetch_matches(COMPETITIONS["premier_league"], season)
+    if not matches:
+        die("Premier League matches came back empty. Refusing to overwrite.", soft=True)
+    weeks = {}
+    for m in matches:
+        gw = m.get("matchday")
+        if not gw:
+            continue
+        home, away = m.get("homeTeam", {}), m.get("awayTeam", {})
+        score = m.get("score", {}).get("fullTime", {})
+        weeks.setdefault(gw, []).append({
+            "fixtureId": m.get("id"),
+            "kickoffUtc": m.get("utcDate"),
+            "status": m.get("status"),
+            "home": {"id": home.get("id"), "name": home.get("name")},
+            "away": {"id": away.get("id"), "name": away.get("name")},
+            "score": {"h": score.get("home"), "a": score.get("away")},
+        })
+    validate_weeks(weeks)
+    for gw, fixtures in sorted(weeks.items()):
+        fixtures.sort(key=lambda f: f["kickoffUtc"] or "")
+        _write(DATA / "2026" / f"week-{gw:02d}.json",
+               {"season": season, "gameweek": gw, "fixtures": fixtures})
+    print(f"Wrote {len(weeks)} gameweek files to data/2026/")
+
 def validate_weeks(weeks):
     if not weeks:
-        die("No gameweeks parsed from fixtures. Refusing.")
-    for gw, matches in weeks.items():
-        for m in matches:
-            for side in ("home", "away"):
-                if not isinstance(m[side]["id"], int):
-                    die(f"GW{gw}: {side} team id is not an int ({m[side]}).")
+        die("No gameweeks parsed from fixtures. Refusing.", soft=True)
+    for gw, fixtures in weeks.items():
+        for m in fixtures:
             sc = m["score"]
+            played = sc["h"] is not None or sc["a"] is not None
+            for side in ("home", "away"):
+                tid = m[side]["id"]
+                if played and not isinstance(tid, int):
+                    die(f"GW{gw}: team id missing on a played match -- refusing.", soft=True)
             for k in ("h", "a"):
                 v = sc[k]
                 if v is not None and (not isinstance(v, int) or v < 0 or v > 30):
-                    die(f"GW{gw}: implausible score {sc} for fixture {m['fixtureId']}.")
-            if m["home"]["id"] == m["away"]["id"]:
-                die(f"GW{gw}: a team is playing itself ({m['home']}).")
+                    die(f"GW{gw}: implausible score {sc}.", soft=True)
+            if m["home"]["id"] and m["home"]["id"] == m["away"]["id"]:
+                die(f"GW{gw}: a team is playing itself.", soft=True)
 
-# ---------------------------------------------------------------------------
 def _write(path, obj):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(obj, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--season", type=int, default=2026, help="4-digit season key (2026 = 2026/27)")
-    ap.add_argument("--map-only", action="store_true", help="only rebuild divisions.json id map")
+    ap.add_argument("--season", type=int, default=2026, help="season start year (2026 = 2026/27)")
     args = ap.parse_args()
-
-    if args.map_only:
-        build_divisions_map(args.season)
-        return
-    # Normal scheduled run: refresh fixtures, standings; (re)build the map if missing.
-    if not (DATA / "divisions.json").exists():
-        build_divisions_map(args.season)
+    print(f"Fetching PL + Championship for season {args.season} from football-data.org...")
     write_weeks(args.season)
     write_standings(args.season)
     print("Fetch complete.")
 
 if __name__ == "__main__":
     main()
+
