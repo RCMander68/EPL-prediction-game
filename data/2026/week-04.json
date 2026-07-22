@@ -3,16 +3,67 @@
   "gameweek": 4,
   "fixtures": [
     {
-      "fixtureId": 1030,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560572,
+      "kickoffUtc": "2026-09-12T14:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
+        "id": 354,
+        "name": "Crystal Palace FC"
+      },
+      "away": {
+        "id": 349,
+        "name": "Ipswich Town FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560573,
+      "kickoffUtc": "2026-09-12T14:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 64,
+        "name": "Liverpool FC"
+      },
+      "away": {
+        "id": 63,
+        "name": "Fulham FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560574,
+      "kickoffUtc": "2026-09-12T14:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 58,
+        "name": "Aston Villa FC"
+      },
+      "away": {
+        "id": 351,
+        "name": "Nottingham Forest FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560576,
+      "kickoffUtc": "2026-09-12T14:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 1044,
         "name": "AFC Bournemouth"
       },
       "away": {
-        "id": null,
-        "name": "Brentford"
+        "id": 402,
+        "name": "Brentford FC"
       },
       "score": {
         "h": null,
@@ -20,16 +71,16 @@
       }
     },
     {
-      "fixtureId": 1031,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560581,
+      "kickoffUtc": "2026-09-12T14:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Aston Villa"
+        "id": 61,
+        "name": "Chelsea FC"
       },
       "away": {
-        "id": null,
-        "name": "Nottingham Forest"
+        "id": 322,
+        "name": "Hull City AFC"
       },
       "score": {
         "h": null,
@@ -37,16 +88,16 @@
       }
     },
     {
-      "fixtureId": 1032,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560575,
+      "kickoffUtc": "2026-09-12T16:30:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Chelsea"
+        "id": 73,
+        "name": "Tottenham Hotspur FC"
       },
       "away": {
-        "id": null,
-        "name": "Hull City"
+        "id": 62,
+        "name": "Everton FC"
       },
       "score": {
         "h": null,
@@ -54,16 +105,16 @@
       }
     },
     {
-      "fixtureId": 1033,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560577,
+      "kickoffUtc": "2026-09-12T19:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Coventry City"
+        "id": 71,
+        "name": "Sunderland AFC"
       },
       "away": {
-        "id": null,
-        "name": "Brighton & Hove Albion"
+        "id": 57,
+        "name": "Arsenal FC"
       },
       "score": {
         "h": null,
@@ -71,16 +122,16 @@
       }
     },
     {
-      "fixtureId": 1034,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560578,
+      "kickoffUtc": "2026-09-13T13:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Crystal Palace"
+        "id": 1076,
+        "name": "Coventry City FC"
       },
       "away": {
-        "id": null,
-        "name": "Ipswich Town"
+        "id": 397,
+        "name": "Brighton & Hove Albion FC"
       },
       "score": {
         "h": null,
@@ -88,16 +139,16 @@
       }
     },
     {
-      "fixtureId": 1035,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560580,
+      "kickoffUtc": "2026-09-13T15:30:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Leeds United"
+        "id": 66,
+        "name": "Manchester United FC"
       },
       "away": {
-        "id": null,
-        "name": "Newcastle United"
+        "id": 65,
+        "name": "Manchester City FC"
       },
       "score": {
         "h": null,
@@ -105,67 +156,16 @@
       }
     },
     {
-      "fixtureId": 1036,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560579,
+      "kickoffUtc": "2026-09-14T19:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Liverpool"
+        "id": 341,
+        "name": "Leeds United FC"
       },
       "away": {
-        "id": null,
-        "name": "Fulham"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1037,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Manchester United"
-      },
-      "away": {
-        "id": null,
-        "name": "Manchester City"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1038,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Sunderland"
-      },
-      "away": {
-        "id": null,
-        "name": "Arsenal"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1039,
-      "kickoffUtc": "2026-09-12T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Tottenham Hotspur"
-      },
-      "away": {
-        "id": null,
-        "name": "Everton"
+        "id": 67,
+        "name": "Newcastle United FC"
       },
       "score": {
         "h": null,

@@ -3,16 +3,16 @@
   "gameweek": 32,
   "fixtures": [
     {
-      "fixtureId": 1310,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560852,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Arsenal"
+        "id": 397,
+        "name": "Brighton & Hove Albion FC"
       },
       "away": {
-        "id": null,
-        "name": "Aston Villa"
+        "id": 61,
+        "name": "Chelsea FC"
       },
       "score": {
         "h": null,
@@ -20,16 +20,16 @@
       }
     },
     {
-      "fixtureId": 1311,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560853,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Brentford"
+        "id": 63,
+        "name": "Fulham FC"
       },
       "away": {
-        "id": null,
-        "name": "Leeds United"
+        "id": 71,
+        "name": "Sunderland AFC"
       },
       "score": {
         "h": null,
@@ -37,16 +37,16 @@
       }
     },
     {
-      "fixtureId": 1312,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560854,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Brighton & Hove Albion"
+        "id": 402,
+        "name": "Brentford FC"
       },
       "away": {
-        "id": null,
-        "name": "Chelsea"
+        "id": 341,
+        "name": "Leeds United FC"
       },
       "score": {
         "h": null,
@@ -54,118 +54,118 @@
       }
     },
     {
-      "fixtureId": 1313,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
+      "fixtureId": 560855,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Everton"
+        "id": 351,
+        "name": "Nottingham Forest FC"
       },
       "away": {
-        "id": null,
+        "id": 64,
+        "name": "Liverpool FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560856,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 322,
+        "name": "Hull City AFC"
+      },
+      "away": {
+        "id": 1076,
+        "name": "Coventry City FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560857,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 57,
+        "name": "Arsenal FC"
+      },
+      "away": {
+        "id": 58,
+        "name": "Aston Villa FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560858,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 349,
+        "name": "Ipswich Town FC"
+      },
+      "away": {
+        "id": 66,
+        "name": "Manchester United FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560859,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 65,
+        "name": "Manchester City FC"
+      },
+      "away": {
+        "id": 354,
+        "name": "Crystal Palace FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560860,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 67,
+        "name": "Newcastle United FC"
+      },
+      "away": {
+        "id": 73,
+        "name": "Tottenham Hotspur FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560861,
+      "kickoffUtc": "2027-04-17T12:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 62,
+        "name": "Everton FC"
+      },
+      "away": {
+        "id": 1044,
         "name": "AFC Bournemouth"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1314,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Fulham"
-      },
-      "away": {
-        "id": null,
-        "name": "Sunderland"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1315,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Hull City"
-      },
-      "away": {
-        "id": null,
-        "name": "Coventry City"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1316,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Ipswich Town"
-      },
-      "away": {
-        "id": null,
-        "name": "Manchester United"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1317,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Manchester City"
-      },
-      "away": {
-        "id": null,
-        "name": "Crystal Palace"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1318,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Newcastle United"
-      },
-      "away": {
-        "id": null,
-        "name": "Tottenham Hotspur"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1319,
-      "kickoffUtc": "2027-04-17T15:00:00+01:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Nottingham Forest"
-      },
-      "away": {
-        "id": null,
-        "name": "Liverpool"
       },
       "score": {
         "h": null,

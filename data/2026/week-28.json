@@ -3,16 +3,33 @@
   "gameweek": 28,
   "fixtures": [
     {
-      "fixtureId": 1270,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560812,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
+        "id": 351,
+        "name": "Nottingham Forest FC"
+      },
+      "away": {
+        "id": 67,
+        "name": "Newcastle United FC"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560813,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
+      "home": {
+        "id": 1044,
         "name": "AFC Bournemouth"
       },
       "away": {
-        "id": null,
-        "name": "Tottenham Hotspur"
+        "id": 73,
+        "name": "Tottenham Hotspur FC"
       },
       "score": {
         "h": null,
@@ -20,16 +37,16 @@
       }
     },
     {
-      "fixtureId": 1271,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560814,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Arsenal"
+        "id": 65,
+        "name": "Manchester City FC"
       },
       "away": {
-        "id": null,
-        "name": "Crystal Palace"
+        "id": 62,
+        "name": "Everton FC"
       },
       "score": {
         "h": null,
@@ -37,16 +54,16 @@
       }
     },
     {
-      "fixtureId": 1272,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560815,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Brentford"
+        "id": 57,
+        "name": "Arsenal FC"
       },
       "away": {
-        "id": null,
-        "name": "Ipswich Town"
+        "id": 354,
+        "name": "Crystal Palace FC"
       },
       "score": {
         "h": null,
@@ -54,16 +71,16 @@
       }
     },
     {
-      "fixtureId": 1273,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560816,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Brighton & Hove Albion"
+        "id": 341,
+        "name": "Leeds United FC"
       },
       "away": {
-        "id": null,
-        "name": "Fulham"
+        "id": 322,
+        "name": "Hull City AFC"
       },
       "score": {
         "h": null,
@@ -71,16 +88,16 @@
       }
     },
     {
-      "fixtureId": 1274,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560817,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Chelsea"
+        "id": 71,
+        "name": "Sunderland AFC"
       },
       "away": {
-        "id": null,
-        "name": "Coventry City"
+        "id": 66,
+        "name": "Manchester United FC"
       },
       "score": {
         "h": null,
@@ -88,16 +105,16 @@
       }
     },
     {
-      "fixtureId": 1275,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560818,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Leeds United"
+        "id": 64,
+        "name": "Liverpool FC"
       },
       "away": {
-        "id": null,
-        "name": "Hull City"
+        "id": 58,
+        "name": "Aston Villa FC"
       },
       "score": {
         "h": null,
@@ -105,16 +122,16 @@
       }
     },
     {
-      "fixtureId": 1276,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560819,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Liverpool"
+        "id": 397,
+        "name": "Brighton & Hove Albion FC"
       },
       "away": {
-        "id": null,
-        "name": "Aston Villa"
+        "id": 63,
+        "name": "Fulham FC"
       },
       "score": {
         "h": null,
@@ -122,16 +139,16 @@
       }
     },
     {
-      "fixtureId": 1277,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560820,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Manchester City"
+        "id": 402,
+        "name": "Brentford FC"
       },
       "away": {
-        "id": null,
-        "name": "Everton"
+        "id": 349,
+        "name": "Ipswich Town FC"
       },
       "score": {
         "h": null,
@@ -139,33 +156,16 @@
       }
     },
     {
-      "fixtureId": 1278,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
+      "fixtureId": 560821,
+      "kickoffUtc": "2027-03-03T12:00:00Z",
+      "status": "SCHEDULED",
       "home": {
-        "id": null,
-        "name": "Nottingham Forest"
+        "id": 61,
+        "name": "Chelsea FC"
       },
       "away": {
-        "id": null,
-        "name": "Newcastle United"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 1279,
-      "kickoffUtc": "2027-03-03T20:00:00+00:00",
-      "status": "NS",
-      "home": {
-        "id": null,
-        "name": "Sunderland"
-      },
-      "away": {
-        "id": null,
-        "name": "Manchester United"
+        "id": 1076,
+        "name": "Coventry City FC"
       },
       "score": {
         "h": null,
