@@ -91,7 +91,9 @@ def resolve_league_ids(season):
     """Look up each division's league id from the /leagues endpoint."""
     resolved = {}
     for d in DIVISIONS:
-        payload = api_get("leagues", {"search": d["name"], "country": d["country"]})
+        # API-Football forbids using `search` and `country` together in one
+        # /leagues call, so we search by name only and filter by country below.
+        payload = api_get("leagues", {"search": d["name"]})
         matches = [x for x in payload.get("response", [])
                    if x["league"]["name"].lower() == d["name"].lower()
                    and x["country"]["name"].lower() == d["country"].lower()]
