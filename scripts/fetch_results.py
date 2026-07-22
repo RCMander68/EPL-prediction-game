@@ -28,6 +28,7 @@ import os
 import sys
 import time
 from pathlib import Path
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 from urllib.error import HTTPError, URLError
 
@@ -58,7 +59,10 @@ def _key():
 
 def api_get(endpoint, params):
     """GET one endpoint. Respects the 10-req/min free limit with a small sleep."""
-    qs = "&".join(f"{k}={v}" for k, v in params.items())
+    # urlencode escapes spaces and other special characters (e.g. "Premier League"
+    # -> "Premier%20League"). Building the query by hand would put raw spaces in
+    # the URL, which is illegal and raises InvalidURL.
+    qs = urlencode(params)
     url = f"{API_BASE}/{endpoint}?{qs}"
     req = Request(url, headers={"x-apisports-key": _key()})
     try:
