@@ -8,11 +8,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 341,
-        "name": "Leeds United FC"
+        "name": "Leeds United FC",
+        "crest": "https://crests.football-data.org/341.png"
       },
       "away": {
         "id": 63,
-        "name": "Fulham FC"
+        "name": "Fulham FC",
+        "crest": "https://crests.football-data.org/63.png"
       },
       "score": {
         "h": null,
@@ -25,11 +27,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 397,
-        "name": "Brighton & Hove Albion FC"
+        "name": "Brighton & Hove Albion FC",
+        "crest": "https://crests.football-data.org/397.png"
       },
       "away": {
         "id": 349,
-        "name": "Ipswich Town FC"
+        "name": "Ipswich Town FC",
+        "crest": "https://crests.football-data.org/349.png"
       },
       "score": {
         "h": null,
@@ -42,11 +46,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 351,
-        "name": "Nottingham Forest FC"
+        "name": "Nottingham Forest FC",
+        "crest": "https://crests.football-data.org/351.png"
       },
       "away": {
         "id": 62,
-        "name": "Everton FC"
+        "name": "Everton FC",
+        "crest": "https://crests.football-data.org/62.png"
       },
       "score": {
         "h": null,
@@ -59,11 +65,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 402,
-        "name": "Brentford FC"
+        "name": "Brentford FC",
+        "crest": "https://crests.football-data.org/402.png"
       },
       "away": {
         "id": 67,
-        "name": "Newcastle United FC"
+        "name": "Newcastle United FC",
+        "crest": "https://crests.football-data.org/67.png"
       },
       "score": {
         "h": null,
@@ -76,11 +84,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 65,
-        "name": "Manchester City FC"
+        "name": "Manchester City FC",
+        "crest": "https://crests.football-data.org/65.png"
       },
       "away": {
         "id": 322,
-        "name": "Hull City AFC"
+        "name": "Hull City AFC",
+        "crest": "https://crests.football-data.org/322.png"
       },
       "score": {
         "h": null,
@@ -93,11 +103,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 71,
-        "name": "Sunderland AFC"
+        "name": "Sunderland AFC",
+        "crest": "https://crests.football-data.org/71.png"
       },
       "away": {
         "id": 354,
-        "name": "Crystal Palace FC"
+        "name": "Crystal Palace FC",
+        "crest": "https://crests.football-data.org/354.png"
       },
       "score": {
         "h": null,
@@ -110,11 +122,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 1044,
-        "name": "AFC Bournemouth"
+        "name": "AFC Bournemouth",
+        "crest": "https://crests.football-data.org/bournemouth.png"
       },
       "away": {
         "id": 1076,
-        "name": "Coventry City FC"
+        "name": "Coventry City FC",
+        "crest": "https://crests.football-data.org/1076.png"
       },
       "score": {
         "h": null,
@@ -127,11 +141,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 57,
-        "name": "Arsenal FC"
+        "name": "Arsenal FC",
+        "crest": "https://crests.football-data.org/57.png"
       },
       "away": {
         "id": 66,
-        "name": "Manchester United FC"
+        "name": "Manchester United FC",
+        "crest": "https://crests.football-data.org/66.png"
       },
       "score": {
         "h": null,
@@ -144,11 +160,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 64,
-        "name": "Liverpool FC"
+        "name": "Liverpool FC",
+        "crest": "https://crests.football-data.org/64.png"
       },
       "away": {
         "id": 73,
-        "name": "Tottenham Hotspur FC"
+        "name": "Tottenham Hotspur FC",
+        "crest": "https://crests.football-data.org/73.png"
       },
       "score": {
         "h": null,
@@ -161,11 +179,13 @@
       "status": "SCHEDULED",
       "home": {
         "id": 61,
-        "name": "Chelsea FC"
+        "name": "Chelsea FC",
+        "crest": "https://crests.football-data.org/61.png"
       },
       "away": {
         "id": 58,
-        "name": "Aston Villa FC"
+        "name": "Aston Villa FC",
+        "crest": "https://crests.football-data.org/58.png"
       },
       "score": {
         "h": null,
