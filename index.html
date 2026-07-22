@@ -152,6 +152,7 @@ footer.note{text-align:center;color:var(--mist-2);font-size:12px;margin-top:8px}
 
   <nav class="tabs" id="tabs" role="tablist">
     <button class="tab active" data-view="predict"><span>🎯</span>Predict</button>
+    <button class="tab" data-view="season"><span>🔮</span>Season</button>
     <button class="tab" data-view="league"><span>📊</span>League</button>
     <button class="tab" data-view="results"><span>✅</span>Results</button>
     <button class="tab" data-view="today"><span>📅</span>Today</button>
@@ -161,14 +162,18 @@ footer.note{text-align:center;color:var(--mist-2);font-size:12px;margin-top:8px}
   </nav>
 
   <section class="view active" id="view-predict">
+    <div class="gw-pill" id="predict-pill"></div>
+    <div id="predict-body"></div>
+  </section>
+
+  <section class="view" id="view-season">
     <div class="panel picks" id="season-picks-panel">
       <h2>Season Picks</h2>
-      <p class="sub">Called before the season. Locked once the season starts.</p>
+      <p class="sub">Called before the season. Champion is worth 5; each correct promotion/relegation club is worth 3 (any order).</p>
       <h3>Champion <span class="worth">5 pts</span></h3>
       <div class="selector-row"><span>Winner</span><span id="sel-champion"></span></div>
       <div id="promrel-selectors"></div>
     </div>
-    <div id="predict-body"></div>
   </section>
 
   <section class="view" id="view-league"><div class="panel"><h2>League Table</h2>
@@ -177,7 +182,11 @@ footer.note{text-align:center;color:var(--mist-2);font-size:12px;margin-top:8px}
 
   <section class="view" id="view-results"><div class="panel"><h2>Results</h2>
     <p class="sub">Actual scores and how your picks did, week by week.</p>
-    <div class="gw-pill" id="results-pill"></div><div id="results-body"></div></div></section>
+    <div class="gw-pill" id="results-pill"></div><div id="results-body"></div>
+    <div class="panel" style="margin-top:18px"><h2 style="font-size:16px">Lower-league tables</h2>
+      <p class="sub">Paste each division's table to settle promotion/relegation (top 3 up, bottom 3 down). PL &amp; Championship update automatically from the feed.</p>
+      <div id="importer-body"></div>
+    </div></div></section>
 
   <section class="view" id="view-today"><div class="panel"><h2>Today</h2>
     <p class="sub">Matches kicking off today.</p><div id="today-body"></div></div></section>
@@ -263,16 +272,25 @@ function fixtureCard(m){
     </div></article>`;
 }
 let curWeekKey = "gw1";
-function renderPredict(){
-  const wk = currentWeek();
-  if(!wk){ $("predict-body").innerHTML=`<div class="empty"><span class="big">📭</span>No fixtures loaded yet.</div>`; return; }
+let predictIdx = -1;   // -1 means "not yet initialised → default to current week"
+function renderPredict(idx){
+  if(!APP.weeks.length){ $("predict-body").innerHTML=`<div class="empty"><span class="big">📭</span>No fixtures loaded yet.</div>`; return; }
+  // default to the current gameweek on first open
+  if(idx===undefined){
+    if(predictIdx<0){ const cur=currentWeek(); predictIdx=Math.max(0,APP.weeks.indexOf(cur)); }
+    idx = predictIdx;
+  }
+  predictIdx = Math.min(Math.max(idx,0),APP.weeks.length-1);
+  pill($("predict-pill"),predictIdx,renderPredict);
+  const wk = APP.weeks[predictIdx];
   curWeekKey = "gw"+wk.gameweek;
   const openCount = wk.fixtures.filter(m=>!matchLocked(m)).length;
   $("predict-body").innerHTML = `
     <div class="gw-head"><span class="gw-num">Gameweek ${wk.gameweek}</span>
       <span class="gw-count">${openCount} of ${wk.fixtures.length} open</span></div>
     ${wk.fixtures.map(fixtureCard).join("")}`;
-  // wire inputs -> save (stub persists locally; Firebase later)
+  // wire inputs -> save (stub persists locally; Firebase later). Locked matches
+  // are disabled in fixtureCard(), so only open matches are editable.
   $("predict-body").querySelectorAll(".fixture").forEach(card=>{
     const fx = card.dataset.fx;
     card.querySelectorAll("input").forEach(inp=>{
@@ -317,6 +335,25 @@ function renderResults(idx){
   pill($("results-pill"),resultsIdx,renderResults);
   const wk = APP.weeks[resultsIdx];
   $("results-body").innerHTML = wk ? wk.fixtures.map(resultCard).join("") : `<div class="empty">No gameweek.</div>`;
+  renderLowerLeagueImporter();
+}
+
+// Scorer tool: paste a final/current table for each lower league to settle
+// promotion/relegation (top 3 up, bottom 3 down). PL + Championship come from
+// the feed automatically, so they're not pasted here.
+function renderLowerLeagueImporter(){
+  const host = $("importer-body");
+  if(!host) return;
+  host.innerHTML = IMPORT_DIVS.filter(([slug])=>slug!=="championship" || !APP.standings?.divisions?.championship?.table?.length)
+    .map(([slug,name])=>{
+      const t = APP.pastedTables?.[slug];
+      const status = t ? `<span style="color:var(--emerald)">✓ ${t.length} rows imported</span>` : `<span style="color:var(--mist-2)">not imported yet</span>`;
+      return `<h3 style="color:var(--emerald);font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:16px 0 6px">${name} ${status}</h3>
+        <textarea id="imp_${slug}" placeholder="Paste the ${name} table — one club per row, top of the table first. Extra columns (P, Pts, GD) are ignored." style="width:100%;height:90px;font-family:monospace;font-size:12px;padding:10px;border-radius:8px;border:1px solid var(--navy-700);background:var(--navy-900);color:var(--paper)"></textarea>
+        <button class="chip" data-imp="${slug}" style="cursor:pointer;border:none;margin-top:6px;background:var(--emerald);color:var(--emerald-ink);padding:8px 14px">Import ${name} table</button>
+        <div id="impmsg_${slug}" style="font-size:12.5px;color:var(--mist);margin-top:8px;line-height:1.5"></div>`;
+    }).join("");
+  host.querySelectorAll("[data-imp]").forEach(b=> b.onclick=()=>importTable(b.dataset.imp));
 }
 
 // ===== TODAY =============================================================
@@ -384,9 +421,33 @@ function renderPicks(idx){
 
 // ===== LEAGUE (leaderboard) ==============================================
 function renderLeague(){
-  $("league-body").innerHTML = `<div class="empty"><span class="big">📊</span>
-    No standings yet. Once players join with code <b>${APP.leagueCode||"—"}</b> and matches are scored,
-    the table appears here — total points, with a separate projected column for live season-pick points.</div>`;
+  // Solo preview: score just this device's picks so the mechanic is visible.
+  // With Firebase, this maps over all players in epl_leagues/{id}/players.
+  const players = [{name:"You (this device)", picks:APP.picks, me:true}];
+  const anyTable = tableFor("premier_league") || Object.keys(APP.pastedTables||{}).length;
+  const rows = players.map(p=>{
+    const season = scoreSeason(p.picks);
+    // weekly points from finished PL matches
+    let weekly=0;
+    APP.weeks.forEach(wk=>wk.fixtures.forEach(m=>{
+      if(!played(m)) return;
+      const pk=(p.picks?.weekly?.["gw"+wk.gameweek]||{})[m.fixtureId];
+      const pts=pk?scorePick(pk,m.score):null;
+      if(pts!=null) weekly+=pts;
+    }));
+    return {name:p.name, me:p.me, weekly, season:season.points, total:weekly+season.points};
+  }).sort((a,b)=>b.total-a.total);
+  if(!anyTable && rows.every(r=>r.total===0)){
+    $("league-body").innerHTML = `<div class="empty"><span class="big">📊</span>
+      No points yet. Weekly points appear as matches finish; season-pick points appear once the
+      relevant tables are in (PL &amp; Championship from the feed, lower leagues pasted on the Results tab).</div>`;
+    return;
+  }
+  $("league-body").innerHTML = `
+    <table class="table"><thead><tr><th>Player</th><th class="num">Weekly</th><th class="num">Season</th><th class="num">Total</th></tr></thead>
+      <tbody>${rows.map(r=>`<tr class="${r.me?"me":""}"><td>${r.name}</td>
+        <td class="num">${r.weekly}</td><td class="num proj">${r.season}</td><td class="num"><b>${r.total}</b></td></tr>`).join("")}</tbody></table>
+    <footer class="note" style="margin-top:12px">Season-pick points settle from final tables; from ~10 games to go they show provisionally on the current table.</footer>`;
 }
 
 // ===== SEASON PICKS (champion + promotion/relegation) ====================
@@ -397,14 +458,32 @@ const PROMREL = [
   ["outOfChamp","Relegated from Championship","championship",3],
   ["intoL1","Promoted to League One","league_two",3],
   ["outOfL1","Relegated from League One","league_one",3],
-  ["intoL2","Promoted to League Two","national_league",3],
   ["outOfL2","Relegated from League Two","league_two",3],
 ];
-function teamsFor(slug){ return (APP.divisions?.divisions?.[slug]?.teams||[]); }
+function teamsFor(slug){
+  // Name authority per division:
+  //  - premier_league / championship  -> the FEED (standings or fixtures)
+  //  - league_one / league_two -> the committed CSV
+  if(slug==="premier_league" || slug==="championship"){
+    // Prefer standings names; fall back to whatever the fixtures/divisions carry.
+    const st = APP.standings?.divisions?.[slug]?.table;
+    if(st && st.length) return st.map(r=>({name:r.name}));
+    const dv = APP.divisions?.divisions?.[slug]?.teams;
+    if(dv && dv.length) return dv;
+    return [];
+  }
+  const csv = APP.lowerClubs?.[slug];
+  if(csv && csv.length) return csv.map(name=>({name}));
+  // last resort: bundled divisions.json (pre-feed scaffold)
+  return (APP.divisions?.divisions?.[slug]?.teams||[]);
+}
+// Picks store the club NAME (settlement matches on name, per the canonical-name design).
 function sel(id, slug, saved){
-  const opts = teamsFor(slug).map(t=>`<option value="${t.id ?? t.name}" ${String(saved)===String(t.id ?? t.name)?"selected":""}>${t.name}</option>`).join("");
+  const opts = teamsFor(slug).map(t=>`<option value="${t.name}" ${String(saved)===String(t.name)?"selected":""}>${t.name}</option>`).join("");
   return `<select id="${id}"><option value="">— choose —</option>${opts}</select>`;
 }
+// Normalise a club name for safe comparison (trim, collapse spaces, lowercase).
+function normClub(s){ return (s||"").toString().trim().replace(/\s+/g," ").toLowerCase(); }
 function renderSeasonPicks(){
   const champ = APP.picks?.season?.champion || "";
   $("sel-champion").innerHTML = sel("champion","premier_league",champ);
@@ -454,13 +533,123 @@ function saveSeasonPicks(){
   _persist(); /* TODO Firebase: write players/{playerId}.pred.season */
 }
 
+/* ===== SEASON-PICK SETTLEMENT ==========================================
+   Each promotion/relegation boundary reads a division's TABLE and takes the
+   top 3 (promoted) or bottom 3 (relegated). Tables come from two places:
+     - PL & Championship: the football-data.org feed (APP.standings)
+     - League One / Two: a table the scorer PASTES in-app
+       (APP.pastedTables[slug]), top row = 1st. Play-off winner is arranged
+       into 3rd upstream by the scorer's spreadsheet skill.
+   Scoring: 3 points per correctly named club, ANY ORDER. Matching is on
+   normalised club NAME. Also powers provisional "if the season ended today".
+
+   PROMREL entry: [key,label,divisionSlug,end]  end = "top" or "bottom".      */
+const PROMREL_SETTLE = {
+  intoPL:{slug:"championship",end:"top"},   outOfPL:{slug:"premier_league",end:"bottom"},
+  intoChamp:{slug:"league_one",end:"top"},  outOfChamp:{slug:"championship",end:"bottom"},
+  intoL1:{slug:"league_two",end:"top"},     outOfL1:{slug:"league_one",end:"bottom"},
+  outOfL2:{slug:"league_two",end:"bottom"}, // bottom of the ladder — relegated from League Two
+};
+// Return the current table (array of {rank,name,...}) for a division slug, or null.
+function tableFor(slug){
+  const fed = APP.standings?.divisions?.[slug]?.table;
+  if(fed && fed.length) return fed;
+  const pasted = APP.pastedTables?.[slug];
+  if(pasted && pasted.length) return pasted;
+  return null;
+}
+// The 3 clubs promoted/relegated from a division's table (names). null if no table yet.
+function settledClubs(slug,end){
+  const t = tableFor(slug);
+  if(!t || t.length<3) return null;
+  const sorted = t.slice().sort((a,b)=>(a.rank||0)-(b.rank||0));
+  const three = end==="top" ? sorted.slice(0,3) : sorted.slice(-3);
+  return three.map(r=>r.name);
+}
+// Score one player's season picks. Returns {points, settled, provisional}.
+// provisional=true if ANY contributing table is only a mid-season snapshot.
+function scoreSeason(picks){
+  let points=0, anySettled=false;
+  const s = picks?.season||{};
+  // champion (5)
+  const champTable = tableFor("premier_league");
+  if(s.champion && champTable && champTable.length){
+    anySettled=true;
+    const top = champTable.slice().sort((a,b)=>(a.rank||0)-(b.rank||0))[0];
+    if(top && normClub(top.name)===normClub(s.champion)) points+=5;
+  }
+  // promotion/relegation (3 each, any order)
+  Object.entries(PROMREL_SETTLE).forEach(([key,{slug,end}])=>{
+    const actual = settledClubs(slug,end);
+    if(!actual) return;
+    anySettled=true;
+    const picked = s.promRel?.[key]||[];
+    const actualNorm = actual.map(normClub);
+    picked.forEach(club=>{ if(actualNorm.includes(normClub(club))) points+=3; });
+  });
+  return {points, settled:anySettled};
+}
+
+/* ===== LOWER-LEAGUE TABLE IMPORTER (scorer only) =======================
+   Paste a league table copied from a spreadsheet. Reads position + club per
+   row (ignores extra columns like P/Pts/GD). Straight import, no preview.
+   Stores under APP.pastedTables[slug] as [{rank,name}]. Warns about any club
+   name that doesn't match that division's dropdown list (the seatbelt against
+   name drift).                                                               */
+const IMPORT_DIVS = [
+  ["championship","Championship"],
+  ["league_one","League One"],
+  ["league_two","League Two"],
+];
+function parseTable(text, slug){
+  const known = teamsFor(slug).map(t=>t.name);
+  const knownNorm = new Set(known.map(normClub));
+  const lines = (text||"").split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  const rows=[], unmatched=[];
+  let autoRank=0;
+  lines.forEach(line=>{
+    const cells=line.split(/\t|,/).map(c=>c.trim()).filter(c=>c!=="");
+    if(!cells.length) return;
+    // rank = first purely-numeric cell if present, else running order
+    let rank=null, nameCells=[];
+    cells.forEach(c=>{ if(rank===null && /^\d{1,2}$/.test(c)) rank=+c; else if(!/^\d{1,3}$/.test(c)) nameCells.push(c); });
+    autoRank++;
+    if(rank===null) rank=autoRank;
+    // the club name is the longest non-numeric cell (skips P/W/D/L/Pts numbers)
+    const name = nameCells.sort((a,b)=>b.length-a.length)[0];
+    if(!name || /^(pos|team|club|pld|p|pts|gd)$/i.test(name)) return; // header row
+    rows.push({rank,name});
+    if(!knownNorm.has(normClub(name))) unmatched.push(name);
+  });
+  return {rows, unmatched};
+}
+function importTable(slug){
+  const box = $("imp_"+slug); const msg = $("impmsg_"+slug);
+  const {rows,unmatched} = parseTable(box.value, slug);
+  if(!rows.length){ msg.innerHTML='<span style="color:var(--red)">No rows found. Paste a table with a club per row.</span>'; return; }
+  APP.pastedTables = APP.pastedTables||{};
+  APP.pastedTables[slug] = rows;
+  _persistTables();
+  const promoted = settledClubs(slug,"top")||[];
+  const relegated = settledClubs(slug,"bottom")||[];
+  let out = `Imported <b>${rows.length}</b> rows. `+
+    `Top 3: <b>${promoted.join(", ")}</b>. Bottom 3: <b>${relegated.join(", ")}</b>.`;
+  if(unmatched.length){
+    out += `<br><span style="color:var(--amber)">⚠️ ${unmatched.length} name`+
+      `${unmatched.length===1?"":"s"} didn't match this division's club list: `+
+      `${unmatched.join(", ")}. Those rows won't score until the names match.</span>`;
+  }
+  msg.innerHTML = out;
+}
+function _persistTables(){ try{ localStorage.setItem("matchday_tables", JSON.stringify(APP.pastedTables||{})); }catch(e){} }
+
 // ===== tabs + init =======================================================
 const rendered={};
 function show(name){
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===name));
   document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+name));
   if(!rendered[name]){
-    ({league:renderLeague,results:()=>renderResults(currentIdx()),today:renderToday,
+    ({season:renderSeasonPicks,league:renderLeague,results:()=>renderResults(currentIdx()),today:renderToday,
       tables:renderTables,picks:()=>renderPicks(currentIdx()),help:renderHelp}[name]||(()=>{}))();
     rendered[name]=true;
   }
@@ -479,6 +668,20 @@ async function init(){
   try{ APP.picks = JSON.parse(localStorage.getItem("matchday_picks")) || {}; }catch(e){ APP.picks={}; }
   APP.picks.weekly = APP.picks.weekly || {};
   APP.picks.season = APP.picks.season || {champion:"",promRel:{}};
+  try{ APP.pastedTables = JSON.parse(localStorage.getItem("matchday_tables")) || {}; }catch(e){ APP.pastedTables={}; }
+  // Lower-league club lists come from a committed CSV (single source, no mismatch).
+  APP.lowerClubs = {};
+  try{
+    const csv = await fetch("data/divisions_lower.csv").then(r=>r.ok?r.text():"");
+    const slugByName = {"league one":"league_one","league two":"league_two"};
+    csv.split(/\r?\n/).slice(1).forEach(line=>{
+      const [div,club] = line.split(",").map(s=>(s||"").trim());
+      if(!div||!club) return;
+      const slug = slugByName[div.toLowerCase()];
+      if(!slug) return;
+      (APP.lowerClubs[slug] = APP.lowerClubs[slug]||[]).push(club);
+    });
+  }catch(e){ /* CSV optional; dropdowns fall back to bundled data */ }
   try{
     const season = await loadJSON("data/season.json");
     APP.season = season.season;
@@ -495,8 +698,8 @@ async function init(){
     $("predict-body").innerHTML = `<div class="empty"><span class="big">⚠️</span>Couldn't load fixture data.<br>Make sure the <b>data/</b> folder is deployed alongside this page.</div>`;
     return;
   }
-  renderSeasonPicks();
-  renderPredict();
+  renderSeasonPicks();   // pre-populate season dropdowns (Season tab)
+  renderPredict();       // defaults to the current gameweek
 }
 init();
 </script>
