@@ -128,8 +128,8 @@ def write_weeks(season):
             "fixtureId": m.get("id"),
             "kickoffUtc": m.get("utcDate"),
             "status": m.get("status"),
-            "home": {"id": home.get("id"), "name": home.get("name")},
-            "away": {"id": away.get("id"), "name": away.get("name")},
+            "home": {"id": home.get("id"), "name": home.get("name"), "crest": home.get("crest")},
+            "away": {"id": away.get("id"), "name": away.get("name"), "crest": away.get("crest")},
             "score": {"h": score.get("home"), "a": score.get("away")},
         })
     validate_weeks(weeks)
@@ -172,4 +172,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
