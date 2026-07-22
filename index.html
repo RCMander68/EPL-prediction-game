@@ -79,8 +79,9 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--p
 .team.away{justify-content:flex-end;text-align:right}
 .badge{width:30px;height:30px;border-radius:8px;flex:none;display:grid;place-items:center;font-family:Archivo,sans-serif;
   font-weight:800;font-stretch:75%;font-size:12px;color:#fff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
-.team .name{font-family:Archivo,sans-serif;font-weight:700;font-stretch:90%;font-size:15px;line-height:1.1;
-  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.team .name{font-family:Archivo,sans-serif;font-weight:700;font-stretch:90%;font-size:15px;line-height:1.12;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  overflow-wrap:break-word;word-break:normal}
 .score{display:flex;align-items:center;gap:6px}
 .score input{width:44px;height:46px;text-align:center;font-family:Archivo,sans-serif;font-weight:800;font-size:21px;
   font-variant-numeric:tabular-nums;color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:10px;-moz-appearance:textfield}
@@ -231,6 +232,39 @@ function teamCode(name){
 }
 function teamColor(name){let h=0;for(let i=0;i<(name||"").length;i++)h=(h*31+name.charCodeAt(i))%360;return `hsl(${h},55%,38%)`;}
 function badge(name){return `<span class="badge" style="background:${teamColor(name)}">${teamCode(name)}</span>`;}
+
+// Short, unambiguous club names for mobile (the "Man Utd vs Man City" fix).
+// Feed names arrive like "Manchester United FC" — we strip a trailing FC/AFC,
+// apply the well-known conventional short names, then fall back to a generic
+// rule (drop common suffixes) so every club fits on one line on a phone.
+const SHORT_NAMES = {
+  "manchester united":"Man Utd", "manchester city":"Man City",
+  "tottenham hotspur":"Spurs", "nottingham forest":"Nott'm Forest",
+  "wolverhampton wanderers":"Wolves", "brighton & hove albion":"Brighton",
+  "west ham united":"West Ham", "newcastle united":"Newcastle",
+  "leeds united":"Leeds", "sheffield united":"Sheff Utd",
+  "sheffield wednesday":"Sheff Wed", "west bromwich albion":"West Brom",
+  "queens park rangers":"QPR", "afc bournemouth":"Bournemouth",
+  "crystal palace":"Crystal Palace", "aston villa":"Aston Villa",
+  "milton keynes dons":"MK Dons", "afc wimbledon":"AFC Wimbledon",
+  "peterborough united":"Peterborough", "doncaster rovers":"Doncaster",
+  "huddersfield town":"Huddersfield", "charlton athletic":"Charlton",
+  "plymouth argyle":"Plymouth", "bristol rovers":"Bristol Rovers",
+  "bristol city":"Bristol City", "cambridge united":"Cambridge",
+  "colchester united":"Colchester", "accrington stanley":"Accrington",
+};
+function shortName(name){
+  if(!name) return "";
+  // strip a trailing " FC" or " AFC" the feed adds (keep leading "AFC ...")
+  let n = name.replace(/\s+F\.?C\.?$/i,"").replace(/\s+A\.?F\.?C\.?$/i,"").trim();
+  const key = n.toLowerCase();
+  if(SHORT_NAMES[key]) return SHORT_NAMES[key];
+  // generic fallback: drop trailing filler words if the name is long
+  if(n.length>13){
+    n = n.replace(/\s+(Football Club|United|City|Town|Wanderers|Athletic|Rovers|Albion|County|Hotspur)$/i,"").trim();
+  }
+  return n;
+}
 function ko(iso){return new Date(iso).toLocaleString("en-GB",{weekday:"short",day:"numeric",month:"short",hour:"2-digit",minute:"2-digit"});}
 function matchLocked(m){ return new Date(m.kickoffUtc) <= new Date(); }   // PER-GAME lock
 function played(m){ return m.score && m.score.h!=null && m.score.a!=null; }
@@ -262,13 +296,13 @@ function fixtureCard(m){
   return `<article class="fixture" data-fx="${m.fixtureId}">
     <div class="kick"><span>${ko(m.kickoffUtc)}</span>${chip}</div>
     <div class="faceoff">
-      <div class="team home">${badge(m.home.name)}<span class="name">${m.home.name}</span></div>
+      <div class="team home">${badge(m.home.name)}<span class="name">${shortName(m.home.name)}</span></div>
       <div class="score">
         <input type="number" min="0" inputmode="numeric" data-side="h" ${val("h")} aria-label="${m.home.name} score" ${locked?"disabled":""}>
         <span class="dash">–</span>
         <input type="number" min="0" inputmode="numeric" data-side="a" ${val("a")} aria-label="${m.away.name} score" ${locked?"disabled":""}>
       </div>
-      <div class="team away"><span class="name">${m.away.name}</span>${badge(m.away.name)}</div>
+      <div class="team away"><span class="name">${shortName(m.away.name)}</span>${badge(m.away.name)}</div>
     </div></article>`;
 }
 let curWeekKey = "gw1";
@@ -325,9 +359,9 @@ function resultCard(m){
   return `<article class="fixture">
     <div class="kick"><span>${ko(m.kickoffUtc)}</span>${done?'<span class="chip locked">Final</span>':'<span class="chip">—</span>'}</div>
     <div class="faceoff">
-      <div class="team home">${badge(m.home.name)}<span class="name">${m.home.name}</span></div>
+      <div class="team home">${badge(m.home.name)}<span class="name">${shortName(m.home.name)}</span></div>
       <div class="score result"><span class="num">${done?m.score.h:"–"}</span><span class="dash">:</span><span class="num">${done?m.score.a:"–"}</span></div>
-      <div class="team away"><span class="name">${m.away.name}</span>${badge(m.away.name)}</div>
+      <div class="team away"><span class="name">${shortName(m.away.name)}</span>${badge(m.away.name)}</div>
     </div>${row}</article>`;
 }
 function renderResults(idx){
@@ -369,9 +403,9 @@ function renderToday(){
 }
 function resultCard2(m){ // read-only card for a finished match on Today
   return `<article class="fixture"><div class="kick"><span>${ko(m.kickoffUtc)}</span><span class="chip locked">Final</span></div>
-    <div class="faceoff"><div class="team home">${badge(m.home.name)}<span class="name">${m.home.name}</span></div>
+    <div class="faceoff"><div class="team home">${badge(m.home.name)}<span class="name">${shortName(m.home.name)}</span></div>
     <div class="score result"><span class="num">${m.score.h}</span><span class="dash">:</span><span class="num">${m.score.a}</span></div>
-    <div class="team away"><span class="name">${m.away.name}</span>${badge(m.away.name)}</div></div></article>`;
+    <div class="team away"><span class="name">${shortName(m.away.name)}</span>${badge(m.away.name)}</div></div></article>`;
 }
 
 // ===== TABLES (live PL standings) ========================================
@@ -406,15 +440,15 @@ function renderPicks(idx){
   $("picks-body").innerHTML = wk.fixtures.map(m=>{
     if(!matchLocked(m)){
       return `<article class="fixture"><div class="kick"><span>${ko(m.kickoffUtc)}</span><span class="chip open">Hidden until kickoff</span></div>
-        <div class="faceoff"><div class="team home">${badge(m.home.name)}<span class="name">${m.home.name}</span></div>
+        <div class="faceoff"><div class="team home">${badge(m.home.name)}<span class="name">${shortName(m.home.name)}</span></div>
         <div class="score result"><span class="num">?</span><span class="dash">:</span><span class="num">?</span></div>
-        <div class="team away"><span class="name">${m.away.name}</span>${badge(m.away.name)}</div></div></article>`;
+        <div class="team away"><span class="name">${shortName(m.away.name)}</span>${badge(m.away.name)}</div></div></article>`;
     }
     // locked -> would list each player's pick (needs the players store; stub for now)
     return `<article class="fixture"><div class="kick"><span>${ko(m.kickoffUtc)}</span><span class="chip locked">Revealed</span></div>
-      <div class="faceoff"><div class="team home">${badge(m.home.name)}<span class="name">${m.home.name}</span></div>
+      <div class="faceoff"><div class="team home">${badge(m.home.name)}<span class="name">${shortName(m.home.name)}</span></div>
       <div class="score result"><span class="num">${played(m)?m.score.h:"–"}</span><span class="dash">:</span><span class="num">${played(m)?m.score.a:"–"}</span></div>
-      <div class="team away"><span class="name">${m.away.name}</span>${badge(m.away.name)}</div></div>
+      <div class="team away"><span class="name">${shortName(m.away.name)}</span>${badge(m.away.name)}</div></div>
       <div class="result-row"><span class="nopick">no players have joined yet</span></div></article>`;
   }).join("");
 }
