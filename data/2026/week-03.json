@@ -1,0 +1,176 @@
+{
+  "season": 2026,
+  "gameweek": 3,
+  "fixtures": [
+    {
+      "fixtureId": 1020,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Arsenal"
+      },
+      "away": {
+        "id": null,
+        "name": "Chelsea"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1021,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Brentford"
+      },
+      "away": {
+        "id": null,
+        "name": "Sunderland"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1022,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Brighton & Hove Albion"
+      },
+      "away": {
+        "id": null,
+        "name": "Leeds United"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1023,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Everton"
+      },
+      "away": {
+        "id": null,
+        "name": "Manchester United"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1024,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Fulham"
+      },
+      "away": {
+        "id": null,
+        "name": "Crystal Palace"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1025,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Hull City"
+      },
+      "away": {
+        "id": null,
+        "name": "Aston Villa"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1026,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Ipswich Town"
+      },
+      "away": {
+        "id": null,
+        "name": "Liverpool"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1027,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Manchester City"
+      },
+      "away": {
+        "id": null,
+        "name": "Coventry City"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1028,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Newcastle United"
+      },
+      "away": {
+        "id": null,
+        "name": "AFC Bournemouth"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1029,
+      "kickoffUtc": "2026-09-05T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Nottingham Forest"
+      },
+      "away": {
+        "id": null,
+        "name": "Tottenham Hotspur"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+{
+  "season": 2026,
+  "gameweek": 32,
+  "fixtures": [
+    {
+      "fixtureId": 1310,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Arsenal"
+      },
+      "away": {
+        "id": null,
+        "name": "Aston Villa"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1311,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Brentford"
+      },
+      "away": {
+        "id": null,
+        "name": "Leeds United"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1312,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Brighton & Hove Albion"
+      },
+      "away": {
+        "id": null,
+        "name": "Chelsea"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1313,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Everton"
+      },
+      "away": {
+        "id": null,
+        "name": "AFC Bournemouth"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1314,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Fulham"
+      },
+      "away": {
+        "id": null,
+        "name": "Sunderland"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1315,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Hull City"
+      },
+      "away": {
+        "id": null,
+        "name": "Coventry City"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1316,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Ipswich Town"
+      },
+      "away": {
+        "id": null,
+        "name": "Manchester United"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1317,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Manchester City"
+      },
+      "away": {
+        "id": null,
+        "name": "Crystal Palace"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1318,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Newcastle United"
+      },
+      "away": {
+        "id": null,
+        "name": "Tottenham Hotspur"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 1319,
+      "kickoffUtc": "2027-04-17T15:00:00+01:00",
+      "status": "NS",
+      "home": {
+        "id": null,
+        "name": "Nottingham Forest"
+      },
+      "away": {
+        "id": null,
+        "name": "Liverpool"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    }
+  ]
+}

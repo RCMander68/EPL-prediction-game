@@ -1,0 +1,367 @@
+{
+  "season": 2026,
+  "note": "ids null until first API-Football fetch; scoring uses ids",
+  "divisions": {
+    "premier_league": {
+      "name": "Premier League",
+      "league_id": null,
+      "teams": [
+        {
+          "id": null,
+          "name": "AFC Bournemouth"
+        },
+        {
+          "id": null,
+          "name": "Arsenal"
+        },
+        {
+          "id": null,
+          "name": "Aston Villa"
+        },
+        {
+          "id": null,
+          "name": "Brentford"
+        },
+        {
+          "id": null,
+          "name": "Brighton & Hove Albion"
+        },
+        {
+          "id": null,
+          "name": "Chelsea"
+        },
+        {
+          "id": null,
+          "name": "Coventry City"
+        },
+        {
+          "id": null,
+          "name": "Crystal Palace"
+        },
+        {
+          "id": null,
+          "name": "Everton"
+        },
+        {
+          "id": null,
+          "name": "Fulham"
+        },
+        {
+          "id": null,
+          "name": "Hull City"
+        },
+        {
+          "id": null,
+          "name": "Ipswich Town"
+        },
+        {
+          "id": null,
+          "name": "Leeds United"
+        },
+        {
+          "id": null,
+          "name": "Liverpool"
+        },
+        {
+          "id": null,
+          "name": "Manchester City"
+        },
+        {
+          "id": null,
+          "name": "Manchester United"
+        },
+        {
+          "id": null,
+          "name": "Newcastle United"
+        },
+        {
+          "id": null,
+          "name": "Nottingham Forest"
+        },
+        {
+          "id": null,
+          "name": "Sunderland"
+        },
+        {
+          "id": null,
+          "name": "Tottenham Hotspur"
+        }
+      ]
+    },
+    "championship": {
+      "name": "Championship",
+      "league_id": null,
+      "teams": [
+        {
+          "id": null,
+          "name": "Birmingham City"
+        },
+        {
+          "id": null,
+          "name": "Blackburn Rovers"
+        },
+        {
+          "id": null,
+          "name": "Bolton Wanderers"
+        },
+        {
+          "id": null,
+          "name": "Bristol City"
+        },
+        {
+          "id": null,
+          "name": "Burnley"
+        },
+        {
+          "id": null,
+          "name": "Cardiff City"
+        },
+        {
+          "id": null,
+          "name": "Charlton Athletic"
+        },
+        {
+          "id": null,
+          "name": "Derby County"
+        },
+        {
+          "id": null,
+          "name": "Lincoln City"
+        },
+        {
+          "id": null,
+          "name": "Middlesbrough"
+        },
+        {
+          "id": null,
+          "name": "Millwall"
+        },
+        {
+          "id": null,
+          "name": "Norwich City"
+        },
+        {
+          "id": null,
+          "name": "Portsmouth"
+        },
+        {
+          "id": null,
+          "name": "Preston North End"
+        },
+        {
+          "id": null,
+          "name": "Queens Park Rangers"
+        },
+        {
+          "id": null,
+          "name": "Sheffield United"
+        },
+        {
+          "id": null,
+          "name": "Southampton"
+        },
+        {
+          "id": null,
+          "name": "Stoke City"
+        },
+        {
+          "id": null,
+          "name": "Swansea City"
+        },
+        {
+          "id": null,
+          "name": "Watford"
+        },
+        {
+          "id": null,
+          "name": "West Bromwich Albion"
+        },
+        {
+          "id": null,
+          "name": "West Ham United"
+        },
+        {
+          "id": null,
+          "name": "Wolverhampton Wanderers"
+        },
+        {
+          "id": null,
+          "name": "Wrexham"
+        }
+      ]
+    },
+    "league_one": {
+      "name": "League One",
+      "league_id": null,
+      "teams": [
+        {
+          "id": null,
+          "name": "AFC Wimbledon"
+        },
+        {
+          "id": null,
+          "name": "Barnsley"
+        },
+        {
+          "id": null,
+          "name": "Blackpool"
+        },
+        {
+          "id": null,
+          "name": "Bradford City"
+        },
+        {
+          "id": null,
+          "name": "Bromley"
+        },
+        {
+          "id": null,
+          "name": "Burton Albion"
+        },
+        {
+          "id": null,
+          "name": "Cambridge United"
+        },
+        {
+          "id": null,
+          "name": "Doncaster Rovers"
+        },
+        {
+          "id": null,
+          "name": "Huddersfield Town"
+        },
+        {
+          "id": null,
+          "name": "Leicester City"
+        },
+        {
+          "id": null,
+          "name": "Leyton Orient"
+        },
+        {
+          "id": null,
+          "name": "Luton Town"
+        },
+        {
+          "id": null,
+          "name": "Mansfield Town"
+        },
+        {
+          "id": null,
+          "name": "Milton Keynes Dons"
+        },
+        {
+          "id": null,
+          "name": "Notts County"
+        },
+        {
+          "id": null,
+          "name": "Oxford United"
+        },
+        {
+          "id": null,
+          "name": "Peterborough United"
+        },
+        {
+          "id": null,
+          "name": "Plymouth Argyle"
+        },
+        {
+          "id": null,
+          "name": "Reading"
+        },
+        {
+          "id": null,
+          "name": "Sheffield Wednesday"
+        },
+        {
+          "id": null,
+          "name": "Stevenage"
+        },
+        {
+          "id": null,
+          "name": "Stockport County"
+        },
+        {
+          "id": null,
+          "name": "Wigan Athletic"
+        },
+        {
+          "id": null,
+          "name": "Wycombe Wanderers"
+        }
+      ]
+    },
+    "league_two": {
+      "name": "League Two",
+      "league_id": null,
+      "teams": [
+        {
+          "id": null,
+          "name": "Accrington Stanley"
+        },
+        {
+          "id": null,
+          "name": "Barnet"
+        },
+        {
+          "id": null,
+          "name": "Bristol Rovers"
+        },
+        {
+          "id": null,
+          "name": "Cheltenham Town"
+        },
+        {
+          "id": null,
+          "name": "Colchester United"
+        },
+        {
+          "id": null,
+          "name": "Crewe Alexandra"
+        },
+        {
+          "id": null,
+          "name": "Fleetwood Town"
+        },
+        {
+          "id": null,
+          "name": "Gillingham"
+        },
+        {
+          "id": null,
+          "name": "Northampton Town"
+        },
+        {
+          "id": null,
+          "name": "Oldham Athletic"
+        },
+        {
+          "id": null,
+          "name": "Port Vale"
+        },
+        {
+          "id": null,
+          "name": "Rotherham United"
+        },
+        {
+          "id": null,
+          "name": "Shrewsbury Town"
+        },
+        {
+          "id": null,
+          "name": "Walsall"
+        },
+        {
+          "id": null,
+          "name": "York City"
+        }
+      ]
+    },
+    "national_league": {
+      "name": "National League",
+      "league_id": null,
+      "teams": []
+    }
+  }
+}

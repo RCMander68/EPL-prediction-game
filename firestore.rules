@@ -1,0 +1,194 @@
+rules_version = '2';
+
+// =============================================================================
+// Firestore Security Rules — RCMander68 / world-cup-league-1599a
+// =============================================================================
+// ONE Firebase project hosts MULTIPLE games. Each game gets its own top-level
+// collection, and each collection gets its own block. They are fully isolated.
+//
+//   /leagues/{id}       -> World Cup 2026   (FINISHED - READ-ONLY history)
+//   /nfl_leagues/{id}   -> Hit Paydirt NFL  (live)
+//   /epl_leagues/{id}   -> Premier League   (planned - add a block when built)
+//
+// WHEN YOU ADD THE PREMIER LEAGUE: add a new block. Do NOT replace this file,
+// or you strip protection from the other games.
+//
+// Updated for Step 5 (join links). See notes on the players block below.
+// =============================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================================
+    // WORLD CUP 2026 — ARCHIVED, READ-ONLY
+    // =========================================================================
+    // Finished. Data kept so people can view the final table; nothing can be
+    // changed by anyone. (The old rules let any signed-in visitor overwrite
+    // anything, because anonymous auth signs everyone in - freezing removes
+    // that risk and a finished competition needs no writes.)
+    match /leagues/{leagueId} {
+      allow read: if request.auth != null;
+      allow create, update, delete: if false;
+    }
+
+    // =========================================================================
+    // HIT PAYDIRT NFL LEAGUE — LIVE
+    // =========================================================================
+    match /nfl_leagues/{leagueId} {
+
+      allow read: if request.auth != null;
+
+      // CREATE: the creator stamps themselves as scorerUid (via ?setup=1).
+      // Results must start empty.
+      allow create: if request.auth != null
+                    && request.resource.data.scorerUid == request.auth.uid
+                    && request.resource.data.keys().hasAll(['name','scorerUid','results'])
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() <= 80
+                    && request.resource.data.results.season.afc == ''
+                    && request.resource.data.results.season.nfc == ''
+                    && request.resource.data.results.season.superBowl == '';
+
+      // UPDATE: only the scorer; scorerUid and createdAt are immutable. This
+      // is what stops a player setting official AFC/NFC/Super Bowl results.
+      allow update: if request.auth != null
+                    && resource.data.scorerUid == request.auth.uid
+                    && request.resource.data.scorerUid == resource.data.scorerUid
+                    && request.resource.data.createdAt == resource.data.createdAt
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() <= 80;
+
+      allow delete: if false;
+
+      // ---- Players (join-link model) ---------------------------------------
+      // The SCORER creates one record per person. Each has a random 10-char
+      // playerId; the personal link is ?lg=<code>&p=<playerId>. Opening the
+      // link "claims" the record to that device (sets uid). The LINK is the
+      // credential - possession = identity - which is what lets one person
+      // play on laptop AND phone as a single record (the World Cup duplicate
+      // fix). Agreed threat model: a bragging-rights league among six friends,
+      // no money, so a friend forwarding their link (or digging through raw
+      // data to hijack another) is out of scope.
+      match /players/{playerId} {
+
+        function scorerUid() {
+          return get(/databases/$(database)/documents/nfl_leagues/$(leagueId)).data.scorerUid;
+        }
+
+        // Everyone signed in can read picks (the table + reveal need it).
+        allow read: if request.auth != null;
+
+        // CREATE: only the scorer provisions players. New records start
+        // UNCLAIMED (uid == '').
+        allow create: if request.auth != null
+                      && request.auth.uid == scorerUid()
+                      && request.resource.data.uid == ''
+                      && request.resource.data.keys().hasAll(['name','uid','pred','joinedAt'])
+                      && request.resource.data.name is string
+                      && request.resource.data.name.size() <= 60;
+
+        // UPDATE, two cases. In both, name is immutable (the scorer sets it).
+        //   (a) CLAIM: an unclaimed record (uid == '') OR any record can be
+        //       taken over by the link-holder - they set uid to themselves.
+        //       Possession of the link (which carries the playerId) is the
+        //       credential, by design.
+        //   (b) OWN WRITE: the current owner saving their picks; uid unchanged.
+        allow update: if request.auth != null
+                      && request.resource.data.name == resource.data.name
+                      && (
+                           // (a) claim to this device
+                           ( request.resource.data.uid == request.auth.uid )
+                           ||
+                           // (b) owner saving picks
+                           ( resource.data.uid == request.auth.uid
+                             && request.resource.data.uid == resource.data.uid )
+                         );
+
+        // Nobody deletes players - would silently rewrite the table.
+        allow delete: if false;
+      }
+    }
+
+    // =========================================================================
+    // PREMIER LEAGUE — "Matchday" EPL predictor — LIVE
+    // =========================================================================
+    // Modelled directly on the NFL block. Same join-link player model, same
+    // scorer-only official results, same immutability guards. Differences are
+    // only in the shape of `results` (football season picks, not AFC/NFC/SB):
+    //
+    //   results.champion   -> the scorer's official PL champion (settles the
+    //                         5-pt title pick). Starts ''.
+    //   results.promRel    -> a map/string of official promotion & relegation
+    //                         outcomes per division boundary (settles the 3-pt
+    //                         per-club picks). Starts empty.
+    //
+    // Match results themselves live in the committed JSON in the GitHub repo
+    // (fetched by the Actions job), NOT in Firestore — Firestore only holds
+    // leagues, players and their picks. So there is no per-match results field
+    // to guard here; the only official outcomes stored are the season picks.
+    match /epl_leagues/{leagueId} {
+
+      allow read: if request.auth != null;
+
+      // CREATE: creator stamps themselves as scorerUid. Official season-pick
+      // results must start empty so nobody launches with the answers filled in.
+      allow create: if request.auth != null
+                    && request.resource.data.scorerUid == request.auth.uid
+                    && request.resource.data.keys().hasAll(['name','scorerUid','results'])
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() <= 80
+                    && request.resource.data.results.champion == ''
+                    && request.resource.data.results.promRel == '';
+
+      // UPDATE: only the scorer; scorerUid and createdAt immutable. This is
+      // what stops a player setting the official champion / promotion results.
+      allow update: if request.auth != null
+                    && resource.data.scorerUid == request.auth.uid
+                    && request.resource.data.scorerUid == resource.data.scorerUid
+                    && request.resource.data.createdAt == resource.data.createdAt
+                    && request.resource.data.name is string
+                    && request.resource.data.name.size() <= 80;
+
+      allow delete: if false;
+
+      // ---- Players (join-link model — identical to the NFL game) -----------
+      // Scorer provisions one record per person with a random 10-char playerId;
+      // the personal link ?lg=<code>&p=<playerId> IS the credential. Opening it
+      // claims the record to that device. Bragging-rights threat model, no money.
+      match /players/{playerId} {
+
+        function scorerUid() {
+          return get(/databases/$(database)/documents/epl_leagues/$(leagueId)).data.scorerUid;
+        }
+
+        // Everyone signed in can read picks (the table + the post-kickoff
+        // reveal need it). Per-game hiding before kickoff is enforced in the
+        // app, not here — same as the NFL game.
+        allow read: if request.auth != null;
+
+        // CREATE: only the scorer provisions players; records start UNCLAIMED.
+        allow create: if request.auth != null
+                      && request.auth.uid == scorerUid()
+                      && request.resource.data.uid == ''
+                      && request.resource.data.keys().hasAll(['name','uid','pred','joinedAt'])
+                      && request.resource.data.name is string
+                      && request.resource.data.name.size() <= 60;
+
+        // UPDATE: (a) claim to this device via the link, or (b) owner saving
+        // their own picks. Name is immutable (the scorer sets it).
+        allow update: if request.auth != null
+                      && request.resource.data.name == resource.data.name
+                      && (
+                           ( request.resource.data.uid == request.auth.uid )
+                           ||
+                           ( resource.data.uid == request.auth.uid
+                             && request.resource.data.uid == resource.data.uid )
+                         );
+
+        allow delete: if false;
+      }
+    }
+
+    // Anything not matched above is denied by default.
+  }
+}

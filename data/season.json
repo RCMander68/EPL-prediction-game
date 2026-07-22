@@ -1,0 +1,9 @@
+{
+  "season": 2026,
+  "label": "2026/27",
+  "league": "Premier League",
+  "totalGameweeks": 38,
+  "provisionalScoringFromGamesToGo": 10,
+  "stalenessThresholdHours": 72,
+  "notes": "gameweeks 34-38 arrive on first live fetch; scaffold covers 1-33"
+}
