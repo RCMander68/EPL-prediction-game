@@ -4,7 +4,7 @@
   "fixtures": [
     {
       "fixtureId": 560882,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 65,
@@ -23,7 +23,7 @@
     },
     {
       "fixtureId": 560883,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 341,
@@ -42,7 +42,7 @@
     },
     {
       "fixtureId": 560884,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 63,
@@ -61,7 +61,7 @@
     },
     {
       "fixtureId": 560885,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 351,
@@ -80,7 +80,7 @@
     },
     {
       "fixtureId": 560886,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 402,
@@ -99,7 +99,7 @@
     },
     {
       "fixtureId": 560887,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 67,
@@ -118,7 +118,7 @@
     },
     {
       "fixtureId": 560888,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 397,
@@ -137,7 +137,7 @@
     },
     {
       "fixtureId": 560889,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 73,
@@ -156,7 +156,7 @@
     },
     {
       "fixtureId": 560890,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 62,
@@ -175,7 +175,7 @@
     },
     {
       "fixtureId": 560891,
-      "kickoffUtc": "2027-05-08T12:00:00Z",
+      "kickoffUtc": "2027-05-08T00:00:00Z",
       "status": "SCHEDULED",
       "home": {
         "id": 1044,

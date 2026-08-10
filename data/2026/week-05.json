@@ -5,7 +5,7 @@
     {
       "fixtureId": 560591,
       "kickoffUtc": "2026-09-18T19:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 402,
         "name": "Brentford FC",
@@ -24,7 +24,7 @@
     {
       "fixtureId": 560587,
       "kickoffUtc": "2026-09-19T11:30:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 73,
         "name": "Tottenham Hotspur FC",
@@ -43,7 +43,7 @@
     {
       "fixtureId": 560584,
       "kickoffUtc": "2026-09-19T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -62,7 +62,7 @@
     {
       "fixtureId": 560585,
       "kickoffUtc": "2026-09-19T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 341,
         "name": "Leeds United FC",
@@ -81,7 +81,7 @@
     {
       "fixtureId": 560586,
       "kickoffUtc": "2026-09-19T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
@@ -100,7 +100,7 @@
     {
       "fixtureId": 560588,
       "kickoffUtc": "2026-09-19T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -119,7 +119,7 @@
     {
       "fixtureId": 560590,
       "kickoffUtc": "2026-09-19T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 65,
         "name": "Manchester City FC",
@@ -138,7 +138,7 @@
     {
       "fixtureId": 560589,
       "kickoffUtc": "2026-09-19T16:30:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -157,7 +157,7 @@
     {
       "fixtureId": 560582,
       "kickoffUtc": "2026-09-20T13:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 1044,
         "name": "AFC Bournemouth",
@@ -176,7 +176,7 @@
     {
       "fixtureId": 560583,
       "kickoffUtc": "2026-09-20T15:30:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 63,
         "name": "Fulham FC",

@@ -5,7 +5,7 @@
     {
       "fixtureId": 560542,
       "kickoffUtc": "2026-08-21T19:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -24,7 +24,7 @@
     {
       "fixtureId": 560543,
       "kickoffUtc": "2026-08-22T11:30:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",
@@ -43,7 +43,7 @@
     {
       "fixtureId": 560544,
       "kickoffUtc": "2026-08-22T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -62,7 +62,7 @@
     {
       "fixtureId": 560545,
       "kickoffUtc": "2026-08-22T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -81,7 +81,7 @@
     {
       "fixtureId": 560546,
       "kickoffUtc": "2026-08-22T14:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -100,7 +100,7 @@
     {
       "fixtureId": 560547,
       "kickoffUtc": "2026-08-22T16:30:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 402,
         "name": "Brentford FC",
@@ -119,7 +119,7 @@
     {
       "fixtureId": 560548,
       "kickoffUtc": "2026-08-23T13:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 65,
         "name": "Manchester City FC",
@@ -138,7 +138,7 @@
     {
       "fixtureId": 560549,
       "kickoffUtc": "2026-08-23T13:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
@@ -157,7 +157,7 @@
     {
       "fixtureId": 560550,
       "kickoffUtc": "2026-08-23T15:30:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -176,7 +176,7 @@
     {
       "fixtureId": 560551,
       "kickoffUtc": "2026-08-24T19:00:00Z",
-      "status": "SCHEDULED",
+      "status": "TIMED",
       "home": {
         "id": 63,
         "name": "Fulham FC",
