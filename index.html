@@ -592,12 +592,16 @@ function sel(id, slug, saved){
 }
 // Normalise a club name for safe comparison (trim, collapse spaces, lowercase).
 function normClub(s){
-  // Lowercase, strip annotations (Est:), full stops, trailing FC/AFC, collapse spaces.
-  return (s||"").toString().toLowerCase()
-    .replace(/^est:?\s*/,"")      // "est: mk dons" -> "mk dons"
-    .replace(/\./g,"")            // "m.k. dons" -> "mk dons"
-    .replace(/\s+f\.?c\.?$/,"")   // drop trailing FC
+  // Lowercase, strip annotations (Est:), full stops, trailing FC/AFC, and any
+  // exotic whitespace (non-breaking spaces etc.), then collapse to single spaces.
+  return (s||"").toString()
+    .replace(/[\u00A0\u2007\u202F\u200B\uFEFF]/g," ") // nbsp & friends -> normal space
+    .toLowerCase()
+    .replace(/^est:?\s*/,"")
+    .replace(/[.]/g,"")
+    .replace(/\s+f\.?c\.?$/,"")
     .replace(/\s+a\.?f\.?c\.?$/,"")
+    .replace(/[^a-z0-9 ]/g,"")   // drop any other stray punctuation/symbols
     .replace(/\s+/g," ")
     .trim();
 }
