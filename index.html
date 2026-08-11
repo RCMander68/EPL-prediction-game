@@ -144,6 +144,10 @@ footer.note{text-align:center;color:var(--mist-2);font-size:12px;margin-top:8px}
   .badge{width:26px;height:26px;font-size:11px}.crest,.crest img{width:26px;height:26px;max-width:26px;max-height:26px}.score input{width:40px;height:42px;font-size:19px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
+<!-- Firebase (identity + saved picks). Compat build = simplest for a single file. -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 </head>
 <body>
 <main class="wrap">
@@ -470,14 +474,18 @@ function renderPicks(idx){
 }
 
 // ===== LEAGUE (leaderboard) ==============================================
-function renderLeague(){
-  // Solo preview: score just this device's picks so the mechanic is visible.
-  // With Firebase, this maps over all players in epl_leagues/{id}/players.
-  const players = [{name:"You (this device)", picks:APP.picks, me:true}];
+async function renderLeague(){
+  let players;
+  if(FB.ready && FB.leagueId){
+    const recs = await fbLoadPlayers();
+    players = recs.map(r=>({name:r.name, picks:r.pred||{}, me:r.uid===FB.uid}));
+    if(!players.length) players = [{name:APP.playerName||"You", picks:APP.picks, me:true}];
+  } else {
+    players = [{name:APP.playerName||"You (this device)", picks:APP.picks, me:true}];
+  }
   const anyTable = tableFor("premier_league") || Object.keys(APP.pastedTables||{}).length;
   const rows = players.map(p=>{
     const season = scoreSeason(p.picks);
-    // weekly points from finished PL matches
     let weekly=0;
     APP.weeks.forEach(wk=>wk.fixtures.forEach(m=>{
       if(!played(m)) return;
@@ -495,7 +503,7 @@ function renderLeague(){
   }
   $("league-body").innerHTML = `
     <table class="table"><thead><tr><th>Player</th><th class="num">Weekly</th><th class="num">Season</th><th class="num">Total</th></tr></thead>
-      <tbody>${rows.map(r=>`<tr class="${r.me?"me":""}"><td>${r.name}</td>
+      <tbody>${rows.map((r,i)=>`<tr class="${r.me?"me":""}"><td>${i+1}. ${r.name}</td>
         <td class="num">${r.weekly}</td><td class="num proj">${r.season}</td><td class="num"><b>${r.total}</b></td></tr>`).join("")}</tbody></table>
     <footer class="note" style="margin-top:12px">Season-pick points settle from final tables; from ~10 games to go they show provisionally on the current table.</footer>`;
 }
@@ -535,19 +543,28 @@ function sel(id, slug, saved){
 // Normalise a club name for safe comparison (trim, collapse spaces, lowercase).
 function normClub(s){ return (s||"").toString().trim().replace(/\s+/g," ").toLowerCase(); }
 function renderSeasonPicks(){
+  const locked = seasonLocked();
   const champ = APP.picks?.season?.champion || "";
   $("sel-champion").innerHTML = sel("champion","premier_league",champ);
   const host = $("promrel-selectors");
   host.innerHTML = PROMREL.map(([key,label,slug,pts])=>{
     const savedArr = APP.picks?.season?.promRel?.[key] || [];
-    // 3 slots per boundary (top movers); any order.
     const rows = [0,1,2].map(i=>`<div class="selector-row"><span>Pick ${i+1}</span>${sel(key+"_"+i,slug,savedArr[i]||"")}</div>`).join("");
     return `<h3>${label} <span class="worth">${pts} pts each · any order</span></h3>${rows}`;
   }).join("");
-  // wire (stub-save)
-  $("season-picks-panel").querySelectorAll("select").forEach(s=>{
-    s.addEventListener("change",saveSeasonPicks);
+  const panel = $("season-picks-panel");
+  panel.querySelectorAll("select").forEach(s=>{
+    if(locked){ s.disabled = true; }
+    else s.addEventListener("change",saveSeasonPicks);
   });
+  // lock banner
+  const existing = $("season-lock-banner"); if(existing) existing.remove();
+  if(locked){
+    const b = document.createElement("div");
+    b.id="season-lock-banner"; b.className="banner-locked";
+    b.innerHTML = `🔒 <div><b>Season picks are locked</b> — the Premier League season has started. These were set before the first kickoff and can't be changed now.</div>`;
+    panel.insertBefore(b, panel.querySelector("h3").previousSibling || panel.children[2]);
+  }
 }
 
 // ===== HELP ==============================================================
@@ -555,33 +572,217 @@ function renderHelp(){
   $("help-body").innerHTML = `<div style="font-size:14px;line-height:1.6">
     <p><b style="color:var(--emerald)">Predict</b> — enter a scoreline for each match. Every match locks at its own kickoff, so you can lock some in early and leave others late.</p>
     <p><b style="color:var(--emerald)">Scoring</b> — 3 points for the exact score, 1 for the right result (win/draw/loss), 0 otherwise. Same shape as league points.</p>
-    <p><b style="color:var(--emerald)">Season Picks</b> — champion is worth 5. Each correctly named promoted or relegated club is worth 3, in any order.</p>
+    <p><b style="color:var(--emerald)">Season Picks</b> — champion is worth 5. Each correctly named promoted or relegated club is worth 3, in any order. They lock when the Premier League kicks off.</p>
     <p><b style="color:var(--emerald)">Projected points</b> — from 10 games to go, your season picks start scoring on an "if the season ended today" basis, shown separately so your real total never jumps around.</p>
     <p><b style="color:var(--emerald)">Picks</b> — you can see everyone's prediction for a match once it kicks off, never before.</p>
-    <p><b style="color:var(--emerald)">If results are late</b> — the feed occasionally breaks; the scorer enters that week by hand and it flows through the same way.</p>
-  </div>`;
+  </div>
+  <div id="scorer-tools"></div>`;
+  renderScorerTools();
 }
 
-/* ===== SAVE STUBS — swap for Firebase ===================================
-   Right now picks persist in memory + localStorage so the app is usable
-   solo. Firebase wiring (join-link identity + epl_leagues/{id}/players)
-   replaces these three functions; the data shapes already match the spec. */
+// Scorer-only: create a league and provision players with personal links.
+function renderScorerTools(){
+  const host = $("scorer-tools"); if(!host) return;
+  if(!fbConfigured()){
+    host.innerHTML = `<div class="banner-locked" style="margin-top:16px">⚙️ <div><b>Multiplayer not configured yet</b> — add your Firebase keys in the code (window.FIREBASE_CONFIG) to enable leagues and join links. The app runs solo until then.</div></div>`;
+    return;
+  }
+  // Only show scorer tools to the league creator, or when no league is loaded yet (setup).
+  const canManage = FB.isScorer || !FB.leagueId;
+  if(!canManage){ host.innerHTML=""; return; }
+  host.innerHTML = `
+    <div class="panel" style="margin-top:18px"><h2 style="font-size:16px">Manage league (scorer)</h2>
+      ${FB.leagueId ? `<p class="sub">League code: <b style="color:var(--emerald)">${FB.leagueId}</b></p>` :
+        `<p class="sub">Create your league, then add each player to get their personal join link.</p>
+         <div class="selector-row"><input id="new-league-name" placeholder="League name" style="flex:1;padding:9px;border-radius:8px;border:1px solid var(--navy-700);background:var(--navy-900);color:var(--paper)"></div>
+         <button class="chip" id="btn-create-league" style="cursor:pointer;border:none;margin-top:6px;background:var(--emerald);color:var(--emerald-ink);padding:9px 16px">Create league</button>`}
+      ${FB.leagueId ? `
+        <div class="selector-row" style="margin-top:12px"><input id="new-player-name" placeholder="Player name" style="flex:1;padding:9px;border-radius:8px;border:1px solid var(--navy-700);background:var(--navy-900);color:var(--paper)"></div>
+        <button class="chip" id="btn-add-player" style="cursor:pointer;border:none;margin-top:6px;background:var(--emerald);color:var(--emerald-ink);padding:9px 16px">Add player + get link</button>
+        <div id="player-links" style="margin-top:14px"></div>` : ""}
+    </div>`;
+  const cl = $("btn-create-league");
+  if(cl) cl.onclick = async ()=>{
+    const code = await fbCreateLeague($("new-league-name").value.trim());
+    if(code){ renderScorerTools(); refreshPlayerLinks(); }
+  };
+  const ap = $("btn-add-player");
+  if(ap) ap.onclick = async ()=>{
+    const name = $("new-player-name").value.trim(); if(!name) return;
+    const pid = await fbAddPlayer(name);
+    if(pid){ $("new-player-name").value=""; refreshPlayerLinks(); }
+  };
+  if(FB.leagueId) refreshPlayerLinks();
+}
+
+async function refreshPlayerLinks(){
+  const host = $("player-links"); if(!host) return;
+  const players = await fbLoadPlayers();
+  if(!players.length){ host.innerHTML=`<p class="sub">No players yet.</p>`; return; }
+  host.innerHTML = players.map(p=>{
+    const link = playerLink(p.playerId);
+    const claimed = p.uid ? "✓ joined" : "not joined yet";
+    return `<div class="selector-row"><span>${p.name} <small style="color:var(--mist-2)">${claimed}</small></span>
+      <button class="chip" style="cursor:pointer;border:none;background:var(--navy-700);color:var(--paper)"
+        onclick="navigator.clipboard.writeText('${link}').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy link',1200)})">Copy link</button></div>`;
+  }).join("");
+}
+
+/* ===== FIREBASE MULTIPLAYER LAYER =======================================
+   Identity = personal join links (?lg=<code>&p=<playerId>). The scorer
+   creates a league and provisions one player record per person; opening a
+   personal link claims that record to the device. Picks save to
+   epl_leagues/{id}/players/{playerId}.pred. Falls back to localStorage-only
+   (solo) if Firebase isn't configured, so the app always works.
+
+   FILL IN window.FIREBASE_CONFIG below with your project's web config
+   (Firebase console → Project settings → Your apps → Web app).            */
+window.FIREBASE_CONFIG = window.FIREBASE_CONFIG || {
+  apiKey: "AIzaSyBPOkyReCaGY6L_d4qYDN7bcuUqAsrGF00",
+  authDomain: "world-cup-league-1599a.firebaseapp.com",
+  projectId: "world-cup-league-1599a",
+  appId: "1:106750357999:web:0b86c338df3a690caa861a"
+};
+
+const FB = { ready:false, db:null, uid:null, leagueId:null, playerId:null, isScorer:false, league:null };
+
+function fbConfigured(){
+  const c = window.FIREBASE_CONFIG||{};
+  return c.apiKey && !String(c.apiKey).startsWith("PASTE");
+}
+
+async function fbInit(){
+  if(!fbConfigured() || typeof firebase==="undefined"){ return false; }
+  try{
+    firebase.initializeApp(window.FIREBASE_CONFIG);
+    FB.db = firebase.firestore();
+    await firebase.auth().signInAnonymously();
+    FB.uid = firebase.auth().currentUser.uid;
+    FB.ready = true;
+    return true;
+  }catch(e){ console.warn("Firebase init failed, running solo:",e); return false; }
+}
+
+// Read ?lg= and ?p= from the URL (the personal link).
+function fbParseLink(){
+  const q = new URLSearchParams(location.search);
+  return { lg:q.get("lg"), p:q.get("p"), setup:q.get("setup")==="1" };
+}
+
+// Load the league + this player's record, claiming the slot to this device.
+async function fbJoin(){
+  const {lg,p} = fbParseLink();
+  if(!FB.ready || !lg) return false;
+  FB.leagueId = lg; FB.playerId = p;
+  try{
+    const lref = FB.db.collection("epl_leagues").doc(lg);
+    const lsnap = await lref.get();
+    if(!lsnap.exists) return false;
+    FB.league = lsnap.data();
+    APP.leagueCode = lg; APP.leagueName = FB.league.name;
+    FB.isScorer = (FB.league.scorerUid === FB.uid);
+    if(p){
+      const pref = lref.collection("players").doc(p);
+      const psnap = await pref.get();
+      if(psnap.exists){
+        const pdata = psnap.data();
+        // claim to this device if unclaimed or different device
+        if(pdata.uid !== FB.uid){
+          await pref.update({ uid: FB.uid });
+        }
+        // load their saved picks into APP.picks
+        if(pdata.pred){ APP.picks = pdata.pred; APP.picks.weekly=APP.picks.weekly||{}; APP.picks.season=APP.picks.season||{champion:"",promRel:{}}; }
+        APP.playerName = pdata.name;
+      }
+    }
+    return true;
+  }catch(e){ console.warn("Join failed:",e); return false; }
+}
+
+// Write this player's picks to Firebase (debounced).
+let _saveTimer=null;
+function fbSavePicks(){
+  if(!FB.ready || !FB.leagueId || !FB.playerId){ _persist(); return; }
+  clearTimeout(_saveTimer);
+  _saveTimer = setTimeout(async ()=>{
+    try{
+      await FB.db.collection("epl_leagues").doc(FB.leagueId)
+        .collection("players").doc(FB.playerId)
+        .update({ pred: APP.picks, uid: FB.uid });
+    }catch(e){ console.warn("Save failed:",e); }
+  }, 600);
+  _persist(); // keep a local backup too
+}
+
+// Load every player's record (for the league table + picks reveal).
+async function fbLoadPlayers(){
+  if(!FB.ready || !FB.leagueId) return [];
+  try{
+    const snap = await FB.db.collection("epl_leagues").doc(FB.leagueId).collection("players").get();
+    return snap.docs.map(d=>({ playerId:d.id, ...d.data() }));
+  }catch(e){ console.warn("Load players failed:",e); return []; }
+}
+
+/* ---- Scorer tools: create league + provision players ------------------- */
+function randCode(n){ const a="ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; let s=""; for(let i=0;i<n;i++) s+=a[Math.floor(Math.random()*a.length)]; return s; }
+
+async function fbCreateLeague(name){
+  if(!FB.ready) { alert("Firebase not configured yet."); return null; }
+  const code = randCode(6);
+  try{
+    await FB.db.collection("epl_leagues").doc(code).set({
+      name: name || "The Mander Premier League",
+      scorerUid: FB.uid,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      results: { champion:"", promRel:"" }
+    });
+    FB.leagueId = code; FB.isScorer = true; FB.league = {name, scorerUid:FB.uid};
+    return code;
+  }catch(e){ alert("Could not create league: "+e.message); return null; }
+}
+
+async function fbAddPlayer(name){
+  if(!FB.ready || !FB.leagueId) return null;
+  const pid = randCode(10);
+  try{
+    await FB.db.collection("epl_leagues").doc(FB.leagueId).collection("players").doc(pid).set({
+      name: name, uid:"", pred:{weekly:{},season:{champion:"",promRel:{}}},
+      joinedAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
+    return pid;
+  }catch(e){ alert("Could not add player: "+e.message); return null; }
+}
+function playerLink(pid){ return `${location.origin}${location.pathname}?lg=${FB.leagueId}&p=${pid}`; }
+
+/* ===== SAVE (Firebase-backed, local fallback) =========================== */
 function _persist(){ try{ localStorage.setItem("matchday_picks", JSON.stringify(APP.picks)); }catch(e){} }
 function savePick(weekKey, fixtureId, side, value){
   APP.picks.weekly[weekKey] = APP.picks.weekly[weekKey] || {};
   const cur = APP.picks.weekly[weekKey][fixtureId] || {h:null,a:null};
   cur[side] = value===""?null:parseInt(value,10);
   APP.picks.weekly[weekKey][fixtureId] = cur;
-  _persist(); /* TODO Firebase: write players/{playerId}.pred.weekly */
+  fbSavePicks();
 }
 function saveSeasonPicks(){
+  if(seasonLocked()){ return; }  // no changes after the EPL kicks off
   APP.picks.season = APP.picks.season || {champion:"",promRel:{}};
   APP.picks.season.champion = $("champion").value;
   PROMREL.forEach(([key])=>{
     APP.picks.season.promRel[key] = [0,1,2].map(i=>$(key+"_"+i)?.value).filter(v=>v);
   });
-  _persist(); /* TODO Firebase: write players/{playerId}.pred.season */
+  fbSavePicks();
 }
+
+/* Season picks lock at the FIRST EPL kickoff (GW1's earliest match). */
+function seasonLockTime(){
+  const gw1 = APP.weeks.find(w=>w.gameweek===1);
+  if(!gw1 || !gw1.fixtures.length) return null;
+  return gw1.fixtures.reduce((min,m)=>{
+    const t = new Date(m.kickoffUtc).getTime();
+    return t<min ? t : min;
+  }, Infinity);
+}
+function seasonLocked(){ const t=seasonLockTime(); return t!=null && Date.now()>=t; }
 
 /* ===== SEASON-PICK SETTLEMENT ==========================================
    Each promotion/relegation boundary reads a division's TABLE and takes the
@@ -712,12 +913,17 @@ $("refresh").addEventListener("click",()=>location.reload());
 $("cog").addEventListener("click",()=>show("help"));
 
 async function init(){
-  // league code is a placeholder until Firebase provisions the league.
-  APP.leagueCode = "EPL26X"; $("league-code").textContent = APP.leagueCode;
-  // restore local picks
+  // Try Firebase (identity + shared picks). Falls back to solo/local if not configured.
+  await fbInit();
+  // restore local picks first (used solo, or as backup)
   try{ APP.picks = JSON.parse(localStorage.getItem("matchday_picks")) || {}; }catch(e){ APP.picks={}; }
   APP.picks.weekly = APP.picks.weekly || {};
   APP.picks.season = APP.picks.season || {champion:"",promRel:{}};
+  // If arriving via a personal link, join the league and load THIS player's picks.
+  await fbJoin();
+  APP.leagueCode = APP.leagueCode || (FB.leagueId || "—");
+  $("league-code").textContent = APP.leagueCode;
+  if(APP.leagueName){ const el=document.querySelector(".league-switch span"); if(el) el.textContent = "🏆 "+APP.leagueName; }
   try{ APP.pastedTables = JSON.parse(localStorage.getItem("matchday_tables")) || {}; }catch(e){ APP.pastedTables={}; }
   // Lower-league club lists come from a committed CSV (single source, no mismatch).
   APP.lowerClubs = {};
@@ -737,7 +943,6 @@ async function init(){
     APP.season = season.season;
     APP.divisions = await loadJSON("data/divisions.json").catch(()=>null);
     APP.standings = await loadJSON("data/standings.json").catch(()=>null);
-    // load week files 1..totalGameweeks (skip any that 404)
     const total = season.totalGameweeks || 38;
     for(let g=1; g<=total; g++){
       const num = String(g).padStart(2,"0");
@@ -748,8 +953,8 @@ async function init(){
     $("predict-body").innerHTML = `<div class="empty"><span class="big">⚠️</span>Couldn't load fixture data.<br>Make sure the <b>data/</b> folder is deployed alongside this page.</div>`;
     return;
   }
-  renderSeasonPicks();   // pre-populate season dropdowns (Season tab)
-  renderPredict();       // defaults to the current gameweek
+  renderSeasonPicks();
+  renderPredict();
 }
 init();
 </script>
