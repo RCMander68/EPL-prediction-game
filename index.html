@@ -275,7 +275,7 @@ const SHORT_NAMES = {
   "sheffield wednesday":"Sheff Wed", "west bromwich albion":"West Brom",
   "queens park rangers":"QPR", "afc bournemouth":"B'mouth", "bournemouth":"B'mouth",
   "crystal palace":"Crystal Palace", "aston villa":"Aston Villa",
-  "milton keynes dons":"MK Dons", "afc wimbledon":"AFC Wimbledon",
+  "milton keynes dons":"MK Dons", "milton keynes":"MK Dons", "mkdons":"MK Dons", "afc wimbledon":"AFC Wimbledon",
   "peterborough united":"Peterborough", "doncaster rovers":"Doncaster",
   "huddersfield town":"Huddersfield", "charlton athletic":"Charlton",
   "plymouth argyle":"Plymouth", "bristol rovers":"Bristol Rovers",
@@ -591,7 +591,15 @@ function sel(id, slug, saved){
   return `<select id="${id}"><option value="">— choose —</option>${opts}</select>`;
 }
 // Normalise a club name for safe comparison (trim, collapse spaces, lowercase).
-function normClub(s){ return (s||"").toString().trim().replace(/\s+/g," ").toLowerCase(); }
+function normClub(s){
+  // Lowercase, strip full stops, drop a trailing " FC"/" AFC", collapse spaces.
+  return (s||"").toString().toLowerCase()
+    .replace(/\./g,"")            // "m.k. dons" -> "mk dons"
+    .replace(/\s+f\.?c\.?$/,"")   // drop trailing FC
+    .replace(/\s+a\.?f\.?c\.?$/,"")
+    .replace(/\s+/g," ")
+    .trim();
+}
 function renderSeasonPicks(){
   const locked = seasonLocked();
   const champ = APP.picks?.season?.champion || "";
