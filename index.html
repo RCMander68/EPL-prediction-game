@@ -513,7 +513,7 @@ async function renderLeague(){
       if(pts!=null){ weekly+=pts; if(wk.gameweek===curGwNum) thisGw+=pts; }
     }));
     return {name:p.name, me:p.me, thisGw, weekly, season:season.points, total:weekly+season.points};
-  }).sort((a,b)=>b.total-a.total);
+  }).sort((a,b)=> (provisionalActive()?b.total:b.weekly) - (provisionalActive()?a.total:a.weekly));
   if(!anyTable && rows.every(r=>r.total===0)){
     $("league-body").innerHTML = `<div class="empty"><span class="big">📊</span>
       No points yet. Weekly points appear as matches finish; season-pick points appear once the
@@ -521,14 +521,18 @@ async function renderLeague(){
     return;
   }
   const gwHead = curGwNum ? "GW"+curGwNum : "GW";
+  const provOn = provisionalActive();
+  // While dormant, season picks aren't in the totals and show as "–".
+  const seasonCell = r => provOn ? `<td class="num proj">${r.season}</td>` : `<td class="num" style="color:var(--mist-2)">–</td>`;
+  const totalVal = r => provOn ? r.total : r.weekly;
   $("league-body").innerHTML = `
     <table class="table lg"><thead><tr><th>Player</th>
       <th class="num gwcol">${gwHead}</th>
-      <th class="num">Weekly</th><th class="num">Season</th><th class="num">Total</th></tr></thead>
+      <th class="num">Weekly</th><th class="num" style="max-width:64px;white-space:normal;line-height:1.1">Season Picks</th><th class="num">Total</th></tr></thead>
       <tbody>${rows.map((r,i)=>`<tr class="${r.me?"me":""}"><td>${i+1}. ${r.name}</td>
         <td class="num gwcol">${r.thisGw}</td>
-        <td class="num">${r.weekly}</td><td class="num proj">${r.season}</td><td class="num"><b>${r.total}</b></td></tr>`).join("")}</tbody></table>
-    <footer class="note" style="margin-top:12px"><b>${gwHead}</b> = points from the latest gameweek to kick off (stays on this week until the next one starts). <b>Weekly</b> is your running match-points total. Season-pick points show provisionally from ~10 games to go.</footer>`;
+        <td class="num">${r.weekly}</td>${seasonCell(r)}<td class="num"><b>${totalVal(r)}</b></td></tr>`).join("")}</tbody></table>
+    <footer class="note" style="margin-top:12px"><b>${gwHead}</b> = points from the latest gameweek to kick off (stays on this week until the next starts). <b>Weekly</b> = your running match-points total. <b>Season Picks</b> = champion + promotion/relegation bonus, ${provOn ? "now scoring provisionally on the current tables" : "which starts scoring with 10 games to go"}.</footer>`;
 }
 
 // ===== SEASON PICKS (champion + promotion/relegation) ====================
@@ -807,6 +811,17 @@ function seasonLockTime(){
 }
 function seasonLocked(){ const t=seasonLockTime(); return t!=null && Date.now()>=t; }
 
+// Provisional season-pick scoring switches on with N games (gameweeks) to go —
+// N comes from data/season.json (default 10). "Games to go" = gameweeks that
+// still have at least one unplayed match. Also on once picks have settled.
+function provisionalActive(){
+  const threshold = (APP.seasonMeta?.provisionalScoringFromGamesToGo) || 10;
+  const remaining = APP.weeks.filter(wk => wk.fixtures.some(m=>!played(m))).length;
+  // if final tables have settled the picks, treat as active too
+  const settled = (tableFor("premier_league")||[]).some(r=>r.played>=38);
+  return settled || (APP.weeks.length>0 && remaining<=threshold);
+}
+
 /* ===== SEASON-PICK SETTLEMENT ==========================================
    Each promotion/relegation boundary reads a division's TABLE and takes the
    top 3 (promoted) or bottom 3 (relegated). Tables come from two places:
@@ -964,6 +979,7 @@ async function init(){
   try{
     const season = await loadJSON("data/season.json");
     APP.season = season.season;
+    APP.seasonMeta = season;
     APP.divisions = await loadJSON("data/divisions.json").catch(()=>null);
     APP.standings = await loadJSON("data/standings.json").catch(()=>null);
     const total = season.totalGameweeks || 38;
