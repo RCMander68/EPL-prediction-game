@@ -482,7 +482,7 @@ function renderTables(){
 }
 function tableHTML(rows,note){
   return `<table class="table"><thead><tr><th class="num">#</th><th>Team</th><th class="num">P</th><th class="num">Pts</th></tr></thead>
-    <tbody>${rows.map(r=>`<tr><td class="pos">${r.rank}</td><td>${badge(r.name)} ${r.name}</td>
+    <tbody>${rows.map(r=>`<tr><td class="pos">${r.rank}</td><td>${r.name}</td>
       <td class="num">${r.played}</td><td class="num">${r.points}</td></tr>`).join("")}</tbody></table>
     <footer class="note" style="margin-top:14px">${note}</footer>`;
 }
