@@ -128,6 +128,11 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--p
 .table .me td:first-child{box-shadow:inset 3px 0 0 var(--emerald)}
 /* GW (current gameweek) column: divider line separating it from the running totals */
 .table .gwcol{border-right:2px solid var(--navy-600)}
+.tbpills{display:flex;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.tbpill{padding:8px 14px;border-radius:999px;border:1px solid var(--navy-700);background:var(--navy-900);
+  color:var(--mist);font-family:Inter,sans-serif;font-weight:700;font-size:13px;cursor:pointer}
+.tbpill.active{background:var(--emerald);color:var(--emerald-ink);border-color:var(--emerald)}
+.tbpill:hover:not(.active){background:var(--navy-800);color:var(--paper)}
 .table .lg th.num,.table.lg td.num{padding-left:6px;padding-right:6px}
 @media(max-width:460px){.table .gwcol{font-size:13px}.table th,.table td{padding:9px 5px}}
 .table .proj{color:var(--emerald);font-weight:700}
@@ -444,18 +449,36 @@ function resultCard2(m){ // read-only card for a finished match on Today
 }
 
 // ===== TABLES (live PL standings) ========================================
+// Leagues shown on the Tables tab. Add league_one/league_two here later if a
+// data source is found — the chooser and render already handle any division.
+const TABLE_DIVS = [
+  ["premier_league","Premier League"],
+  ["championship","Championship"],
+  ["league_one","League One"],
+  ["league_two","League Two"],
+];
+let tablesDiv = "premier_league";
 function renderTables(){
-  const div = APP.standings?.divisions?.premier_league;
-  const table = div?.table || [];
-  if(!table.length){
-    // pre-fetch: show the 20 clubs zeroed from divisions.json
-    const clubs=(APP.divisions?.divisions?.premier_league?.teams||[]).map(t=>t.name);
-    $("tables-body").innerHTML = clubs.length
-      ? tableHTML(clubs.map((n,i)=>({rank:i+1,name:n,played:0,points:0})),"Zeroed pre-season — fills in as results sync.")
-      : `<div class="empty">Standings load after the first data fetch.</div>`;
-    return;
+  // chooser pills
+  const pills = TABLE_DIVS.map(([slug,label])=>
+    `<button class="tbpill ${slug===tablesDiv?'active':''}" data-div="${slug}">${label}</button>`).join("");
+  // tableFor() returns feed standings (PL/Champ) OR a pasted table (L1/L2).
+  const table = tableFor(tablesDiv) || [];
+  const isPasted = !(APP.standings?.divisions?.[tablesDiv]?.table?.length);
+  let body;
+  if(table.length){
+    const note = isPasted ? "Imported from the latest table you pasted (Results tab)." : "Live — updates a few times a week.";
+    body = tableHTML(table, note);
+  } else {
+    const clubs = teamsFor(tablesDiv).map(t=>t.name);
+    if(clubs.length && !isPasted){
+      body = tableHTML(clubs.map((n,i)=>({rank:i+1,name:n,played:0,points:0})), "Zeroed — fills in as results sync.");
+    } else {
+      body = `<div class="empty"><span class="big">📋</span>No table yet for this division.<br>Paste the latest table on the <b>Results</b> tab to show it here.</div>`;
+    }
   }
-  $("tables-body").innerHTML = tableHTML(table,"Live — updates a few times a week.");
+  $("tables-body").innerHTML = `<div class="tbpills">${pills}</div>${body}`;
+  $("tables-body").querySelectorAll(".tbpill").forEach(b=>b.onclick=()=>{ tablesDiv=b.dataset.div; renderTables(); });
 }
 function tableHTML(rows,note){
   return `<table class="table"><thead><tr><th class="num">#</th><th>Team</th><th class="num">P</th><th class="num">Pts</th></tr></thead>
@@ -890,25 +913,71 @@ const IMPORT_DIVS = [
   ["league_one","League One"],
   ["league_two","League Two"],
 ];
+// FBref uses short club names; map them to your canonical dropdown names so
+// promotion/relegation picks settle without mismatch warnings. Add more here
+// if a pasted table ever flags an unmatched name.
+const NAME_ALIASES = {
+  "sheffield weds":"Sheffield Wednesday", "huddersfield":"Huddersfield Town",
+  "doncaster":"Doncaster Rovers", "wycombe":"Wycombe Wanderers",
+  "peterborough":"Peterborough United", "cambridge":"Cambridge United",
+  "stockport":"Stockport County", "p'borough utd":"Peterborough United",
+  "rotherham utd":"Rotherham United", "acc'ton stanley":"Accrington Stanley",
+  "bristol rvs":"Bristol Rovers", "notts co":"Notts County",
+  "leyton orient":"Leyton Orient", "mk dons":"MK Dons",
+  "afc wimbledon":"AFC Wimbledon", "colchester utd":"Colchester United",
+  "crawley":"Crawley Town", "crewe":"Crewe Alexandra", "exeter":"Exeter City",
+  "fleetwood":"Fleetwood Town", "grimsby":"Grimsby Town", "newport":"Newport County",
+  "northampton":"Northampton Town", "oldham":"Oldham Athletic",
+  "salford":"Salford City", "shrewsbury":"Shrewsbury Town", "swindon":"Swindon Town",
+  "tranmere":"Tranmere Rovers", "york":"York City", "cheltenham":"Cheltenham Town",
+  "gillingham":"Gillingham", "walsall":"Walsall", "barnet":"Barnet",
+  "port vale":"Port Vale", "rochdale":"Rochdale", "chesterfield":"Chesterfield",
+};
+// Translate a pasted club name to the canonical dropdown name if we know an alias.
+function canonicalName(name, slug){
+  const key = normClub(name);
+  if(NAME_ALIASES[key]) return NAME_ALIASES[key];
+  // exact match against the division's list (case-insensitive) -> use its spelling
+  const hit = teamsFor(slug).find(t=>normClub(t.name)===key);
+  return hit ? hit.name : name;
+}
+// Parse a pasted table. Handles both a plain "rank club" paste and a full CSV
+// with a header row (Rk,Squad,MP,...,Pts,...). Captures name + played + points.
 function parseTable(text, slug){
-  const known = teamsFor(slug).map(t=>t.name);
-  const knownNorm = new Set(known.map(normClub));
+  const knownNorm = new Set(teamsFor(slug).map(t=>normClub(t.name)));
   const lines = (text||"").split(/\r?\n/).map(l=>l.trim()).filter(Boolean);
+  if(!lines.length) return {rows:[], unmatched:[]};
+  // Detect a header row and column positions (CSV or tab-separated).
+  const split = l => l.split(/\t|,/).map(c=>c.trim());
+  const header = split(lines[0]).map(h=>h.toLowerCase());
+  const hasHeader = header.some(h=>/squad|team|club/.test(h));
+  let iName=1, iMP=2, iPts=9; // sensible defaults for FBref layout
+  if(hasHeader){
+    const find = (...names)=>header.findIndex(h=>names.includes(h));
+    iName = find("squad","team","club"); if(iName<0) iName=1;
+    iMP   = find("mp","pld","p","played"); if(iMP<0) iMP=2;
+    iPts  = find("pts","points"); if(iPts<0) iPts=9;
+  }
   const rows=[], unmatched=[];
   let autoRank=0;
-  lines.forEach(line=>{
-    const cells=line.split(/\t|,/).map(c=>c.trim()).filter(c=>c!=="");
+  lines.slice(hasHeader?1:0).forEach(line=>{
+    const cells = split(line);
     if(!cells.length) return;
-    // rank = first purely-numeric cell if present, else running order
-    let rank=null, nameCells=[];
-    cells.forEach(c=>{ if(rank===null && /^\d{1,2}$/.test(c)) rank=+c; else if(!/^\d{1,3}$/.test(c)) nameCells.push(c); });
+    let name, played=0, points=0;
+    if(hasHeader){
+      name = (cells[iName]||"").trim();
+      played = parseInt(cells[iMP],10); if(isNaN(played)) played=0;
+      points = parseInt(cells[iPts],10); if(isNaN(points)) points=0;
+    } else {
+      // plain paste: rank + club per row, ignore other numbers
+      const nameCells = cells.filter(c=>c && !/^\d{1,3}$/.test(c));
+      name = (nameCells.sort((a,b)=>b.length-a.length)[0]||"").trim();
+    }
+    if(!name || /^(rk|pos|team|club|squad|pld|pts|gd)$/i.test(name)) return;
     autoRank++;
-    if(rank===null) rank=autoRank;
-    // the club name is the longest non-numeric cell (skips P/W/D/L/Pts numbers)
-    const name = nameCells.sort((a,b)=>b.length-a.length)[0];
-    if(!name || /^(pos|team|club|pld|p|pts|gd)$/i.test(name)) return; // header row
-    rows.push({rank,name});
-    if(!knownNorm.has(normClub(name))) unmatched.push(name);
+    const canon = canonicalName(name, slug);
+    rows.push({rank:autoRank, name:canon, played, points});
+    if(!knownNorm.has(normClub(canon))) unmatched.push(name);
   });
   return {rows, unmatched};
 }
