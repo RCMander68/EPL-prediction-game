@@ -212,7 +212,7 @@ footer.note{text-align:center;color:var(--mist-2);font-size:12px;margin-top:8px}
   <section class="view" id="view-today"><div class="panel"><h2>Today</h2>
     <p class="sub">Matches kicking off today.</p><div id="today-body"></div></div></section>
 
-  <section class="view" id="view-tables"><div class="panel"><h2>Premier League Table</h2>
+  <section class="view" id="view-tables"><div class="panel"><h2 id="tables-title">League Tables</h2>
     <p class="sub">Live standings — updates a few times a week.</p><div id="tables-body"></div></div></section>
 
   <section class="view" id="view-picks"><div class="panel"><h2>Everyone's Picks</h2>
@@ -459,6 +459,9 @@ const TABLE_DIVS = [
 ];
 let tablesDiv = "premier_league";
 function renderTables(){
+  // header reflects the selected division
+  const label = (TABLE_DIVS.find(([s])=>s===tablesDiv)||[])[1] || "League";
+  const titleEl = $("tables-title"); if(titleEl) titleEl.textContent = label + " Table";
   // chooser pills
   const pills = TABLE_DIVS.map(([slug,label])=>
     `<button class="tbpill ${slug===tablesDiv?'active':''}" data-div="${slug}">${label}</button>`).join("");
