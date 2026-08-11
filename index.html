@@ -934,10 +934,12 @@ const NAME_ALIASES = {
   "doncaster":"Doncaster Rovers", "wycombe":"Wycombe Wanderers",
   "peterborough":"Peterborough United", "cambridge":"Cambridge United",
   "stockport":"Stockport County", "p'borough utd":"Peterborough United",
-  "rotherham utd":"Rotherham United", "acc'ton stanley":"Accrington Stanley",
+  "rotherham utd":"Rotherham United", "rotherham":"Rotherham United",
+  "acc'ton stanley":"Accrington Stanley", "accrington":"Accrington Stanley",
+  "colchester utd":"Colchester United", "colchester":"Colchester United",
   "bristol rvs":"Bristol Rovers", "notts co":"Notts County",
   "leyton orient":"Leyton Orient", "mk dons":"MK Dons",
-  "afc wimbledon":"AFC Wimbledon", "colchester utd":"Colchester United",
+  "afc wimbledon":"AFC Wimbledon",
   "crawley":"Crawley Town", "crewe":"Crewe Alexandra", "exeter":"Exeter City",
   "fleetwood":"Fleetwood Town", "grimsby":"Grimsby Town", "newport":"Newport County",
   "northampton":"Northampton Town", "oldham":"Oldham Athletic",
@@ -1009,9 +1011,17 @@ function importTable(slug){
   let out = `Imported <b>${rows.length}</b> rows. `+
     `Top 3: <b>${promoted.join(", ")}</b>. Bottom 3: <b>${relegated.join(", ")}</b>.`;
   if(unmatched.length){
+    // Diagnostic: show the exact characters (and codes) of each unmatched name,
+    // plus the closest club in the list, so a hidden-character mismatch is visible.
+    const known = teamsFor(slug).map(t=>t.name);
+    const detail = unmatched.map(u=>{
+      const codes = [...u].map(c=>c.charCodeAt(0)).join(",");
+      const near = known.find(k=>normClub(k)===normClub(u));
+      return `"${u}" [chars: ${codes}]${near?` (should match "${near}")`:` — no club normalises the same; list has: ${known.slice(0,3).join(", ")}…`}`;
+    }).join("<br>");
     out += `<br><span style="color:var(--amber)">⚠️ ${unmatched.length} name`+
-      `${unmatched.length===1?"":"s"} didn't match this division's club list: `+
-      `${unmatched.join(", ")}. Those rows won't score until the names match.</span>`;
+      `${unmatched.length===1?"":"s"} didn't match this division's club list:<br>${detail}<br>`+
+      `Those rows won't score until the names match.</span>`;
   }
   msg.innerHTML = out;
 }
