@@ -592,8 +592,9 @@ function sel(id, slug, saved){
 }
 // Normalise a club name for safe comparison (trim, collapse spaces, lowercase).
 function normClub(s){
-  // Lowercase, strip full stops, drop a trailing " FC"/" AFC", collapse spaces.
+  // Lowercase, strip annotations (Est:), full stops, trailing FC/AFC, collapse spaces.
   return (s||"").toString().toLowerCase()
+    .replace(/^est:?\s*/,"")      // "est: mk dons" -> "mk dons"
     .replace(/\./g,"")            // "m.k. dons" -> "mk dons"
     .replace(/\s+f\.?c\.?$/,"")   // drop trailing FC
     .replace(/\s+a\.?f\.?c\.?$/,"")
@@ -982,6 +983,9 @@ function parseTable(text, slug){
       name = (nameCells.sort((a,b)=>b.length-a.length)[0]||"").trim();
     }
     if(!name || /^(rk|pos|team|club|squad|pld|pts|gd)$/i.test(name)) return;
+    // Clean stray annotations FBref can attach to a name cell, e.g. "Est: MK Dons".
+    name = name.replace(/^est:?\s*/i,"").replace(/^\d{4}\s+/,"").replace(/\s{2,}/g," ").trim();
+    if(!name) return;
     autoRank++;
     const canon = canonicalName(name, slug);
     rows.push({rank:autoRank, name:canon, played, points});
