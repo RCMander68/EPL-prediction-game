@@ -126,6 +126,10 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--p
 .table tr td.pos{color:var(--mist);width:28px}
 .table .me td{background:rgba(20,224,138,.08)}
 .table .me td:first-child{box-shadow:inset 3px 0 0 var(--emerald)}
+/* GW (current gameweek) column: divider line separating it from the running totals */
+.table .gwcol{border-right:2px solid var(--navy-600)}
+.table .lg th.num,.table.lg td.num{padding-left:6px;padding-right:6px}
+@media(max-width:460px){.table .gwcol{font-size:13px}.table th,.table td{padding:9px 5px}}
 .table .proj{color:var(--emerald);font-weight:700}
 .empty{text-align:center;color:var(--mist);padding:30px 10px;font-size:14px}
 .empty .big{font-size:30px;display:block;margin-bottom:8px}
@@ -302,6 +306,17 @@ function scorePick(pick, actual){
 function currentWeek(){
   for(const wk of APP.weeks){ if(wk.fixtures.some(m=>!matchLocked(m))) return wk; }
   return APP.weeks[APP.weeks.length-1] || null;
+}
+// ---- most recently LOCKED gameweek: the latest week whose first match has
+// kicked off. Shows GW5 from GW5 kickoff until GW6 kickoff. Before any week
+// locks (pre-season), falls back to GW1 so the column always has a header.
+function lockedWeek(){
+  let locked = null;
+  for(const wk of APP.weeks){
+    const anyLocked = wk.fixtures.some(m=>matchLocked(m));
+    if(anyLocked) locked = wk; else break;
+  }
+  return locked || APP.weeks.find(w=>w.gameweek===1) || APP.weeks[0] || null;
 }
 
 // ===== PREDICT ============================================================
@@ -484,16 +499,20 @@ async function renderLeague(){
     players = [{name:APP.playerName||"You (this device)", picks:APP.picks, me:true}];
   }
   const anyTable = tableFor("premier_league") || Object.keys(APP.pastedTables||{}).length;
+  // GW column = the most recently LOCKED gameweek (shows GW5 from GW5 kickoff
+  // until GW6 kickoff). Pre-season it's GW1.
+  const gwWk = lockedWeek();
+  const curGwNum = gwWk ? gwWk.gameweek : null;
   const rows = players.map(p=>{
     const season = scoreSeason(p.picks);
-    let weekly=0;
+    let weekly=0, thisGw=0;
     APP.weeks.forEach(wk=>wk.fixtures.forEach(m=>{
       if(!played(m)) return;
       const pk=(p.picks?.weekly?.["gw"+wk.gameweek]||{})[m.fixtureId];
       const pts=pk?scorePick(pk,m.score):null;
-      if(pts!=null) weekly+=pts;
+      if(pts!=null){ weekly+=pts; if(wk.gameweek===curGwNum) thisGw+=pts; }
     }));
-    return {name:p.name, me:p.me, weekly, season:season.points, total:weekly+season.points};
+    return {name:p.name, me:p.me, thisGw, weekly, season:season.points, total:weekly+season.points};
   }).sort((a,b)=>b.total-a.total);
   if(!anyTable && rows.every(r=>r.total===0)){
     $("league-body").innerHTML = `<div class="empty"><span class="big">📊</span>
@@ -501,11 +520,15 @@ async function renderLeague(){
       relevant tables are in (PL &amp; Championship from the feed, lower leagues pasted on the Results tab).</div>`;
     return;
   }
+  const gwHead = curGwNum ? "GW"+curGwNum : "GW";
   $("league-body").innerHTML = `
-    <table class="table"><thead><tr><th>Player</th><th class="num">Weekly</th><th class="num">Season</th><th class="num">Total</th></tr></thead>
+    <table class="table lg"><thead><tr><th>Player</th>
+      <th class="num gwcol">${gwHead}</th>
+      <th class="num">Weekly</th><th class="num">Season</th><th class="num">Total</th></tr></thead>
       <tbody>${rows.map((r,i)=>`<tr class="${r.me?"me":""}"><td>${i+1}. ${r.name}</td>
+        <td class="num gwcol">${r.thisGw}</td>
         <td class="num">${r.weekly}</td><td class="num proj">${r.season}</td><td class="num"><b>${r.total}</b></td></tr>`).join("")}</tbody></table>
-    <footer class="note" style="margin-top:12px">Season-pick points settle from final tables; from ~10 games to go they show provisionally on the current table.</footer>`;
+    <footer class="note" style="margin-top:12px"><b>${gwHead}</b> = points from the latest gameweek to kick off (stays on this week until the next one starts). <b>Weekly</b> is your running match-points total. Season-pick points show provisionally from ~10 games to go.</footer>`;
 }
 
 // ===== SEASON PICKS (champion + promotion/relegation) ====================
