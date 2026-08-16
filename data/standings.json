@@ -201,106 +201,106 @@
         },
         {
           "rank": 8,
+          "id": 346,
+          "name": "Watford FC",
+          "played": 1,
+          "points": 3
+        },
+        {
+          "rank": 9,
           "id": 76,
           "name": "Wolverhampton Wanderers FC",
           "played": 1,
           "points": 1
         },
         {
-          "rank": 9,
+          "rank": 10,
           "id": 59,
           "name": "Blackburn Rovers FC",
           "played": 1,
           "points": 1
         },
         {
-          "rank": 10,
+          "rank": 11,
+          "id": 328,
+          "name": "Burnley FC",
+          "played": 1,
+          "points": 1
+        },
+        {
+          "rank": 12,
+          "id": 563,
+          "name": "West Ham United FC",
+          "played": 1,
+          "points": 1
+        },
+        {
+          "rank": 13,
           "id": 356,
           "name": "Sheffield United FC",
           "played": 1,
           "points": 1
         },
         {
-          "rank": 11,
+          "rank": 14,
           "id": 332,
           "name": "Birmingham City FC",
           "played": 1,
           "points": 1
         },
         {
-          "rank": 12,
-          "id": 346,
-          "name": "Watford FC",
-          "played": 0,
-          "points": 0
-        },
-        {
-          "rank": 13,
-          "id": 340,
-          "name": "Southampton FC",
-          "played": 0,
-          "points": 0
-        },
-        {
-          "rank": 14,
-          "id": 328,
-          "name": "Burnley FC",
-          "played": 0,
-          "points": 0
-        },
-        {
           "rank": 15,
-          "id": 563,
-          "name": "West Ham United FC",
-          "played": 0,
-          "points": 0
-        },
-        {
-          "rank": 16,
           "id": 715,
           "name": "Cardiff City FC",
           "played": 0,
           "points": 0
         },
         {
-          "rank": 17,
+          "rank": 16,
           "id": 404,
           "name": "Wrexham AFC",
           "played": 0,
           "points": 0
         },
         {
-          "rank": 18,
+          "rank": 17,
           "id": 1081,
           "name": "Preston North End FC",
           "played": 1,
           "points": 0
         },
         {
-          "rank": 19,
+          "rank": 18,
           "id": 68,
           "name": "Norwich City FC",
           "played": 1,
           "points": 0
         },
         {
-          "rank": 20,
+          "rank": 19,
           "id": 1126,
           "name": "Lincoln City FC",
           "played": 1,
           "points": 0
         },
         {
-          "rank": 21,
+          "rank": 20,
           "id": 70,
           "name": "Stoke City FC",
           "played": 1,
           "points": 0
         },
         {
-          "rank": 22,
+          "rank": 21,
           "id": 342,
           "name": "Derby County FC",
+          "played": 1,
+          "points": 0
+        },
+        {
+          "rank": 22,
+          "id": 340,
+          "name": "Southampton FC",
           "played": 1,
           "points": 0
         },
