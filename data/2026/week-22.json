@@ -4,8 +4,8 @@
   "fixtures": [
     {
       "fixtureId": 560752,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -23,8 +23,8 @@
     },
     {
       "fixtureId": 560753,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -42,8 +42,8 @@
     },
     {
       "fixtureId": 560754,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 71,
         "name": "Sunderland AFC",
@@ -61,8 +61,8 @@
     },
     {
       "fixtureId": 560755,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -80,8 +80,8 @@
     },
     {
       "fixtureId": 560756,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -99,8 +99,8 @@
     },
     {
       "fixtureId": 560757,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 341,
         "name": "Leeds United FC",
@@ -118,8 +118,8 @@
     },
     {
       "fixtureId": 560758,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 63,
         "name": "Fulham FC",
@@ -137,8 +137,8 @@
     },
     {
       "fixtureId": 560759,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -156,8 +156,8 @@
     },
     {
       "fixtureId": 560760,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
@@ -175,8 +175,8 @@
     },
     {
       "fixtureId": 560761,
-      "kickoffUtc": "2027-01-23T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-01-23T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 354,
         "name": "Crystal Palace FC",

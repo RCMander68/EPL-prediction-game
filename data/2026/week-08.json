@@ -3,161 +3,9 @@
   "gameweek": 8,
   "fixtures": [
     {
-      "fixtureId": 560612,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 64,
-        "name": "Liverpool FC",
-        "crest": "https://crests.football-data.org/64.png"
-      },
-      "away": {
-        "id": 397,
-        "name": "Brighton & Hove Albion FC",
-        "crest": "https://crests.football-data.org/397.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560613,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 354,
-        "name": "Crystal Palace FC",
-        "crest": "https://crests.football-data.org/354.png"
-      },
-      "away": {
-        "id": 67,
-        "name": "Newcastle United FC",
-        "crest": "https://crests.football-data.org/67.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560614,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 58,
-        "name": "Aston Villa FC",
-        "crest": "https://crests.football-data.org/58.png"
-      },
-      "away": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "crest": "https://crests.football-data.org/65.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560615,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 66,
-        "name": "Manchester United FC",
-        "crest": "https://crests.football-data.org/66.png"
-      },
-      "away": {
-        "id": 1044,
-        "name": "AFC Bournemouth",
-        "crest": "https://crests.football-data.org/bournemouth.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560616,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 57,
-        "name": "Arsenal FC",
-        "crest": "https://crests.football-data.org/57.png"
-      },
-      "away": {
-        "id": 62,
-        "name": "Everton FC",
-        "crest": "https://crests.football-data.org/62.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560617,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 61,
-        "name": "Chelsea FC",
-        "crest": "https://crests.football-data.org/61.png"
-      },
-      "away": {
-        "id": 73,
-        "name": "Tottenham Hotspur FC",
-        "crest": "https://crests.football-data.org/73.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560618,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 1076,
-        "name": "Coventry City FC",
-        "crest": "https://crests.football-data.org/1076.png"
-      },
-      "away": {
-        "id": 63,
-        "name": "Fulham FC",
-        "crest": "https://crests.football-data.org/63.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560619,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
-      "home": {
-        "id": 322,
-        "name": "Hull City AFC",
-        "crest": "https://crests.football-data.org/322.png"
-      },
-      "away": {
-        "id": 402,
-        "name": "Brentford FC",
-        "crest": "https://crests.football-data.org/402.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560620,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-10-23T19:00:00Z",
+      "status": "2026-10-24 14:00:00Z",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -174,9 +22,161 @@
       }
     },
     {
+      "fixtureId": 560614,
+      "kickoffUtc": "2026-10-24T11:30:00Z",
+      "status": "2026-10-24 14:00:00Z",
+      "home": {
+        "id": 58,
+        "name": "Aston Villa FC",
+        "crest": "https://crests.football-data.org/58.png"
+      },
+      "away": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "crest": "https://crests.football-data.org/65.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560612,
+      "kickoffUtc": "2026-10-24T14:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 64,
+        "name": "Liverpool FC",
+        "crest": "https://crests.football-data.org/64.png"
+      },
+      "away": {
+        "id": 397,
+        "name": "Brighton & Hove Albion FC",
+        "crest": "https://crests.football-data.org/397.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560616,
+      "kickoffUtc": "2026-10-24T14:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "away": {
+        "id": 62,
+        "name": "Everton FC",
+        "crest": "https://crests.football-data.org/62.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560618,
+      "kickoffUtc": "2026-10-24T14:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 1076,
+        "name": "Coventry City FC",
+        "crest": "https://crests.football-data.org/1076.png"
+      },
+      "away": {
+        "id": 63,
+        "name": "Fulham FC",
+        "crest": "https://crests.football-data.org/63.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560617,
+      "kickoffUtc": "2026-10-24T16:30:00Z",
+      "status": "2026-10-24 14:00:00Z",
+      "home": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "crest": "https://crests.football-data.org/61.png"
+      },
+      "away": {
+        "id": 73,
+        "name": "Tottenham Hotspur FC",
+        "crest": "https://crests.football-data.org/73.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560613,
+      "kickoffUtc": "2026-10-25T14:00:00Z",
+      "status": "2026-10-24 14:00:00Z",
+      "home": {
+        "id": 354,
+        "name": "Crystal Palace FC",
+        "crest": "https://crests.football-data.org/354.png"
+      },
+      "away": {
+        "id": 67,
+        "name": "Newcastle United FC",
+        "crest": "https://crests.football-data.org/67.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560615,
+      "kickoffUtc": "2026-10-25T14:00:00Z",
+      "status": "2026-10-24 14:00:00Z",
+      "home": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "crest": "https://crests.football-data.org/66.png"
+      },
+      "away": {
+        "id": 1044,
+        "name": "AFC Bournemouth",
+        "crest": "https://crests.football-data.org/bournemouth.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560619,
+      "kickoffUtc": "2026-10-25T14:00:00Z",
+      "status": "2026-10-24 14:00:00Z",
+      "home": {
+        "id": 322,
+        "name": "Hull City AFC",
+        "crest": "https://crests.football-data.org/322.png"
+      },
+      "away": {
+        "id": 402,
+        "name": "Brentford FC",
+        "crest": "https://crests.football-data.org/402.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
       "fixtureId": 560621,
-      "kickoffUtc": "2026-10-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-10-25T16:30:00Z",
+      "status": "2026-10-24 14:00:00Z",
       "home": {
         "id": 71,
         "name": "Sunderland AFC",

@@ -4,8 +4,8 @@
   "fixtures": [
     {
       "fixtureId": 560712,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 63,
         "name": "Fulham FC",
@@ -23,8 +23,8 @@
     },
     {
       "fixtureId": 560713,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 1076,
         "name": "Coventry City FC",
@@ -42,8 +42,8 @@
     },
     {
       "fixtureId": 560714,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 58,
         "name": "Aston Villa FC",
@@ -61,8 +61,8 @@
     },
     {
       "fixtureId": 560715,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -80,8 +80,8 @@
     },
     {
       "fixtureId": 560716,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",
@@ -99,8 +99,8 @@
     },
     {
       "fixtureId": 560717,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -118,8 +118,8 @@
     },
     {
       "fixtureId": 560718,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -137,8 +137,8 @@
     },
     {
       "fixtureId": 560719,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 73,
         "name": "Tottenham Hotspur FC",
@@ -156,8 +156,8 @@
     },
     {
       "fixtureId": 560720,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -175,8 +175,8 @@
     },
     {
       "fixtureId": 560721,
-      "kickoffUtc": "2026-12-30T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2026-12-30T20:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 354,
         "name": "Crystal Palace FC",

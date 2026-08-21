@@ -5,7 +5,7 @@
     {
       "fixtureId": 560542,
       "kickoffUtc": "2026-08-21T19:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -17,8 +17,8 @@
         "crest": "https://crests.football-data.org/1076.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 3,
+        "a": 0
       }
     },
     {

@@ -4,8 +4,8 @@
   "fixtures": [
     {
       "fixtureId": 560802,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 354,
         "name": "Crystal Palace FC",
@@ -23,8 +23,8 @@
     },
     {
       "fixtureId": 560803,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -42,8 +42,8 @@
     },
     {
       "fixtureId": 560804,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -61,8 +61,8 @@
     },
     {
       "fixtureId": 560805,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 1076,
         "name": "Coventry City FC",
@@ -80,8 +80,8 @@
     },
     {
       "fixtureId": 560806,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -99,8 +99,8 @@
     },
     {
       "fixtureId": 560807,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 63,
         "name": "Fulham FC",
@@ -118,8 +118,8 @@
     },
     {
       "fixtureId": 560808,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 58,
         "name": "Aston Villa FC",
@@ -137,8 +137,8 @@
     },
     {
       "fixtureId": 560809,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 73,
         "name": "Tottenham Hotspur FC",
@@ -156,8 +156,8 @@
     },
     {
       "fixtureId": 560810,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -175,8 +175,8 @@
     },
     {
       "fixtureId": 560811,
-      "kickoffUtc": "2027-02-27T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-02-27T15:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",

@@ -4,8 +4,8 @@
   "fixtures": [
     {
       "fixtureId": 560862,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 61,
         "name": "Chelsea FC",
@@ -23,8 +23,8 @@
     },
     {
       "fixtureId": 560863,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 1044,
         "name": "AFC Bournemouth",
@@ -42,8 +42,8 @@
     },
     {
       "fixtureId": 560864,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 73,
         "name": "Tottenham Hotspur FC",
@@ -61,8 +61,8 @@
     },
     {
       "fixtureId": 560865,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -80,8 +80,8 @@
     },
     {
       "fixtureId": 560866,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -99,8 +99,8 @@
     },
     {
       "fixtureId": 560867,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -118,8 +118,8 @@
     },
     {
       "fixtureId": 560868,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -137,8 +137,8 @@
     },
     {
       "fixtureId": 560869,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 58,
         "name": "Aston Villa FC",
@@ -156,8 +156,8 @@
     },
     {
       "fixtureId": 560870,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 402,
         "name": "Brentford FC",
@@ -175,8 +175,8 @@
     },
     {
       "fixtureId": 560871,
-      "kickoffUtc": "2027-04-24T00:00:00Z",
-      "status": "SCHEDULED",
+      "kickoffUtc": "2027-04-24T14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 341,
         "name": "Leeds United FC",
