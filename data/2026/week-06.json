@@ -5,7 +5,7 @@
     {
       "fixtureId": 560593,
       "kickoffUtc": "2026-10-10T11:30:00Z",
-      "status": "2026-10-10 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -100,7 +100,7 @@
     {
       "fixtureId": 560600,
       "kickoffUtc": "2026-10-10T16:30:00Z",
-      "status": "2026-10-10 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -119,7 +119,7 @@
     {
       "fixtureId": 560594,
       "kickoffUtc": "2026-10-11T13:00:00Z",
-      "status": "2026-10-10 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",
@@ -138,7 +138,7 @@
     {
       "fixtureId": 560596,
       "kickoffUtc": "2026-10-11T13:00:00Z",
-      "status": "2026-10-10 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 354,
         "name": "Crystal Palace FC",
@@ -157,7 +157,7 @@
     {
       "fixtureId": 560598,
       "kickoffUtc": "2026-10-11T15:30:00Z",
-      "status": "2026-10-10 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 64,
         "name": "Liverpool FC",
@@ -176,7 +176,7 @@
     {
       "fixtureId": 560597,
       "kickoffUtc": "2026-10-12T19:00:00Z",
-      "status": "2026-10-10 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 1076,
         "name": "Coventry City FC",

@@ -5,7 +5,7 @@
     {
       "fixtureId": 560603,
       "kickoffUtc": "2026-10-17T11:30:00Z",
-      "status": "2026-10-17 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -81,7 +81,7 @@
     {
       "fixtureId": 560607,
       "kickoffUtc": "2026-10-17T16:30:00Z",
-      "status": "2026-10-17 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -100,7 +100,7 @@
     {
       "fixtureId": 560604,
       "kickoffUtc": "2026-10-18T13:00:00Z",
-      "status": "2026-10-17 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 1044,
         "name": "AFC Bournemouth",
@@ -119,7 +119,7 @@
     {
       "fixtureId": 560605,
       "kickoffUtc": "2026-10-18T13:00:00Z",
-      "status": "2026-10-17 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 341,
         "name": "Leeds United FC",
@@ -138,7 +138,7 @@
     {
       "fixtureId": 560609,
       "kickoffUtc": "2026-10-18T13:00:00Z",
-      "status": "2026-10-17 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
@@ -157,7 +157,7 @@
     {
       "fixtureId": 560608,
       "kickoffUtc": "2026-10-18T15:30:00Z",
-      "status": "2026-10-17 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -176,7 +176,7 @@
     {
       "fixtureId": 560606,
       "kickoffUtc": "2026-10-19T19:00:00Z",
-      "status": "2026-10-17 14:00:00Z",
+      "status": "TIMED",
       "home": {
         "id": 73,
         "name": "Tottenham Hotspur FC",

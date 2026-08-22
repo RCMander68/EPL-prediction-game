@@ -24,7 +24,7 @@
     {
       "fixtureId": 560543,
       "kickoffUtc": "2026-08-22T11:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",
@@ -36,14 +36,14 @@
         "crest": "https://crests.football-data.org/66.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 0
       }
     },
     {
       "fixtureId": 560544,
       "kickoffUtc": "2026-08-22T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -55,14 +55,14 @@
         "crest": "https://crests.football-data.org/71.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 1
       }
     },
     {
       "fixtureId": 560545,
       "kickoffUtc": "2026-08-22T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -74,14 +74,14 @@
         "crest": "https://crests.football-data.org/341.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 1
       }
     },
     {
       "fixtureId": 560546,
       "kickoffUtc": "2026-08-22T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -93,14 +93,14 @@
         "crest": "https://crests.football-data.org/354.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 0
       }
     },
     {
       "fixtureId": 560547,
       "kickoffUtc": "2026-08-22T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 402,
         "name": "Brentford FC",
@@ -112,8 +112,8 @@
         "crest": "https://crests.football-data.org/73.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 3,
+        "a": 0
       }
     },
     {
