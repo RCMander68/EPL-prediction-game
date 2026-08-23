@@ -133,6 +133,14 @@ body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:var(--p
   color:var(--mist);font-family:Inter,sans-serif;font-weight:700;font-size:13px;cursor:pointer}
 .tbpill.active{background:var(--emerald);color:var(--emerald-ink);border-color:var(--emerald)}
 .tbpill:hover:not(.active){background:var(--navy-800);color:var(--paper)}
+.picks-list{border-top:1px dashed var(--navy-600);margin-top:2px;padding-top:8px}
+.pick-row{display:flex;align-items:center;gap:10px;padding:5px 4px;font-size:14px}
+.pick-row .pk-name{flex:1;color:var(--paper);font-weight:600}
+.pick-row .pk-score{font-variant-numeric:tabular-nums;font-weight:700;color:var(--mist)}
+.pick-row .pk-pts{min-width:22px;text-align:center;border-radius:6px;padding:1px 6px;font-weight:800;font-size:12px}
+.pick-row .pk-3{background:rgba(20,224,138,.2);color:var(--emerald)}
+.pick-row .pk-1{background:rgba(120,150,200,.2);color:var(--mist)}
+.pick-row .pk-0{background:rgba(120,120,140,.12);color:var(--mist-2)}
 .table .lg th.num,.table.lg td.num{padding-left:6px;padding-right:6px}
 @media(max-width:460px){.table .gwcol{font-size:13px}.table th,.table td{padding:9px 5px}}
 .table .proj{color:var(--emerald);font-weight:700}
@@ -492,11 +500,21 @@ function tableHTML(rows,note){
 
 // ===== PICKS (per-match reveal, only after kickoff) ======================
 let picksIdx = 0;
-function renderPicks(idx){
+async function renderPicks(idx){
   picksIdx = Math.min(Math.max(idx,0),APP.weeks.length-1);
   pill($("picks-pill"),picksIdx,renderPicks);
   const wk = APP.weeks[picksIdx];
   if(!wk){ $("picks-body").innerHTML=`<div class="empty">No gameweek.</div>`; return; }
+  // Load everyone's records (same source the League table uses).
+  let players = [];
+  if(FB.ready && FB.leagueId){
+    const recs = await fbLoadPlayers();
+    players = recs.map(r=>({name:r.name, picks:r.pred||{}}));
+  }
+  if(!players.length && APP.playerName){
+    players = [{name:APP.playerName, picks:APP.picks}];
+  }
+  const gwKey = "gw"+wk.gameweek;
   // Per-game reveal: locked matches show everyone's picks; open ones stay hidden.
   $("picks-body").innerHTML = wk.fixtures.map(m=>{
     if(!matchLocked(m)){
@@ -505,12 +523,34 @@ function renderPicks(idx){
         <div class="score result"><span class="num">?</span><span class="dash">:</span><span class="num">?</span></div>
         <div class="team away"><span class="name">${shortName(m.away.name)}</span>${badge(m.away.name, m.away.crest)}</div></div></article>`;
     }
-    // locked -> would list each player's pick (needs the players store; stub for now)
+    // locked -> list each player's pick (and points if the match has a result)
+    let rows;
+    if(!players.length){
+      // If Firebase is configured, an empty list here means it's still loading
+      // (or auth not settled yet) — don't alarm people with "no one joined".
+      const msg = fbConfigured()
+        ? "Loading players… pull down to refresh if this persists."
+        : "No players have joined yet.";
+      rows = `<div class="pick-row"><span class="nopick" style="color:var(--mist-2)">${msg}</span></div>`;
+    } else {
+      rows = players.map(p=>{
+        const pk = (p.picks?.weekly?.[gwKey]||{})[m.fixtureId];
+        const has = pk && pk.h!=null && pk.a!=null;
+        const pickStr = has ? `${pk.h}–${pk.a}` : "—";
+        let pts = "";
+        if(has && played(m)){
+          const sc = scorePick(pk, m.score);
+          pts = `<span class="pk-pts pk-${sc}">${sc}</span>`;
+        }
+        return `<div class="pick-row"><span class="pk-name">${p.name}</span>
+          <span class="pk-score">${pickStr}</span>${pts}</div>`;
+      }).join("");
+    }
     return `<article class="fixture"><div class="kick"><span>${ko(m.kickoffUtc)}</span><span class="chip locked">Revealed</span></div>
       <div class="faceoff"><div class="team home">${badge(m.home.name, m.home.crest)}<span class="name">${shortName(m.home.name)}</span></div>
       <div class="score result"><span class="num">${played(m)?m.score.h:"–"}</span><span class="dash">:</span><span class="num">${played(m)?m.score.a:"–"}</span></div>
       <div class="team away"><span class="name">${shortName(m.away.name)}</span>${badge(m.away.name, m.away.crest)}</div></div>
-      <div class="result-row"><span class="nopick">no players have joined yet</span></div></article>`;
+      <div class="picks-list">${rows}</div></article>`;
   }).join("");
 }
 
@@ -782,11 +822,13 @@ function fbSavePicks(){
 
 // Load every player's record (for the league table + picks reveal).
 async function fbLoadPlayers(){
-  if(!FB.ready || !FB.leagueId) return [];
+  if(!FB.ready || !FB.leagueId) return APP.playersCache || [];
   try{
     const snap = await FB.db.collection("epl_leagues").doc(FB.leagueId).collection("players").get();
-    return snap.docs.map(d=>({ playerId:d.id, ...d.data() }));
-  }catch(e){ console.warn("Load players failed:",e); return []; }
+    const list = snap.docs.map(d=>({ playerId:d.id, ...d.data() }));
+    if(list.length) APP.playersCache = list;   // remember for tabs that render before a fetch completes
+    return list;
+  }catch(e){ console.warn("Load players failed:",e); return APP.playersCache || []; }
 }
 
 /* ---- Scorer tools: create league + provision players ------------------- */
@@ -1032,15 +1074,16 @@ function _persistTables(){ try{ localStorage.setItem("matchday_tables", JSON.str
 
 // ===== tabs + init =======================================================
 const rendered={};
-function show(name){
+const LIVE_VIEWS = new Set(["league","picks","results","tables"]);
+function show(name, force){
   document.querySelectorAll(".tab").forEach(t=>t.classList.toggle("active",t.dataset.view===name));
   document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+name));
-  if(!rendered[name]){
+  if(force || LIVE_VIEWS.has(name) || !rendered[name]){
     ({season:renderSeasonPicks,league:renderLeague,results:()=>renderResults(currentIdx()),today:renderToday,
       tables:renderTables,picks:()=>renderPicks(currentIdx()),help:renderHelp}[name]||(()=>{}))();
     rendered[name]=true;
   }
-  window.scrollTo({top:0,behavior:"smooth"});
+  if(!force) window.scrollTo({top:0,behavior:"smooth"});
 }
 function currentIdx(){ const wk=currentWeek(); return Math.max(0,APP.weeks.indexOf(wk)); }
 
@@ -1092,6 +1135,15 @@ async function init(){
   }
   renderSeasonPicks();
   renderPredict();
+  // Pre-load the player list into cache so League/Picks never render empty due to
+  // Firebase auth still settling. Then refresh whatever view is showing.
+  if(FB.ready && FB.leagueId){
+    try{
+      await fbLoadPlayers();               // populates APP.playersCache
+      const active = document.querySelector(".view.active")?.id?.replace("view-","");
+      if(active) show(active, true);       // re-render current tab with players loaded
+    }catch(e){}
+  }
 }
 init();
 </script>
