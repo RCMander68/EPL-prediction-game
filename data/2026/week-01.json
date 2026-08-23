@@ -119,7 +119,7 @@
     {
       "fixtureId": 560548,
       "kickoffUtc": "2026-08-23T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 65,
         "name": "Manchester City FC",
@@ -131,14 +131,14 @@
         "crest": "https://crests.football-data.org/bournemouth.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 1
       }
     },
     {
       "fixtureId": 560549,
       "kickoffUtc": "2026-08-23T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
@@ -150,14 +150,14 @@
         "crest": "https://crests.football-data.org/58.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 4,
+        "a": 0
       }
     },
     {
       "fixtureId": 560550,
       "kickoffUtc": "2026-08-23T15:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -169,8 +169,8 @@
         "crest": "https://crests.football-data.org/64.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 2
       }
     },
     {
