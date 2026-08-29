@@ -117,25 +117,6 @@
       }
     },
     {
-      "fixtureId": 560590,
-      "kickoffUtc": "2026-09-19T14:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "crest": "https://crests.football-data.org/65.png"
-      },
-      "away": {
-        "id": 71,
-        "name": "Sunderland AFC",
-        "crest": "https://crests.football-data.org/71.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560589,
       "kickoffUtc": "2026-09-19T16:30:00Z",
       "status": "TIMED",
@@ -167,6 +148,25 @@
         "id": 64,
         "name": "Liverpool FC",
         "crest": "https://crests.football-data.org/64.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560590,
+      "kickoffUtc": "2026-09-20T13:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "crest": "https://crests.football-data.org/65.png"
+      },
+      "away": {
+        "id": 71,
+        "name": "Sunderland AFC",
+        "crest": "https://crests.football-data.org/71.png"
       },
       "score": {
         "h": null,

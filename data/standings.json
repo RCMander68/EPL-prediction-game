@@ -7,57 +7,57 @@
       "table": [
         {
           "rank": 1,
+          "id": 65,
+          "name": "Manchester City FC",
+          "played": 2,
+          "points": 6
+        },
+        {
+          "rank": 2,
           "id": 397,
           "name": "Brighton & Hove Albion FC",
           "played": 1,
           "points": 3
         },
         {
-          "rank": 2,
+          "rank": 3,
           "id": 57,
           "name": "Arsenal FC",
           "played": 1,
           "points": 3
         },
         {
-          "rank": 3,
+          "rank": 4,
           "id": 402,
           "name": "Brentford FC",
           "played": 1,
           "points": 3
         },
         {
-          "rank": 4,
+          "rank": 5,
           "id": 322,
           "name": "Hull City AFC",
           "played": 1,
           "points": 3
         },
         {
-          "rank": 5,
+          "rank": 6,
           "id": 62,
           "name": "Everton FC",
           "played": 1,
           "points": 3
         },
         {
-          "rank": 6,
+          "rank": 7,
           "id": 61,
           "name": "Chelsea FC",
           "played": 1,
           "points": 3
         },
         {
-          "rank": 7,
+          "rank": 8,
           "id": 349,
           "name": "Ipswich Town FC",
-          "played": 1,
-          "points": 3
-        },
-        {
-          "rank": 8,
-          "id": 65,
-          "name": "Manchester City FC",
           "played": 1,
           "points": 3
         },
@@ -119,30 +119,30 @@
         },
         {
           "rank": 17,
-          "id": 354,
-          "name": "Crystal Palace FC",
-          "played": 1,
-          "points": 0
-        },
-        {
-          "rank": 18,
           "id": 1076,
           "name": "Coventry City FC",
           "played": 1,
           "points": 0
         },
         {
-          "rank": 19,
+          "rank": 18,
           "id": 73,
           "name": "Tottenham Hotspur FC",
           "played": 1,
           "points": 0
         },
         {
-          "rank": 20,
+          "rank": 19,
           "id": 58,
           "name": "Aston Villa FC",
           "played": 1,
+          "points": 0
+        },
+        {
+          "rank": 20,
+          "id": 354,
+          "name": "Crystal Palace FC",
+          "played": 2,
           "points": 0
         }
       ]
@@ -173,93 +173,93 @@
         },
         {
           "rank": 4,
+          "id": 332,
+          "name": "Birmingham City FC",
+          "played": 3,
+          "points": 5
+        },
+        {
+          "rank": 5,
           "id": 76,
           "name": "Wolverhampton Wanderers FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 5,
+          "rank": 6,
           "id": 69,
           "name": "Queens Park Rangers FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 6,
+          "rank": 7,
           "id": 59,
           "name": "Blackburn Rovers FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 7,
+          "rank": 8,
           "id": 346,
           "name": "Watford FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 8,
+          "rank": 9,
           "id": 60,
           "name": "Bolton Wanderers FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 9,
+          "rank": 10,
           "id": 72,
           "name": "Swansea City AFC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 10,
+          "rank": 11,
           "id": 340,
           "name": "Southampton FC",
           "played": 2,
           "points": 3
         },
         {
-          "rank": 11,
+          "rank": 12,
           "id": 325,
           "name": "Portsmouth FC",
           "played": 2,
           "points": 3
         },
         {
-          "rank": 12,
+          "rank": 13,
           "id": 343,
           "name": "Middlesbrough FC",
           "played": 2,
           "points": 3
         },
         {
-          "rank": 13,
+          "rank": 14,
           "id": 715,
           "name": "Cardiff City FC",
           "played": 2,
           "points": 2
         },
         {
-          "rank": 14,
-          "id": 332,
-          "name": "Birmingham City FC",
-          "played": 2,
-          "points": 2
-        },
-        {
           "rank": 15,
-          "id": 404,
-          "name": "Wrexham AFC",
+          "id": 356,
+          "name": "Sheffield United FC",
           "played": 2,
           "points": 2
         },
         {
           "rank": 16,
-          "id": 356,
-          "name": "Sheffield United FC",
-          "played": 2,
+          "id": 404,
+          "name": "Wrexham AFC",
+          "played": 3,
           "points": 2
         },
         {
