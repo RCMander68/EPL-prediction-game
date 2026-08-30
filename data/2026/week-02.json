@@ -5,7 +5,7 @@
     {
       "fixtureId": 560555,
       "kickoffUtc": "2026-08-28T19:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 354,
         "name": "Crystal Palace FC",
@@ -17,14 +17,14 @@
         "crest": "https://crests.football-data.org/65.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 4
       }
     },
     {
       "fixtureId": 560552,
       "kickoffUtc": "2026-08-29T11:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 64,
         "name": "Liverpool FC",
@@ -36,14 +36,14 @@
         "crest": "https://crests.football-data.org/351.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 2
       }
     },
     {
       "fixtureId": 560560,
       "kickoffUtc": "2026-08-29T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 1044,
         "name": "AFC Bournemouth",
@@ -55,14 +55,14 @@
         "crest": "https://crests.football-data.org/62.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     },
     {
       "fixtureId": 560561,
       "kickoffUtc": "2026-08-29T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 1076,
         "name": "Coventry City FC",
@@ -74,14 +74,14 @@
         "crest": "https://crests.football-data.org/322.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 1
       }
     },
     {
       "fixtureId": 560558,
       "kickoffUtc": "2026-08-29T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 73,
         "name": "Tottenham Hotspur FC",
@@ -93,8 +93,8 @@
         "crest": "https://crests.football-data.org/67.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 2
       }
     },
     {
