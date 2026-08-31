@@ -100,7 +100,7 @@
     {
       "fixtureId": 560554,
       "kickoffUtc": "2026-08-30T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 71,
         "name": "Sunderland AFC",
@@ -112,14 +112,14 @@
         "crest": "https://crests.football-data.org/63.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 0
       }
     },
     {
       "fixtureId": 560556,
       "kickoffUtc": "2026-08-30T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 61,
         "name": "Chelsea FC",
@@ -131,14 +131,14 @@
         "crest": "https://crests.football-data.org/397.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 4,
+        "a": 3
       }
     },
     {
       "fixtureId": 560559,
       "kickoffUtc": "2026-08-30T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 341,
         "name": "Leeds United FC",
@@ -150,14 +150,14 @@
         "crest": "https://crests.football-data.org/402.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     },
     {
       "fixtureId": 560553,
       "kickoffUtc": "2026-08-30T15:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -169,8 +169,8 @@
         "crest": "https://crests.football-data.org/349.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 5,
+        "a": 2
       }
     },
     {
