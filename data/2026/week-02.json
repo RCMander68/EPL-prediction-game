@@ -176,7 +176,7 @@
     {
       "fixtureId": 560557,
       "kickoffUtc": "2026-08-31T19:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 58,
         "name": "Aston Villa FC",
@@ -188,8 +188,8 @@
         "crest": "https://crests.football-data.org/57.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 1
       }
     }
   ]
