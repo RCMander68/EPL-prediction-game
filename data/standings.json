@@ -14,58 +14,58 @@
         },
         {
           "rank": 2,
+          "id": 57,
+          "name": "Arsenal FC",
+          "played": 2,
+          "points": 6
+        },
+        {
+          "rank": 3,
           "id": 322,
           "name": "Hull City AFC",
           "played": 2,
           "points": 6
         },
         {
-          "rank": 3,
+          "rank": 4,
           "id": 61,
           "name": "Chelsea FC",
           "played": 2,
           "points": 6
         },
         {
-          "rank": 4,
+          "rank": 5,
           "id": 402,
           "name": "Brentford FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 5,
+          "rank": 6,
           "id": 67,
           "name": "Newcastle United FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 6,
+          "rank": 7,
           "id": 62,
           "name": "Everton FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 7,
+          "rank": 8,
           "id": 341,
           "name": "Leeds United FC",
           "played": 2,
           "points": 4
         },
         {
-          "rank": 8,
+          "rank": 9,
           "id": 397,
           "name": "Brighton & Hove Albion FC",
           "played": 2,
-          "points": 3
-        },
-        {
-          "rank": 9,
-          "id": 57,
-          "name": "Arsenal FC",
-          "played": 1,
           "points": 3
         },
         {
@@ -126,22 +126,22 @@
         },
         {
           "rank": 18,
-          "id": 58,
-          "name": "Aston Villa FC",
-          "played": 1,
-          "points": 0
-        },
-        {
-          "rank": 19,
           "id": 354,
           "name": "Crystal Palace FC",
           "played": 2,
           "points": 0
         },
         {
-          "rank": 20,
+          "rank": 19,
           "id": 73,
           "name": "Tottenham Hotspur FC",
+          "played": 2,
+          "points": 0
+        },
+        {
+          "rank": 20,
+          "id": 58,
+          "name": "Aston Villa FC",
           "played": 2,
           "points": 0
         }
