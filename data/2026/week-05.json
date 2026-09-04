@@ -60,25 +60,6 @@
       }
     },
     {
-      "fixtureId": 560585,
-      "kickoffUtc": "2026-09-19T14:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 341,
-        "name": "Leeds United FC",
-        "crest": "https://crests.football-data.org/341.png"
-      },
-      "away": {
-        "id": 354,
-        "name": "Crystal Palace FC",
-        "crest": "https://crests.football-data.org/354.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560586,
       "kickoffUtc": "2026-09-19T14:00:00Z",
       "status": "TIMED",
@@ -148,6 +129,25 @@
         "id": 64,
         "name": "Liverpool FC",
         "crest": "https://crests.football-data.org/64.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560585,
+      "kickoffUtc": "2026-09-20T13:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 341,
+        "name": "Leeds United FC",
+        "crest": "https://crests.football-data.org/341.png"
+      },
+      "away": {
+        "id": 354,
+        "name": "Crystal Palace FC",
+        "crest": "https://crests.football-data.org/354.png"
       },
       "score": {
         "h": null,

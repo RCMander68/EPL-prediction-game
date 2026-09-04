@@ -41,25 +41,6 @@
       }
     },
     {
-      "fixtureId": 560612,
-      "kickoffUtc": "2026-10-24T14:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 64,
-        "name": "Liverpool FC",
-        "crest": "https://crests.football-data.org/64.png"
-      },
-      "away": {
-        "id": 397,
-        "name": "Brighton & Hove Albion FC",
-        "crest": "https://crests.football-data.org/397.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560616,
       "kickoffUtc": "2026-10-24T14:00:00Z",
       "status": "TIMED",
@@ -110,6 +91,25 @@
         "id": 73,
         "name": "Tottenham Hotspur FC",
         "crest": "https://crests.football-data.org/73.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560612,
+      "kickoffUtc": "2026-10-25T14:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 64,
+        "name": "Liverpool FC",
+        "crest": "https://crests.football-data.org/64.png"
+      },
+      "away": {
+        "id": 397,
+        "name": "Brighton & Hove Albion FC",
+        "crest": "https://crests.football-data.org/397.png"
       },
       "score": {
         "h": null,
