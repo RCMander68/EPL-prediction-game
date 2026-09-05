@@ -24,7 +24,7 @@
     {
       "fixtureId": 560571,
       "kickoffUtc": "2026-09-05T11:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 67,
         "name": "Newcastle United FC",
@@ -36,14 +36,14 @@
         "crest": "https://crests.football-data.org/bournemouth.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 2
       }
     },
     {
       "fixtureId": 560562,
       "kickoffUtc": "2026-09-05T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -55,14 +55,14 @@
         "crest": "https://crests.football-data.org/73.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 0
       }
     },
     {
       "fixtureId": 560563,
       "kickoffUtc": "2026-09-05T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 65,
         "name": "Manchester City FC",
@@ -74,14 +74,14 @@
         "crest": "https://crests.football-data.org/1076.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 0
       }
     },
     {
       "fixtureId": 560564,
       "kickoffUtc": "2026-09-05T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
@@ -93,14 +93,14 @@
         "crest": "https://crests.football-data.org/341.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     },
     {
       "fixtureId": 560565,
       "kickoffUtc": "2026-09-05T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 402,
         "name": "Brentford FC",
@@ -112,14 +112,14 @@
         "crest": "https://crests.football-data.org/71.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     },
     {
       "fixtureId": 560568,
       "kickoffUtc": "2026-09-05T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 63,
         "name": "Fulham FC",
@@ -131,14 +131,14 @@
         "crest": "https://crests.football-data.org/354.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 3
       }
     },
     {
       "fixtureId": 560569,
       "kickoffUtc": "2026-09-05T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",
@@ -150,8 +150,8 @@
         "crest": "https://crests.football-data.org/58.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 0
       }
     },
     {
