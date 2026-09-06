@@ -157,7 +157,7 @@
     {
       "fixtureId": 560567,
       "kickoffUtc": "2026-09-06T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 62,
         "name": "Everton FC",
@@ -169,14 +169,14 @@
         "crest": "https://crests.football-data.org/66.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 2
       }
     },
     {
       "fixtureId": 560570,
       "kickoffUtc": "2026-09-06T15:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -188,8 +188,8 @@
         "crest": "https://crests.football-data.org/61.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 1
       }
     }
   ]
