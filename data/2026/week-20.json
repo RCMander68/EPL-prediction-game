@@ -4,7 +4,7 @@
   "fixtures": [
     {
       "fixtureId": 560732,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
+      "kickoffUtc": "2027-01-05T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 57,
@@ -22,46 +22,8 @@
       }
     },
     {
-      "fixtureId": 560733,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 341,
-        "name": "Leeds United FC",
-        "crest": "https://crests.football-data.org/341.png"
-      },
-      "away": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "crest": "https://crests.football-data.org/65.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560734,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 66,
-        "name": "Manchester United FC",
-        "crest": "https://crests.football-data.org/66.png"
-      },
-      "away": {
-        "id": 67,
-        "name": "Newcastle United FC",
-        "crest": "https://crests.football-data.org/67.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560735,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
+      "kickoffUtc": "2027-01-05T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 397,
@@ -80,7 +42,7 @@
     },
     {
       "fixtureId": 560736,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
+      "kickoffUtc": "2027-01-05T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 351,
@@ -98,27 +60,8 @@
       }
     },
     {
-      "fixtureId": 560737,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 63,
-        "name": "Fulham FC",
-        "crest": "https://crests.football-data.org/63.png"
-      },
-      "away": {
-        "id": 73,
-        "name": "Tottenham Hotspur FC",
-        "crest": "https://crests.football-data.org/73.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560738,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
+      "kickoffUtc": "2027-01-05T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 62,
@@ -137,7 +80,7 @@
     },
     {
       "fixtureId": 560739,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
+      "kickoffUtc": "2027-01-05T20:15:00Z",
       "status": "TIMED",
       "home": {
         "id": 71,
@@ -155,8 +98,27 @@
       }
     },
     {
+      "fixtureId": 560737,
+      "kickoffUtc": "2027-01-06T19:30:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 63,
+        "name": "Fulham FC",
+        "crest": "https://crests.football-data.org/63.png"
+      },
+      "away": {
+        "id": 73,
+        "name": "Tottenham Hotspur FC",
+        "crest": "https://crests.football-data.org/73.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
       "fixtureId": 560740,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
+      "kickoffUtc": "2027-01-06T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 354,
@@ -175,7 +137,7 @@
     },
     {
       "fixtureId": 560741,
-      "kickoffUtc": "2027-01-06T20:00:00Z",
+      "kickoffUtc": "2027-01-06T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 349,
@@ -186,6 +148,44 @@
         "id": 1076,
         "name": "Coventry City FC",
         "crest": "https://crests.football-data.org/1076.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560733,
+      "kickoffUtc": "2027-01-06T20:15:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 341,
+        "name": "Leeds United FC",
+        "crest": "https://crests.football-data.org/341.png"
+      },
+      "away": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "crest": "https://crests.football-data.org/65.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560734,
+      "kickoffUtc": "2027-01-07T20:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "crest": "https://crests.football-data.org/66.png"
+      },
+      "away": {
+        "id": 67,
+        "name": "Newcastle United FC",
+        "crest": "https://crests.football-data.org/67.png"
       },
       "score": {
         "h": null,

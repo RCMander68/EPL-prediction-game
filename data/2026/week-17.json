@@ -4,7 +4,7 @@
   "fixtures": [
     {
       "fixtureId": 560702,
-      "kickoffUtc": "2026-12-26T15:00:00Z",
+      "kickoffUtc": "2026-12-26T12:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 58,
@@ -15,44 +15,6 @@
         "id": 341,
         "name": "Leeds United FC",
         "crest": "https://crests.football-data.org/341.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560703,
-      "kickoffUtc": "2026-12-26T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 66,
-        "name": "Manchester United FC",
-        "crest": "https://crests.football-data.org/66.png"
-      },
-      "away": {
-        "id": 351,
-        "name": "Nottingham Forest FC",
-        "crest": "https://crests.football-data.org/351.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560704,
-      "kickoffUtc": "2026-12-26T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 354,
-        "name": "Crystal Palace FC",
-        "crest": "https://crests.football-data.org/354.png"
-      },
-      "away": {
-        "id": 57,
-        "name": "Arsenal FC",
-        "crest": "https://crests.football-data.org/57.png"
       },
       "score": {
         "h": null,
@@ -72,44 +34,6 @@
         "id": 71,
         "name": "Sunderland AFC",
         "crest": "https://crests.football-data.org/71.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560706,
-      "kickoffUtc": "2026-12-26T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 1076,
-        "name": "Coventry City FC",
-        "crest": "https://crests.football-data.org/1076.png"
-      },
-      "away": {
-        "id": 61,
-        "name": "Chelsea FC",
-        "crest": "https://crests.football-data.org/61.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560707,
-      "kickoffUtc": "2026-12-26T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 67,
-        "name": "Newcastle United FC",
-        "crest": "https://crests.football-data.org/67.png"
-      },
-      "away": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "crest": "https://crests.football-data.org/65.png"
       },
       "score": {
         "h": null,
@@ -155,8 +79,27 @@
       }
     },
     {
-      "fixtureId": 560710,
+      "fixtureId": 560711,
       "kickoffUtc": "2026-12-26T15:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 349,
+        "name": "Ipswich Town FC",
+        "crest": "https://crests.football-data.org/349.png"
+      },
+      "away": {
+        "id": 402,
+        "name": "Brentford FC",
+        "crest": "https://crests.football-data.org/402.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560710,
+      "kickoffUtc": "2026-12-26T17:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 322,
@@ -174,18 +117,75 @@
       }
     },
     {
-      "fixtureId": 560711,
-      "kickoffUtc": "2026-12-26T15:00:00Z",
+      "fixtureId": 560707,
+      "kickoffUtc": "2026-12-26T20:00:00Z",
       "status": "TIMED",
       "home": {
-        "id": 349,
-        "name": "Ipswich Town FC",
-        "crest": "https://crests.football-data.org/349.png"
+        "id": 67,
+        "name": "Newcastle United FC",
+        "crest": "https://crests.football-data.org/67.png"
       },
       "away": {
-        "id": 402,
-        "name": "Brentford FC",
-        "crest": "https://crests.football-data.org/402.png"
+        "id": 65,
+        "name": "Manchester City FC",
+        "crest": "https://crests.football-data.org/65.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560706,
+      "kickoffUtc": "2026-12-27T14:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 1076,
+        "name": "Coventry City FC",
+        "crest": "https://crests.football-data.org/1076.png"
+      },
+      "away": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "crest": "https://crests.football-data.org/61.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560703,
+      "kickoffUtc": "2026-12-27T16:30:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "crest": "https://crests.football-data.org/66.png"
+      },
+      "away": {
+        "id": 351,
+        "name": "Nottingham Forest FC",
+        "crest": "https://crests.football-data.org/351.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560704,
+      "kickoffUtc": "2026-12-27T19:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 354,
+        "name": "Crystal Palace FC",
+        "crest": "https://crests.football-data.org/354.png"
+      },
+      "away": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "crest": "https://crests.football-data.org/57.png"
       },
       "score": {
         "h": null,

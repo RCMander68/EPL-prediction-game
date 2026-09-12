@@ -3,18 +3,37 @@
   "gameweek": 19,
   "fixtures": [
     {
-      "fixtureId": 560722,
-      "kickoffUtc": "2027-01-02T15:00:00Z",
+      "fixtureId": 560724,
+      "kickoffUtc": "2027-01-01T20:00:00Z",
       "status": "TIMED",
       "home": {
-        "id": 1044,
-        "name": "AFC Bournemouth",
-        "crest": "https://crests.football-data.org/bournemouth.png"
+        "id": 341,
+        "name": "Leeds United FC",
+        "crest": "https://crests.football-data.org/341.png"
       },
       "away": {
-        "id": 58,
-        "name": "Aston Villa FC",
-        "crest": "https://crests.football-data.org/58.png"
+        "id": 62,
+        "name": "Everton FC",
+        "crest": "https://crests.football-data.org/62.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560730,
+      "kickoffUtc": "2027-01-02T12:30:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 397,
+        "name": "Brighton & Hove Albion FC",
+        "crest": "https://crests.football-data.org/397.png"
+      },
+      "away": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "crest": "https://crests.football-data.org/66.png"
       },
       "score": {
         "h": null,
@@ -34,25 +53,6 @@
         "id": 354,
         "name": "Crystal Palace FC",
         "crest": "https://crests.football-data.org/354.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560724,
-      "kickoffUtc": "2027-01-02T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 341,
-        "name": "Leeds United FC",
-        "crest": "https://crests.football-data.org/341.png"
-      },
-      "away": {
-        "id": 62,
-        "name": "Everton FC",
-        "crest": "https://crests.football-data.org/62.png"
       },
       "score": {
         "h": null,
@@ -117,25 +117,6 @@
       }
     },
     {
-      "fixtureId": 560728,
-      "kickoffUtc": "2027-01-02T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 61,
-        "name": "Chelsea FC",
-        "crest": "https://crests.football-data.org/61.png"
-      },
-      "away": {
-        "id": 67,
-        "name": "Newcastle United FC",
-        "crest": "https://crests.football-data.org/67.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560729,
       "kickoffUtc": "2027-01-02T15:00:00Z",
       "status": "TIMED",
@@ -155,18 +136,37 @@
       }
     },
     {
-      "fixtureId": 560730,
-      "kickoffUtc": "2027-01-02T15:00:00Z",
+      "fixtureId": 560722,
+      "kickoffUtc": "2027-01-02T17:30:00Z",
       "status": "TIMED",
       "home": {
-        "id": 397,
-        "name": "Brighton & Hove Albion FC",
-        "crest": "https://crests.football-data.org/397.png"
+        "id": 1044,
+        "name": "AFC Bournemouth",
+        "crest": "https://crests.football-data.org/bournemouth.png"
       },
       "away": {
-        "id": 66,
-        "name": "Manchester United FC",
-        "crest": "https://crests.football-data.org/66.png"
+        "id": 58,
+        "name": "Aston Villa FC",
+        "crest": "https://crests.football-data.org/58.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560728,
+      "kickoffUtc": "2027-01-03T14:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "crest": "https://crests.football-data.org/61.png"
+      },
+      "away": {
+        "id": 67,
+        "name": "Newcastle United FC",
+        "crest": "https://crests.football-data.org/67.png"
       },
       "score": {
         "h": null,
@@ -175,7 +175,7 @@
     },
     {
       "fixtureId": 560731,
-      "kickoffUtc": "2027-01-02T15:00:00Z",
+      "kickoffUtc": "2027-01-03T16:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 65,

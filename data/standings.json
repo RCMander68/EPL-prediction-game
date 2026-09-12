@@ -152,171 +152,171 @@
       "table": [
         {
           "rank": 1,
-          "id": 72,
-          "name": "Swansea City AFC",
-          "played": 5,
-          "points": 11
+          "id": 563,
+          "name": "West Ham United FC",
+          "played": 7,
+          "points": 14
         },
         {
           "rank": 2,
+          "id": 74,
+          "name": "West Bromwich Albion FC",
+          "played": 6,
+          "points": 13
+        },
+        {
+          "rank": 3,
+          "id": 340,
+          "name": "Southampton FC",
+          "played": 6,
+          "points": 11
+        },
+        {
+          "rank": 4,
+          "id": 72,
+          "name": "Swansea City AFC",
+          "played": 6,
+          "points": 11
+        },
+        {
+          "rank": 5,
+          "id": 69,
+          "name": "Queens Park Rangers FC",
+          "played": 6,
+          "points": 11
+        },
+        {
+          "rank": 6,
+          "id": 348,
+          "name": "Charlton Athletic FC",
+          "played": 6,
+          "points": 11
+        },
+        {
+          "rank": 7,
           "id": 343,
           "name": "Middlesbrough FC",
           "played": 5,
           "points": 10
         },
         {
-          "rank": 3,
-          "id": 69,
-          "name": "Queens Park Rangers FC",
-          "played": 5,
-          "points": 10
-        },
-        {
-          "rank": 4,
+          "rank": 8,
           "id": 387,
           "name": "Bristol City FC",
           "played": 5,
           "points": 10
         },
         {
-          "rank": 5,
-          "id": 74,
-          "name": "West Bromwich Albion FC",
-          "played": 5,
-          "points": 10
-        },
-        {
-          "rank": 6,
-          "id": 348,
-          "name": "Charlton Athletic FC",
-          "played": 5,
-          "points": 10
-        },
-        {
-          "rank": 7,
+          "rank": 9,
           "id": 384,
           "name": "Millwall FC",
           "played": 5,
           "points": 9
         },
         {
-          "rank": 8,
-          "id": 340,
-          "name": "Southampton FC",
-          "played": 5,
-          "points": 8
-        },
-        {
-          "rank": 9,
-          "id": 563,
-          "name": "West Ham United FC",
-          "played": 5,
-          "points": 8
-        },
-        {
           "rank": 10,
+          "id": 68,
+          "name": "Norwich City FC",
+          "played": 6,
+          "points": 9
+        },
+        {
+          "rank": 11,
+          "id": 356,
+          "name": "Sheffield United FC",
+          "played": 6,
+          "points": 9
+        },
+        {
+          "rank": 12,
           "id": 76,
           "name": "Wolverhampton Wanderers FC",
           "played": 5,
           "points": 8
         },
         {
-          "rank": 11,
-          "id": 332,
-          "name": "Birmingham City FC",
-          "played": 5,
-          "points": 7
-        },
-        {
-          "rank": 12,
-          "id": 404,
-          "name": "Wrexham AFC",
-          "played": 5,
-          "points": 6
-        },
-        {
           "rank": 13,
-          "id": 68,
-          "name": "Norwich City FC",
-          "played": 5,
-          "points": 6
+          "id": 346,
+          "name": "Watford FC",
+          "played": 6,
+          "points": 8
         },
         {
           "rank": 14,
-          "id": 70,
-          "name": "Stoke City FC",
-          "played": 5,
-          "points": 6
+          "id": 332,
+          "name": "Birmingham City FC",
+          "played": 6,
+          "points": 7
         },
         {
           "rank": 15,
+          "id": 70,
+          "name": "Stoke City FC",
+          "played": 6,
+          "points": 7
+        },
+        {
+          "rank": 16,
+          "id": 404,
+          "name": "Wrexham AFC",
+          "played": 7,
+          "points": 7
+        },
+        {
+          "rank": 17,
           "id": 325,
           "name": "Portsmouth FC",
           "played": 5,
           "points": 6
         },
         {
-          "rank": 16,
-          "id": 356,
-          "name": "Sheffield United FC",
-          "played": 5,
-          "points": 6
-        },
-        {
-          "rank": 17,
+          "rank": 18,
           "id": 59,
           "name": "Blackburn Rovers FC",
-          "played": 5,
+          "played": 6,
           "points": 5
         },
         {
-          "rank": 18,
+          "rank": 19,
           "id": 1126,
           "name": "Lincoln City FC",
           "played": 5,
           "points": 5
         },
         {
-          "rank": 19,
-          "id": 346,
-          "name": "Watford FC",
-          "played": 5,
-          "points": 5
-        },
-        {
           "rank": 20,
-          "id": 342,
-          "name": "Derby County FC",
-          "played": 5,
+          "id": 715,
+          "name": "Cardiff City FC",
+          "played": 6,
           "points": 4
         },
         {
           "rank": 21,
           "id": 60,
           "name": "Bolton Wanderers FC",
-          "played": 5,
+          "played": 6,
           "points": 4
         },
         {
           "rank": 22,
-          "id": 715,
-          "name": "Cardiff City FC",
-          "played": 5,
-          "points": 3
+          "id": 342,
+          "name": "Derby County FC",
+          "played": 6,
+          "points": 4
         },
         {
           "rank": 23,
-          "id": 1081,
-          "name": "Preston North End FC",
-          "played": 5,
+          "id": 328,
+          "name": "Burnley FC",
+          "played": 6,
           "points": 3
         },
         {
           "rank": 24,
-          "id": 328,
-          "name": "Burnley FC",
-          "played": 5,
-          "points": 2
+          "id": 1081,
+          "name": "Preston North End FC",
+          "played": 6,
+          "points": 3
         }
       ]
     }
