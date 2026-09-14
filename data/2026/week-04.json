@@ -138,7 +138,7 @@
     {
       "fixtureId": 560578,
       "kickoffUtc": "2026-09-13T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 1076,
         "name": "Coventry City FC",
@@ -150,14 +150,14 @@
         "crest": "https://crests.football-data.org/397.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 5
       }
     },
     {
       "fixtureId": 560580,
       "kickoffUtc": "2026-09-13T15:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -169,8 +169,8 @@
         "crest": "https://crests.football-data.org/65.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 1
       }
     },
     {
