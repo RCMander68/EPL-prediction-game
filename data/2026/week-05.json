@@ -119,7 +119,7 @@
     {
       "fixtureId": 560582,
       "kickoffUtc": "2026-09-20T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 1044,
         "name": "AFC Bournemouth",
@@ -131,14 +131,14 @@
         "crest": "https://crests.football-data.org/64.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 1
       }
     },
     {
       "fixtureId": 560585,
       "kickoffUtc": "2026-09-20T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 341,
         "name": "Leeds United FC",
@@ -150,14 +150,14 @@
         "crest": "https://crests.football-data.org/354.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 0
       }
     },
     {
       "fixtureId": 560590,
       "kickoffUtc": "2026-09-20T13:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 65,
         "name": "Manchester City FC",
@@ -169,14 +169,14 @@
         "crest": "https://crests.football-data.org/71.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 5,
+        "a": 3
       }
     },
     {
       "fixtureId": 560583,
       "kickoffUtc": "2026-09-20T15:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 63,
         "name": "Fulham FC",
@@ -188,8 +188,8 @@
         "crest": "https://crests.football-data.org/66.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     }
   ]
