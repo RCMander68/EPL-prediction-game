@@ -3,6 +3,25 @@
   "gameweek": 12,
   "fixtures": [
     {
+      "fixtureId": 560658,
+      "kickoffUtc": "2026-11-27T20:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 351,
+        "name": "Nottingham Forest FC",
+        "crest": "https://crests.football-data.org/351.png"
+      },
+      "away": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "crest": "https://crests.football-data.org/61.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
       "fixtureId": 560652,
       "kickoffUtc": "2026-11-28T15:00:00Z",
       "status": "TIMED",
@@ -15,44 +34,6 @@
         "id": 1076,
         "name": "Coventry City FC",
         "crest": "https://crests.football-data.org/1076.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560653,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 349,
-        "name": "Ipswich Town FC",
-        "crest": "https://crests.football-data.org/349.png"
-      },
-      "away": {
-        "id": 58,
-        "name": "Aston Villa FC",
-        "crest": "https://crests.football-data.org/58.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560654,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 57,
-        "name": "Arsenal FC",
-        "crest": "https://crests.football-data.org/57.png"
-      },
-      "away": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "crest": "https://crests.football-data.org/65.png"
       },
       "score": {
         "h": null,
@@ -79,8 +60,27 @@
       }
     },
     {
+      "fixtureId": 560653,
+      "kickoffUtc": "2026-11-28T17:30:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 349,
+        "name": "Ipswich Town FC",
+        "crest": "https://crests.football-data.org/349.png"
+      },
+      "away": {
+        "id": 58,
+        "name": "Aston Villa FC",
+        "crest": "https://crests.football-data.org/58.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
       "fixtureId": 560656,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
+      "kickoffUtc": "2026-11-29T12:00:00Z",
       "status": "TIMED",
       "home": {
         "id": 62,
@@ -99,7 +99,7 @@
     },
     {
       "fixtureId": 560657,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
+      "kickoffUtc": "2026-11-29T14:05:00Z",
       "status": "TIMED",
       "home": {
         "id": 63,
@@ -117,27 +117,8 @@
       }
     },
     {
-      "fixtureId": 560658,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 351,
-        "name": "Nottingham Forest FC",
-        "crest": "https://crests.football-data.org/351.png"
-      },
-      "away": {
-        "id": 61,
-        "name": "Chelsea FC",
-        "crest": "https://crests.football-data.org/61.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560659,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
+      "kickoffUtc": "2026-11-29T14:05:00Z",
       "status": "TIMED",
       "home": {
         "id": 397,
@@ -156,7 +137,7 @@
     },
     {
       "fixtureId": 560660,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
+      "kickoffUtc": "2026-11-29T14:05:00Z",
       "status": "TIMED",
       "home": {
         "id": 71,
@@ -175,7 +156,7 @@
     },
     {
       "fixtureId": 560661,
-      "kickoffUtc": "2026-11-28T15:00:00Z",
+      "kickoffUtc": "2026-11-29T14:05:00Z",
       "status": "TIMED",
       "home": {
         "id": 354,
@@ -186,6 +167,25 @@
         "id": 322,
         "name": "Hull City AFC",
         "crest": "https://crests.football-data.org/322.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560654,
+      "kickoffUtc": "2026-11-29T16:30:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "away": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "crest": "https://crests.football-data.org/65.png"
       },
       "score": {
         "h": null,
