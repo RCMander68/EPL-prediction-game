@@ -161,8 +161,8 @@
           "rank": 2,
           "id": 563,
           "name": "West Ham United FC",
-          "played": 8,
-          "points": 15
+          "played": 9,
+          "points": 16
         },
         {
           "rank": 3,
@@ -187,17 +187,17 @@
         },
         {
           "rank": 6,
-          "id": 74,
-          "name": "West Bromwich Albion FC",
-          "played": 8,
+          "id": 69,
+          "name": "Queens Park Rangers FC",
+          "played": 9,
           "points": 14
         },
         {
           "rank": 7,
-          "id": 69,
-          "name": "Queens Park Rangers FC",
+          "id": 74,
+          "name": "West Bromwich Albion FC",
           "played": 8,
-          "points": 13
+          "points": 14
         },
         {
           "rank": 8,
