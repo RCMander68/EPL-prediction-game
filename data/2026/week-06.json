@@ -5,7 +5,7 @@
     {
       "fixtureId": 560593,
       "kickoffUtc": "2026-10-10T11:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -17,14 +17,14 @@
         "crest": "https://crests.football-data.org/341.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 1
       }
     },
     {
       "fixtureId": 560592,
       "kickoffUtc": "2026-10-10T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 71,
         "name": "Sunderland AFC",
@@ -36,14 +36,14 @@
         "crest": "https://crests.football-data.org/397.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 2
       }
     },
     {
       "fixtureId": 560595,
       "kickoffUtc": "2026-10-10T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 61,
         "name": "Chelsea FC",
@@ -55,14 +55,14 @@
         "crest": "https://crests.football-data.org/bournemouth.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 5,
+        "a": 1
       }
     },
     {
       "fixtureId": 560599,
       "kickoffUtc": "2026-10-10T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -74,14 +74,14 @@
         "crest": "https://crests.football-data.org/63.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 1
       }
     },
     {
       "fixtureId": 560601,
       "kickoffUtc": "2026-10-10T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 58,
         "name": "Aston Villa FC",
@@ -93,14 +93,14 @@
         "crest": "https://crests.football-data.org/402.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 2
       }
     },
     {
       "fixtureId": 560600,
       "kickoffUtc": "2026-10-10T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -112,8 +112,8 @@
         "crest": "https://crests.football-data.org/73.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     },
     {
