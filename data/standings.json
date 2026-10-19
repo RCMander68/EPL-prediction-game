@@ -16,15 +16,15 @@
           "rank": 2,
           "id": 57,
           "name": "Arsenal FC",
-          "played": 6,
-          "points": 15
+          "played": 7,
+          "points": 18
         },
         {
           "rank": 3,
           "id": 397,
           "name": "Brighton & Hove Albion FC",
-          "played": 6,
-          "points": 13
+          "played": 7,
+          "points": 16
         },
         {
           "rank": 4,
@@ -49,17 +49,17 @@
         },
         {
           "rank": 7,
-          "id": 62,
-          "name": "Everton FC",
+          "id": 341,
+          "name": "Leeds United FC",
           "played": 7,
           "points": 10
         },
         {
           "rank": 8,
-          "id": 341,
-          "name": "Leeds United FC",
-          "played": 6,
-          "points": 9
+          "id": 62,
+          "name": "Everton FC",
+          "played": 7,
+          "points": 10
         },
         {
           "rank": 9,
@@ -91,52 +91,52 @@
         },
         {
           "rank": 13,
-          "id": 354,
-          "name": "Crystal Palace FC",
-          "played": 6,
+          "id": 66,
+          "name": "Manchester United FC",
+          "played": 7,
           "points": 7
         },
         {
           "rank": 14,
-          "id": 66,
-          "name": "Manchester United FC",
-          "played": 6,
-          "points": 6
+          "id": 354,
+          "name": "Crystal Palace FC",
+          "played": 7,
+          "points": 7
         },
         {
           "rank": 15,
+          "id": 1044,
+          "name": "AFC Bournemouth",
+          "played": 7,
+          "points": 6
+        },
+        {
+          "rank": 16,
           "id": 1076,
           "name": "Coventry City FC",
           "played": 6,
           "points": 6
         },
         {
-          "rank": 16,
+          "rank": 17,
           "id": 63,
           "name": "Fulham FC",
           "played": 7,
           "points": 5
         },
         {
-          "rank": 17,
+          "rank": 18,
           "id": 351,
           "name": "Nottingham Forest FC",
-          "played": 6,
+          "played": 7,
           "points": 5
         },
         {
-          "rank": 18,
+          "rank": 19,
           "id": 71,
           "name": "Sunderland AFC",
-          "played": 6,
+          "played": 7,
           "points": 4
-        },
-        {
-          "rank": 19,
-          "id": 1044,
-          "name": "AFC Bournemouth",
-          "played": 6,
-          "points": 3
         },
         {
           "rank": 20,
