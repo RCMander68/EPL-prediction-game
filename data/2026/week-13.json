@@ -3,18 +3,18 @@
   "gameweek": 13,
   "fixtures": [
     {
-      "fixtureId": 560662,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "fixtureId": 560668,
+      "kickoffUtc": "2026-12-01T20:00:00Z",
       "status": "TIMED",
       "home": {
-        "id": 73,
-        "name": "Tottenham Hotspur FC",
-        "crest": "https://crests.football-data.org/73.png"
+        "id": 1076,
+        "name": "Coventry City FC",
+        "crest": "https://crests.football-data.org/1076.png"
       },
       "away": {
-        "id": 63,
-        "name": "Fulham FC",
-        "crest": "https://crests.football-data.org/63.png"
+        "id": 349,
+        "name": "Ipswich Town FC",
+        "crest": "https://crests.football-data.org/349.png"
       },
       "score": {
         "h": null,
@@ -23,7 +23,7 @@
     },
     {
       "fixtureId": 560663,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "kickoffUtc": "2026-12-02T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 64,
@@ -42,7 +42,7 @@
     },
     {
       "fixtureId": 560664,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "kickoffUtc": "2026-12-02T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 322,
@@ -61,7 +61,7 @@
     },
     {
       "fixtureId": 560665,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "kickoffUtc": "2026-12-02T19:30:00Z",
       "status": "TIMED",
       "home": {
         "id": 61,
@@ -79,8 +79,27 @@
       }
     },
     {
+      "fixtureId": 560669,
+      "kickoffUtc": "2026-12-02T19:30:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "crest": "https://crests.football-data.org/65.png"
+      },
+      "away": {
+        "id": 341,
+        "name": "Leeds United FC",
+        "crest": "https://crests.football-data.org/341.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
       "fixtureId": 560666,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "kickoffUtc": "2026-12-02T20:15:00Z",
       "status": "TIMED",
       "home": {
         "id": 58,
@@ -99,7 +118,7 @@
     },
     {
       "fixtureId": 560667,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "kickoffUtc": "2026-12-02T20:15:00Z",
       "status": "TIMED",
       "home": {
         "id": 402,
@@ -117,46 +136,8 @@
       }
     },
     {
-      "fixtureId": 560668,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 1076,
-        "name": "Coventry City FC",
-        "crest": "https://crests.football-data.org/1076.png"
-      },
-      "away": {
-        "id": 349,
-        "name": "Ipswich Town FC",
-        "crest": "https://crests.football-data.org/349.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
-      "fixtureId": 560669,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "crest": "https://crests.football-data.org/65.png"
-      },
-      "away": {
-        "id": 341,
-        "name": "Leeds United FC",
-        "crest": "https://crests.football-data.org/341.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560670,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "kickoffUtc": "2026-12-02T20:15:00Z",
       "status": "TIMED",
       "home": {
         "id": 67,
@@ -175,7 +156,7 @@
     },
     {
       "fixtureId": 560671,
-      "kickoffUtc": "2026-12-02T20:00:00Z",
+      "kickoffUtc": "2026-12-02T20:15:00Z",
       "status": "TIMED",
       "home": {
         "id": 1044,
@@ -186,6 +167,25 @@
         "id": 397,
         "name": "Brighton & Hove Albion FC",
         "crest": "https://crests.football-data.org/397.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560662,
+      "kickoffUtc": "2026-12-03T20:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 73,
+        "name": "Tottenham Hotspur FC",
+        "crest": "https://crests.football-data.org/73.png"
+      },
+      "away": {
+        "id": 63,
+        "name": "Fulham FC",
+        "crest": "https://crests.football-data.org/63.png"
       },
       "score": {
         "h": null,
