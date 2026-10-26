@@ -24,7 +24,7 @@
     {
       "fixtureId": 560614,
       "kickoffUtc": "2026-10-24T11:30:00Z",
-      "status": "IN_PLAY",
+      "status": "FINISHED",
       "home": {
         "id": 58,
         "name": "Aston Villa FC",
@@ -36,14 +36,14 @@
         "crest": "https://crests.football-data.org/65.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 1
       }
     },
     {
       "fixtureId": 560616,
       "kickoffUtc": "2026-10-24T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -55,14 +55,14 @@
         "crest": "https://crests.football-data.org/62.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 0
       }
     },
     {
       "fixtureId": 560618,
       "kickoffUtc": "2026-10-24T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 1076,
         "name": "Coventry City FC",
@@ -74,14 +74,14 @@
         "crest": "https://crests.football-data.org/63.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 1
       }
     },
     {
       "fixtureId": 560617,
       "kickoffUtc": "2026-10-24T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 61,
         "name": "Chelsea FC",
@@ -93,14 +93,14 @@
         "crest": "https://crests.football-data.org/73.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 2
       }
     },
     {
       "fixtureId": 560612,
       "kickoffUtc": "2026-10-25T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 64,
         "name": "Liverpool FC",
@@ -112,14 +112,14 @@
         "crest": "https://crests.football-data.org/397.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 0
       }
     },
     {
       "fixtureId": 560613,
       "kickoffUtc": "2026-10-25T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 354,
         "name": "Crystal Palace FC",
@@ -131,14 +131,14 @@
         "crest": "https://crests.football-data.org/67.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 2
       }
     },
     {
       "fixtureId": 560615,
       "kickoffUtc": "2026-10-25T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -150,14 +150,14 @@
         "crest": "https://crests.football-data.org/bournemouth.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 3
       }
     },
     {
       "fixtureId": 560619,
       "kickoffUtc": "2026-10-25T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",
@@ -169,14 +169,14 @@
         "crest": "https://crests.football-data.org/402.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     },
     {
       "fixtureId": 560621,
       "kickoffUtc": "2026-10-25T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 71,
         "name": "Sunderland AFC",
@@ -188,8 +188,8 @@
         "crest": "https://crests.football-data.org/341.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 0
       }
     }
   ]
