@@ -157,7 +157,7 @@
     {
       "fixtureId": 560631,
       "kickoffUtc": "2026-11-01T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 64,
         "name": "Liverpool FC",
@@ -169,8 +169,8 @@
         "crest": "https://crests.football-data.org/57.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 0,
+        "a": 1
       }
     },
     {

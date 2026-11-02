@@ -7,16 +7,16 @@
       "table": [
         {
           "rank": 1,
-          "id": 65,
-          "name": "Manchester City FC",
+          "id": 57,
+          "name": "Arsenal FC",
           "played": 9,
-          "points": 21
+          "points": 24
         },
         {
           "rank": 2,
-          "id": 57,
-          "name": "Arsenal FC",
-          "played": 8,
+          "id": 65,
+          "name": "Manchester City FC",
+          "played": 9,
           "points": 21
         },
         {
@@ -37,7 +37,7 @@
           "rank": 5,
           "id": 64,
           "name": "Liverpool FC",
-          "played": 8,
+          "played": 9,
           "points": 15
         },
         {
