@@ -41,25 +41,6 @@
       }
     },
     {
-      "fixtureId": 560694,
-      "kickoffUtc": "2026-12-19T15:00:00Z",
-      "status": "TIMED",
-      "home": {
-        "id": 351,
-        "name": "Nottingham Forest FC",
-        "crest": "https://crests.football-data.org/351.png"
-      },
-      "away": {
-        "id": 62,
-        "name": "Everton FC",
-        "crest": "https://crests.football-data.org/62.png"
-      },
-      "score": {
-        "h": null,
-        "a": null
-      }
-    },
-    {
       "fixtureId": 560696,
       "kickoffUtc": "2026-12-19T15:00:00Z",
       "status": "TIMED",
@@ -129,6 +110,25 @@
         "id": 349,
         "name": "Ipswich Town FC",
         "crest": "https://crests.football-data.org/349.png"
+      },
+      "score": {
+        "h": null,
+        "a": null
+      }
+    },
+    {
+      "fixtureId": 560694,
+      "kickoffUtc": "2026-12-20T14:00:00Z",
+      "status": "TIMED",
+      "home": {
+        "id": 351,
+        "name": "Nottingham Forest FC",
+        "crest": "https://crests.football-data.org/351.png"
+      },
+      "away": {
+        "id": 62,
+        "name": "Everton FC",
+        "crest": "https://crests.football-data.org/62.png"
       },
       "score": {
         "h": null,
