@@ -24,7 +24,7 @@
     {
       "fixtureId": 560632,
       "kickoffUtc": "2026-11-07T12:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 341,
         "name": "Leeds United FC",
@@ -36,14 +36,14 @@
         "crest": "https://crests.football-data.org/73.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 0
       }
     },
     {
       "fixtureId": 560640,
       "kickoffUtc": "2026-11-07T15:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 57,
         "name": "Arsenal FC",
@@ -55,14 +55,14 @@
         "crest": "https://crests.football-data.org/322.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 0
       }
     },
     {
       "fixtureId": 560633,
       "kickoffUtc": "2026-11-07T15:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 63,
         "name": "Fulham FC",
@@ -74,14 +74,14 @@
         "crest": "https://crests.football-data.org/67.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 1
       }
     },
     {
       "fixtureId": 560641,
       "kickoffUtc": "2026-11-07T17:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 351,
         "name": "Nottingham Forest FC",
@@ -93,8 +93,8 @@
         "crest": "https://crests.football-data.org/65.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 3,
+        "a": 1
       }
     },
     {
