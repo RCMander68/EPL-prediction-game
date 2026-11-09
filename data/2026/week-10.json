@@ -100,7 +100,7 @@
     {
       "fixtureId": 560635,
       "kickoffUtc": "2026-11-08T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 354,
         "name": "Crystal Palace FC",
@@ -112,14 +112,14 @@
         "crest": "https://crests.football-data.org/64.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 3
       }
     },
     {
       "fixtureId": 560636,
       "kickoffUtc": "2026-11-08T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 71,
         "name": "Sunderland AFC",
@@ -131,14 +131,14 @@
         "crest": "https://crests.football-data.org/61.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 0
       }
     },
     {
       "fixtureId": 560637,
       "kickoffUtc": "2026-11-08T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 349,
         "name": "Ipswich Town FC",
@@ -150,14 +150,14 @@
         "crest": "https://crests.football-data.org/bournemouth.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 1,
+        "a": 2
       }
     },
     {
       "fixtureId": 560638,
       "kickoffUtc": "2026-11-08T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
@@ -169,14 +169,14 @@
         "crest": "https://crests.football-data.org/402.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 0
       }
     },
     {
       "fixtureId": 560639,
       "kickoffUtc": "2026-11-08T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 66,
         "name": "Manchester United FC",
@@ -188,8 +188,8 @@
         "crest": "https://crests.football-data.org/58.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 4,
+        "a": 4
       }
     }
   ]
