@@ -138,7 +138,7 @@
     {
       "fixtureId": 560646,
       "kickoffUtc": "2026-11-22T14:00:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 322,
         "name": "Hull City AFC",
@@ -150,14 +150,14 @@
         "crest": "https://crests.football-data.org/397.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 2,
+        "a": 0
       }
     },
     {
       "fixtureId": 560645,
       "kickoffUtc": "2026-11-22T16:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "home": {
         "id": 64,
         "name": "Liverpool FC",
@@ -169,8 +169,8 @@
         "crest": "https://crests.football-data.org/66.png"
       },
       "score": {
-        "h": null,
-        "a": null
+        "h": 4,
+        "a": 0
       }
     },
     {
